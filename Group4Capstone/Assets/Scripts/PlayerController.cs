@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void shootLaser()
+	public void shootLaser()
 	{
 		// Instantiate a laser blast at the laser origin point on our player.
 		Instantiate( laserPrefab, laserOrigin.position, Quaternion.identity );
