@@ -31,16 +31,16 @@ public class Asteroid : MonoBehaviour
 	void Start()
 	{
 		// Randomize physical attributes of our new asteroid.
-		_posY = Random.Range( -5.0f, 5.0f  );			// Randomize the vertical position of the object.
-		_speedX = Random.Range( 3.0f, 5.0f );			// Randomize the speed of the object.
-        _speedY = Random.Range(-1.0f, 1.0f);         // Randomize the speed of the object.
+		_posY = Random.Range( -4.9f, 4.9f  );			// Randomize the vertical position of the object.
+		_speedX = Random.Range( 3.0f, 5.5f );			// Randomize the speed of the object.
+        _speedY = Random.Range( -0.6f, 0.6f );         // Randomize the speed of the object.
         _spin = Random.Range( -50.0f, 50.0f );			// Randomize the angular velocity of the object.
 
 		// Apply move the object to the desired position.
 		objTransform.position = new Vector2( _createPosX, _posY );
 
         // Apply physical values to the object's rigidbody.
-        objRigid.velocity = new Vector2((Vector2.left * _speedX).x, _posY * _speedY);// Multiply the left vector by our speed to obtain velocity.
+		objRigid.velocity = new Vector2((Vector2.left * _speedX).x, (Vector2.up * _speedY).y);// Multiply the left vector by our speed to obtain velocity.
         objRigid.angularVelocity = _spin;			// Apply angular velocity to create a spin.
 	}
 

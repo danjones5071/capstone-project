@@ -13,3 +13,6 @@ https://media.nationalgeographic.org/assets/interactives/433/90b/43390b12-c7c2-4
 
 Spaceship: 
 https://uploads.scratch.mit.edu/users/avatars/14843621.png
+
+Laser Blast:
+https://donaldcarling.files.wordpress.com/2016/03/blast-harrier-laser-1.png?w=500
