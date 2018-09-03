@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 		float direction = Input.GetAxis( "Vertical" );
 		
 		// Move the player based on the user's input to the vertical axis and defined movement speed.
-		playerRigid.velocity = new Vector2( 0, speed * direction );
+		playerRigid.velocity = Vector2.up * speed * direction;
 		
 		// Make sure we do not let the player move above or below the camera's view.
 		playerRigid.position = new Vector2( -8, Mathf.Clamp(playerRigid.position.y, yMin, yMax) );
