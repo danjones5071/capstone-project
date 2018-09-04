@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+	public GameObject explosion;
+
 	// Declare variables to cache necessary components.
 	private Rigidbody2D objRigid;		// Object's rigidbody component.
 	private Transform objTransform;		// Object's transform component.
@@ -20,11 +22,17 @@ public class Asteroid : MonoBehaviour
     private float _speedY;              // Speed at which the object moves.
     private float _spin;				// Angular velocity of the object.
 
+	// Private variables to cache necessary components.
+	private SoundEffects soundEffects;	// The sound effects manager.
+
 	void Awake()
 	{
-		objRigid = GetComponent<Rigidbody2D>();		// Cache a reference to the object's rigidbody component.
+		objRigid = GetComponent<Rigidbody2D>();			// Cache a reference to the object's rigidbody component.
 		objTransform = transform;						// Cache a reference to the object's transform component.
 		_createPosX = 15.0f;							// Initialize the horizontal position for object generation.
+
+		// Cache a reference to the sound effects manager script attached to the sfx manager game object.
+		soundEffects = GameObject.Find( "Sound Effects Manager" ).GetComponent<SoundEffects>();
 	}
 
 	// Change to OnEnable() once object pooling is implemented.
@@ -44,13 +52,20 @@ public class Asteroid : MonoBehaviour
         objRigid.angularVelocity = _spin;			// Apply angular velocity to create a spin.
 	}
 
+	// Controls what happens when an asteroid collides with another object.
 	void OnCollisionEnter2D( Collision2D col )
 	{
 		// If the asteroid collides with a laser...
 		if( col.gameObject.tag == "Laser" )
 		{
+			// Instantiate our explosion particle effects and destroy them after some time.
+			Destroy( Instantiate( explosion, objTransform.position, Quaternion.identity ), 4 );
+
 			Destroy( gameObject );      // Destroy the asteroid.
 			Destroy( col.gameObject );  // And also destroy the laser blast.
+
+			// Play the explosion sound effect.
+			soundEffects.PlayExplosionSound();
 		}
 	}
 }
