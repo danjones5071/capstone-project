@@ -67,5 +67,13 @@ public class Asteroid : MonoBehaviour
 			// Play the explosion sound effect.
 			soundEffects.PlayExplosionSound();
 		}
-	}
+
+        //Prototype idea for creating deflection out of colliding asteroids.
+        //Consider adding multiplier and particle effects if collision occurs. 
+        if (col.gameObject.tag == "Asteroid")
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(gameObject.GetComponent<Rigidbody2D>().velocity, col.gameObject.transform.position)).normalized;
+            col.gameObject.GetComponent<Rigidbody2D>().velocity = col.gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(col.gameObject.GetComponent<Rigidbody2D>().velocity, gameObject.transform.position)).normalized;
+        }
+    }
 }
