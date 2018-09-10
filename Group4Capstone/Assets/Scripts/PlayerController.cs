@@ -7,6 +7,7 @@
 
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class PlayerController : MonoBehaviour
 {	
 	// Public variables which can be modified in the editor at runtime.
@@ -58,18 +59,30 @@ public class PlayerController : MonoBehaviour
 			// If we don't need to wait more for our laser cooldown time.
 			if( laserTimer <= 0 )
 			{
-				shootLaser();				// Call our method to shoot a laser.
+				ShootLaser();				// Call our method to shoot a laser.
 				laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
 			}
 		}
 	}
-
-	public void shootLaser()
+	/*void OnCollisionEnter2D( Collision2D col )
+	{
+		//gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(gameObject.GetComponent<Rigidbody2D>().velocity, col.gameObject.transform.position)).normalized;
+		//col.gameObject.GetComponent<Rigidbody2D>().velocity = col.gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(col.gameObject.GetComponent<Rigidbody2D>().velocity, gameObject.transform.position));
+		
+		Rigidbody2D colRigid = col.gameObject.GetComponent<Rigidbody2D>();
+		colRigid.velocity = Vector2.Reflect( gameObject.transform.position, Vector2.up );
+	}*/
+	public void ShootLaser()
 	{
 		// Instantiate a laser blast at the laser origin point on our player.
 		Instantiate( laserPrefab, laserOrigin.position, Quaternion.identity );
 
 		// Play the laser sound effect.
 		soundEffects.PlayLaserSound();
+	}
+
+	public void SetLaserOrigin( Transform origin )
+	{
+		laserOrigin = origin;
 	}
 }

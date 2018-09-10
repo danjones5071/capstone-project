@@ -18,16 +18,21 @@ public class ObstacleGenerator : MonoBehaviour
 	void Start()
 	{
 		// Start the infinite coroutine to generate asteroids.
-		StartCoroutine( GenerateAsteroids() );
+		StartCoroutine( GenerateObstacles() );
 	}
 
-	IEnumerator GenerateAsteroids()
+	IEnumerator GenerateObstacles()
 	{
 		// Continue generating infinitely.
 		while( true )
 		{
-			Instantiate( asteroid );							// Instantiate a new astroid.
-			yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another.
+			CreateAsteroid();
+			yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
 		}
+	}
+
+	public void CreateAsteroid()
+	{
+		Instantiate( asteroid );	// Instantiate a new astroid.
 	}
 }

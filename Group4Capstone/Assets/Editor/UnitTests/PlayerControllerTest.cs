@@ -7,6 +7,13 @@ public class PlayerControllerTest
 {
 	
 	GameObject player = GameObject.FindGameObjectWithTag( "Player" );
+	PlayerController pc;
+
+	[OneTimeSetUp]
+	public void TestSetup()
+	{
+		pc = player.GetComponent<PlayerController>();
+	}
 
 	[Test]
 	public void PlayerExists()
@@ -44,8 +51,18 @@ public class PlayerControllerTest
 	[UnityTest]
 	public IEnumerator PlayerSpeedPositive()
 	{
-		PlayerController pc = player.GetComponent<PlayerController>();
 		Assert.Greater( pc.speed, 0 );
+
+		yield return null;
+	}
+
+	[UnityTest]
+	public IEnumerator ShootLaserTest()
+	{
+		pc.ShootLaser();
+		GameObject laser = GameObject.Find( "Laser(Clone)" );
+
+		Assert.NotNull( laser );
 
 		yield return null;
 	}

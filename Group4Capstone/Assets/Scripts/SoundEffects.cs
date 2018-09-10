@@ -7,6 +7,7 @@
 
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class SoundEffects : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
