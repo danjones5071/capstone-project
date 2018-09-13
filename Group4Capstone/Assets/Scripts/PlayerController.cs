@@ -22,10 +22,13 @@ public class PlayerController : MonoBehaviour
 	private Transform laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
 	private SoundEffects soundEffects;	// The sound effects manager.
 
+    public static double batteryCapacity = 100;
+
 	// Private variables to track player-related data and statistics.
 	private float laserTimer;			// A timer to track how long it has been since the last laser was fired.
+    private int laserEnergyCost = 5;    // Ammount of energy to be deducted out of the batteries per laser shot.
 
-	void Awake()
+    void Awake()
 	{
 		playerRigid = GetComponent<Rigidbody2D>();		// Cache a reference to the player's rigidbody component.
 		laserOrigin = transform.Find( "LaserOrigin" );	// Cache a reference to the transform of the laser's origin point.
@@ -64,21 +67,19 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 	}
-	/*void OnCollisionEnter2D( Collision2D col )
-	{
-		//gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(gameObject.GetComponent<Rigidbody2D>().velocity, col.gameObject.transform.position)).normalized;
-		//col.gameObject.GetComponent<Rigidbody2D>().velocity = col.gameObject.GetComponent<Rigidbody2D>().velocity * (Vector2.Reflect(col.gameObject.GetComponent<Rigidbody2D>().velocity, gameObject.transform.position));
-		
-		Rigidbody2D colRigid = col.gameObject.GetComponent<Rigidbody2D>();
-		colRigid.velocity = Vector2.Reflect( gameObject.transform.position, Vector2.up );
-	}*/
+
 	public void ShootLaser()
 	{
-		// Instantiate a laser blast at the laser origin point on our player.
-		Instantiate( laserPrefab, laserOrigin.position, Quaternion.identity );
+        if (batteryCapacity >= laserEnergyCost)
+        {
+            // Instantiate a laser blast at the laser origin point on our player.
+            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
 
-		// Play the laser sound effect.
-		soundEffects.PlayLaserSound();
+            batteryCapacity -= laserEnergyCost; //Substracting energy value.
+
+            // Play the laser sound effect.
+            soundEffects.PlayLaserSound();
+        }
 	}
 
 	public void SetLaserOrigin( Transform origin )

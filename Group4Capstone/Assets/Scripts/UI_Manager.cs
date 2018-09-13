@@ -12,7 +12,10 @@ public class UI_Manager : MonoBehaviour {
 
     [SerializeField]
     private Text gameTimeElapsedRef;
-   
+
+    public Slider energyBar;
+    public Slider healthBar;
+
     // Use this for initialization
     void Start ()
     {  
@@ -22,6 +25,7 @@ public class UI_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        #region Clock Logic
         secondsElapsed = Time.time - startTime;
 
         int minutes = ((int)secondsElapsed / 60);
@@ -34,6 +38,10 @@ public class UI_Manager : MonoBehaviour {
         string secondsString = (seconds < 10 ? temp : seconds.ToString());
 
         gameTimeElapsedRef.text = (minutesString + ":" + secondsString);
-     
+        #endregion
+
+        #region Energy Bar Logic
+        energyBar.value = (float)PlayerController.batteryCapacity;
+        #endregion
     }
 }
