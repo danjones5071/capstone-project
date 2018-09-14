@@ -22,17 +22,11 @@ public class Asteroid : MonoBehaviour
     private float speedY;              // Speed at which the object moves.
     private float spin;				// Angular velocity of the object.
 
-	// Private variables to cache necessary components.
-	private SoundEffects soundEffects;	// The sound effects manager.
-
 	void Awake()
 	{
 		asteroidRigid = GetComponent<Rigidbody2D>();	// Cache a reference to the object's rigidbody component.
 		asteroidTransform = transform;					// Cache a reference to the object's transform component.
 		createPosX = 15.0f;							// Initialize the horizontal position for object generation.
-
-		// Cache a reference to the sound effects manager script attached to the sfx manager game object.
-		soundEffects = GameObject.Find( "Sound Effects Manager" ).GetComponent<SoundEffects>();
 	}
 
 	// Change to OnEnable() once object pooling is implemented.
@@ -69,7 +63,7 @@ public class Asteroid : MonoBehaviour
             PlayerController pc = col.gameObject.GetComponent<PlayerController>();
 
             // Play the crash sound effect.
-			soundEffects.PlayCrashSound();
+			References.global.soundEffects.PlayCrashSound();
 
             // Player takes damage from impact.
             pc.TakeDamage(15);
@@ -88,6 +82,6 @@ public class Asteroid : MonoBehaviour
         Destroy(gameObject);
 
         // Play the explosion sound effect.
-        soundEffects.PlayExplosionSound();
+        References.global.soundEffects.PlayExplosionSound();
     }
 }

@@ -8,12 +8,15 @@ public class PlayAgain : MonoBehaviour
 {
 	public Image background;
 	public GameObject prompt;
+	public GameObject timeSurvived;
 	public Color fadeColor;
 
 	public float fadeSpeed = 2.0f;
 
-	void Start ()
+	void OnEnable()
 	{
+		prompt.SetActive( false );
+		timeSurvived.SetActive( false );
 		StartCoroutine( ShowPrompt() );
 	}
 
@@ -30,6 +33,7 @@ public class PlayAgain : MonoBehaviour
 	{
 		yield return new WaitForSeconds( 1 );
 		prompt.SetActive( true );
+		timeSurvived.SetActive( true );
 	}
 
 	public void RestartGame()

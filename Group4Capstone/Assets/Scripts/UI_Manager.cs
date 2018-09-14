@@ -21,20 +21,10 @@ public class UI_Manager : MonoBehaviour {
     public Slider energyBar;
     public Slider healthBar;
 
-    private GameObject player;
-    private PlayerController playerController;
-
-	public GameObject playAgainUI;
-
-
     // Use this for initialization
     void Start ()
     {  
         startTime = Time.time;
-
-        // Cache player object
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<PlayerController>();
     }
 	
 	// Update is called once per frame
@@ -61,11 +51,11 @@ public class UI_Manager : MonoBehaviour {
         #endregion
 
         #region Health Bar Logic
-		healthBar.value = playerController.health;
+		healthBar.value = References.global.playerController.health;
         #endregion
 
         #region Energy Bar Logic
-        energyBar.value = playerController.batteryCapacity;
+		energyBar.value = References.global.playerController.batteryCapacity;
         #endregion
 
     }
@@ -76,7 +66,6 @@ public class UI_Manager : MonoBehaviour {
 
         totalTimeSurvived.text = timeText;
 
-        playAgainUI.SetActive( true );   
+		References.global.playAgainUI.SetActive( true );   
 	}
-
 }

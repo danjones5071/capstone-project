@@ -18,6 +18,6 @@ public class Laser : MonoBehaviour
 	void Awake()
 	{
 		laserRigid = GetComponent<Rigidbody2D>();			// Cache a reference to the laser's rigidbody component.
-		laserRigid.velocity = new Vector2( speed, 0 );		// Set the velocity of the laser blast.
+		laserRigid.velocity = Vector2.right * speed;		// Set the velocity of the laser blast.
 	}
 }

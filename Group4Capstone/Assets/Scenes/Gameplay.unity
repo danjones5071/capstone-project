@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1964169312}
   prompt: {fileID: 2048131796}
+  timeSurvived: {fileID: 771034034}
   fadeColor: {r: 0, g: 0, b: 0, a: 0.7058824}
   fadeSpeed: 2
 --- !u!1 &162462228
@@ -255,7 +256,6 @@ MonoBehaviour:
   laserCooldown: 0.5
   laserPrefab: {fileID: 180230, guid: 2fe9d5015edd489468e406f097affb6a, type: 2}
   explosion: {fileID: 1554514207725318, guid: 16727275690b6ac44a97a3a0b3477bdf, type: 2}
-  uiManager: {fileID: 236586183}
   batteryCapacity: 100
   health: 100
 --- !u!60 &162462230
@@ -10655,6 +10655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102261087}
   - component: {fileID: 2102261086}
+  - component: {fileID: 2102261088}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -10686,3 +10687,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102261088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102261085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2301ca5e680f3c47946e3c996af708b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMaster: {fileID: 2102261086}
+  player: {fileID: 162462228}
+  obstacleGenerator: {fileID: 2058457132}
+  soundEffects: {fileID: 1491784007}
+  uiManager: {fileID: 236586183}
+  playAgainUI: {fileID: 138442390}
+  playerTrans: {fileID: 0}
+  playerRigid: {fileID: 0}
+  playerController: {fileID: 0}
