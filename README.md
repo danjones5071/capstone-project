@@ -4,18 +4,15 @@ SWENG Capstone Project made by Group 4 in the Unity Game Engine.
 ### Current Project State
 The game currently includes the following basic features:
 * Basic player movement (up and down using arrow or 'W' and 'S' Keys).
+* Player vitals (health and energy).
 * Firing a laser using the space key.
 * Randomly generated asteroids that are destroyed when hit by a laser.
 * Simple sound effects.
+* Framework of UI.
 
-The asteroids don't hurt the player yet since it would probably be appropriate to have some UI for a "Play Again?" screen. But the player can fire lasers to destroy asteroids with the space key. For right now, the asteroids are generated with basic Instantiate and Destroy calls, but we will probably want to implement an object pool as the project gets more complex for the sake of efficiency.
+For right now, the asteroids are generated with basic Instantiate and Destroy calls, but we will probably want to implement an object pool as the project gets more complex for the sake of efficiency.
 
 [Playable Link](https://htmlpreview.github.io/?https://github.com/danjones5071/capstone-project/blob/master/Group4Capstone/Export/index.html)
-
-### Known issues
-* With the addition of vertical movement, the asteroids will sometimes move off-screen before they have a chance to reach the player. This should just take some tweaking.
-* If the game goes into fullscreen mode, the rear of the player will be partially cut off. This can be corrected with a script to change the player's position at runtime if fullscreen is detected.
-* There are a couple of warnings about deprecated methods. For right now, this is just due to some scripts in the standard particle assets. It's strange that this warning shows up for Unity-provided assets, but it shouldn't cause any real problems. These warnings do appear in other projects too, so it has nothing to do with our work.
 
 ## Current Outside Resources:
 ### Images
