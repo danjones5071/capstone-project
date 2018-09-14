@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimeElapsedRef: {fileID: 114694374937594472}
   energyBar: {fileID: 114368130015187630}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 114070461663796282}
 --- !u!114 &114568116168187306
 MonoBehaviour:
   m_ObjectHideFlags: 1

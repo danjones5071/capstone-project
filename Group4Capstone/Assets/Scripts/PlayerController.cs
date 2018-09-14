@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 	private SoundEffects soundEffects;	// The sound effects manager.
 
     public static double batteryCapacity = 100;
+    public static int health = 100;     // The current amount of health the player has.
+    public static int lives = 3;        // Ammount of lives the player has.
 
 	// Private variables to track player-related data and statistics.
 	private float laserTimer;			// A timer to track how long it has been since the last laser was fired.
@@ -86,4 +88,10 @@ public class PlayerController : MonoBehaviour
 	{
 		laserOrigin = origin;
 	}
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
 }

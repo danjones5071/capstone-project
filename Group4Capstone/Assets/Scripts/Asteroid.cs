@@ -95,9 +95,11 @@ public class Asteroid : MonoBehaviour
             colRigid.velocity *= (Vector2.Reflect(colRigid.velocity, asteroidTransform.position)).normalized;
         }
 
-        //To DO
-        /*if (col.gameObject.tag == "Player")
+        // If the asteroid collides with a player...
+        if (col.gameObject.tag == "Player")
         {
-        }*/
+            PlayerController pc = col.gameObject.GetComponent<PlayerController>();
+            pc.TakeDamage(15);
+        }
     }
 }
