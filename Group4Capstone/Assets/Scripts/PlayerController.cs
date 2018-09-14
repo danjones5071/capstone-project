@@ -16,14 +16,16 @@ public class PlayerController : MonoBehaviour
 	public float yMin;					// The lowest point the player can move vertically.
 	public float laserCooldown = 0.5f;	// How long the user must wait between laser bursts.
 	public GameObject laserPrefab;		// The prefab used for a basic laser attack.
+	public GameObject explosion;
+	public UI_Manager uiManager;
 
 	// Private variables to cache necessary components.
 	private Rigidbody2D playerRigid;	// The player's rigidbody component.
 	private Transform laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
 	private SoundEffects soundEffects;	// The sound effects manager.
 
-    public static double batteryCapacity = 100;
-    public static int health = 100;     // The current amount of health the player has.
+    public float batteryCapacity = 100;
+    public int health = 100;            // The current amount of health the player has.
     public static int lives = 3;        // Ammount of lives the player has.
 
 	// Private variables to track player-related data and statistics.
@@ -67,6 +69,14 @@ public class PlayerController : MonoBehaviour
 				ShootLaser();				// Call our method to shoot a laser.
 				laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
 			}
+		}
+
+		if( health <= 0 )
+		{
+			Instantiate( explosion, transform.position, Quaternion.identity );
+			uiManager.ShowPlayAgainUI();
+			soundEffects.PlayExplosionSound();
+			Destroy( gameObject );
 		}
 	}
 

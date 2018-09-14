@@ -19,6 +19,8 @@ public class UI_Manager : MonoBehaviour {
     private GameObject player;
     private PlayerController playerController;
 
+	public GameObject playAgainUI;
+
 
     // Use this for initialization
     void Start ()
@@ -26,8 +28,8 @@ public class UI_Manager : MonoBehaviour {
         startTime = Time.time;
 
         // Cache player object
-        //player = GameObject.Find("Player");
-        //playerController = player.GetComponent<PlayerController>();
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
     }
 	
 	// Update is called once per frame
@@ -49,12 +51,17 @@ public class UI_Manager : MonoBehaviour {
         #endregion
 
         #region Health Bar Logic
-        healthBar.value = (float)PlayerController.health;
+		healthBar.value = playerController.health;
         #endregion
 
         #region Energy Bar Logic
-        energyBar.value = (float)PlayerController.batteryCapacity;
+        energyBar.value = playerController.batteryCapacity;
         #endregion
 
     }
+
+	public void ShowPlayAgainUI()
+	{
+		playAgainUI.SetActive( true );
+	}
 }

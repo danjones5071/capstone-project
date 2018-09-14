@@ -13,6 +13,7 @@ public class SoundEffects : MonoBehaviour
 	// Public variables which can be modified in the editor at runtime.
 	public AudioClip laserBlast;
 	public AudioClip explosion;
+	public AudioClip crash;
 
 	// Private variables to cache necessary components.
 	private AudioSource audioSource;
@@ -38,6 +39,11 @@ public class SoundEffects : MonoBehaviour
 	public void PlayExplosionSound()
 	{
 		audioSource.PlayOneShot( explosion );
+	}
+
+	public void PlayCrashSound()
+	{
+		audioSource.PlayOneShot( crash );
 	}
 
 }
