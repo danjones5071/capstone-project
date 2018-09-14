@@ -34,8 +34,14 @@ public class Asteroid : MonoBehaviour
 	{
 		// Randomize physical attributes of our new asteroid.
 		posY = Random.Range( -4.9f, 4.9f  );			// Randomize the vertical position of the object.
-		speedX = Random.Range( 3.0f, 10.5f );			// Randomize the speed of the object.
-        speedY = Random.Range( -0.9f, 0.9f );         // Randomize the speed of the object.
+		speedX = Random.Range( 3.0f, 10.5f );			// Randomize the horizontal speed of the object.
+
+		// Randomize the vertical speed of the object.
+		if( posY > 0 )
+			speedY = Random.Range( -0.9f, 0 );
+		else
+			speedY = Random.Range( 0, 0.9f );
+		 
         spin = Random.Range( -50.0f, 50.0f );			// Randomize the angular velocity of the object.
 
 		// Apply move the object to the desired position.
