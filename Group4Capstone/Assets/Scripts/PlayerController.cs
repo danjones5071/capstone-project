@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 	public float laserCooldown = 0.5f;	// How long the user must wait between laser bursts.
 	public GameObject laserPrefab;		// The prefab used for a basic laser attack.
 	public GameObject explosion;
-	//public UI_Manager uiManager;
 
 	// Private variables to cache necessary components.
 	private Transform laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
