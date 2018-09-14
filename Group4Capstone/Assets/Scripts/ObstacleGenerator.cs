@@ -13,12 +13,17 @@ public class ObstacleGenerator : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
 	public GameObject asteroid;				// The asteroid prefab.
-	public float asteroidTimer = 3.2f;		// How long we wait before generating another asteroid.
+	public float asteroidTimer = 3.2f;      // How long we wait before generating another asteroid.
+    public float increseDificultyTimer = 7;
+    public float dificultyMultiplier = 0.3F;
+    private float secondsElapsed;
+    private float startTime;
 
-	void Start()
+    void Start()
 	{
-		// Start the infinite coroutine to generate asteroids.
-		StartCoroutine( GenerateObstacles() );
+        startTime = Time.time;
+        // Start the infinite coroutine to generate asteroids.
+        StartCoroutine( GenerateObstacles() );
 	}
 
 	IEnumerator GenerateObstacles()
@@ -27,7 +32,24 @@ public class ObstacleGenerator : MonoBehaviour
 		while( true )
 		{
 			CreateAsteroid();
-			yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
+
+            secondsElapsed = Time.time - startTime;
+
+            if(secondsElapsed > increseDificultyTimer)
+            {
+                if (asteroidTimer > dificultyMultiplier)
+                {
+                    asteroidTimer -= dificultyMultiplier;                    
+                }
+                else
+                {
+                    asteroidTimer = dificultyMultiplier;
+                }
+
+                startTime = Time.time;
+            }
+
+            yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
 		}
 	}
 

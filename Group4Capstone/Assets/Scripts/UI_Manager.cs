@@ -78,4 +78,5 @@ public class UI_Manager : MonoBehaviour {
 
         playAgainUI.SetActive( true );   
 	}
+
 }
