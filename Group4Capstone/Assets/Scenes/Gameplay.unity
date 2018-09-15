@@ -258,6 +258,9 @@ MonoBehaviour:
   explosion: {fileID: 1554514207725318, guid: 16727275690b6ac44a97a3a0b3477bdf, type: 2}
   batteryCapacity: 100
   health: 100
+  lives: 3
+  rechargeInterval: 1
+  rechargeAmount: 2
 --- !u!60 &162462230
 PolygonCollider2D:
   m_ObjectHideFlags: 0

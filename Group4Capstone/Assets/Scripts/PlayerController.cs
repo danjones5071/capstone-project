@@ -5,6 +5,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -22,8 +23,10 @@ public class PlayerController : MonoBehaviour
 	private Transform laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
 
     public float batteryCapacity = 100;
-    public int health = 100;            // The current amount of health the player has.
-    public static int lives = 3;        // Ammount of lives the player has.
+    public int health = 100;			// The current amount of health the player has.
+    public int lives = 3;				// Ammount of lives the player has.
+	public float rechargeInterval = 1;
+	public float rechargeAmount = 2;
 
 	// Private variables to track player-related data and statistics.
 	private float laserTimer;			// A timer to track how long it has been since the last laser was fired.
@@ -32,6 +35,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
 	{
 		laserOrigin = transform.Find( "LaserOrigin" );	// Cache a reference to the transform of the laser's origin point.
+	}
+
+	void Start()
+	{
+		StartCoroutine( Recharge() );
 	}
 
 	// FixedUpdate is called once for every frame that is rendered.
@@ -92,6 +100,18 @@ public class PlayerController : MonoBehaviour
         }
 	}
 
+	IEnumerator Recharge()
+	{
+		while( true )
+		{
+			if( batteryCapacity < 100 )
+			{
+				AddEnergy( rechargeAmount );
+			}
+			yield return new WaitForSeconds( rechargeInterval );
+		}
+	}
+
 	public void SetLaserOrigin( Transform origin )
 	{
 		laserOrigin = origin;
@@ -101,5 +121,13 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
     }
+
+	public void AddEnergy( float energy )
+	{
+		if( batteryCapacity < 100 )
+		{
+			batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
+		}
+	}
 
 }
