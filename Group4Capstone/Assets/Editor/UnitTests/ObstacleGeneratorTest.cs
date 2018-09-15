@@ -6,6 +6,13 @@ using System.Collections;
 public class ObstacleGeneratorTest
 {
 	GameObject obstacleGenerator = GameObject.Find( "Obstacle Generator" );
+	ObstacleGenerator og;
+
+	[OneTimeSetUp]
+	public void TestSetup()
+	{
+		og = References.global.obstacleGenerator;
+	}
 
     [Test]
     public void ObstacleGeneratorExists()
@@ -16,7 +23,6 @@ public class ObstacleGeneratorTest
     [UnityTest]
     public IEnumerator AsteroidIsGenerated()
 	{
-		ObstacleGenerator og = obstacleGenerator.GetComponent<ObstacleGenerator>();
 		og.CreateAsteroid();
 		GameObject asteroid = GameObject.Find( "Asteroid(Clone)" );
 		Assert.NotNull( asteroid );

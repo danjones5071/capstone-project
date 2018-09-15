@@ -5,21 +5,19 @@ using System.Collections;
 
 public class SoundEffectsTest
 {
-	GameObject soundEffects = GameObject.Find( "Sound Effects Manager" );
-	SoundEffects se;
+	SoundEffects soundEffects;
 
 	[OneTimeSetUp]
 	public void TestSetup()
 	{
-		se = soundEffects.GetComponent<SoundEffects>();
+		soundEffects = References.global.soundEffects;
 	}
 
     [UnityTest]
     public IEnumerator LaserSoundPlays()
 	{
-		se.PlayLaserSound();
-
-		Assert.NotNull( se.laserBlast );
+		soundEffects.PlayLaserSound();
+		Assert.NotNull( soundEffects.laserBlast );
 
         yield return null;
     }
@@ -27,9 +25,17 @@ public class SoundEffectsTest
 	[UnityTest]
 	public IEnumerator ExplosionSoundPlays()
 	{
-		se.PlayExplosionSound();
+		soundEffects.PlayExplosionSound();
+		Assert.NotNull( soundEffects.explosion );
 
-		Assert.NotNull( se.explosion );
+		yield return null;
+	}
+
+	[UnityTest]
+	public IEnumerator CrashSoundPlays()
+	{
+		soundEffects.PlayCrashSound();
+		Assert.NotNull( soundEffects.crash );
 
 		yield return null;
 	}

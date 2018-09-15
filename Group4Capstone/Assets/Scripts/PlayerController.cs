@@ -124,10 +124,9 @@ public class PlayerController : MonoBehaviour
 
 	public void AddEnergy( float energy )
 	{
-		if( batteryCapacity < 100 )
-		{
-			batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
-		}
+		// We don't want the energy to exceed 100.
+		// So take the minimum between 100 and the sum of the current energy plus energy being added.
+		batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
 	}
 
 }

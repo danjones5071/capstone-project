@@ -1,6 +1,8 @@
 # Capstone Project
 SWENG Capstone Project made by Group 4 in the Unity Game Engine.
 
+[Playable Link](https://htmlpreview.github.io/?https://github.com/danjones5071/capstone-project/blob/master/Group4Capstone/Export/index.html)
+
 ### Current Project State
 The game currently includes the following basic features:
 * Basic player movement (up and down using arrow or 'W' and 'S' Keys).
@@ -11,8 +13,6 @@ The game currently includes the following basic features:
 * Framework of UI.
 
 For right now, the asteroids are generated with basic Instantiate and Destroy calls, but we will probably want to implement an object pool as the project gets more complex for the sake of efficiency.
-
-[Playable Link](https://htmlpreview.github.io/?https://github.com/danjones5071/capstone-project/blob/master/Group4Capstone/Export/index.html)
 
 ## Current Outside Resources:
 ### Images
