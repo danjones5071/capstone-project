@@ -34,7 +34,7 @@ public class Asteroid : MonoBehaviour
 	{
 		// Randomize physical attributes of our new asteroid.
 		posY = Random.Range( -4.9f, 4.9f  );			// Randomize the vertical position of the object.
-		speedX = Random.Range( 3.0f, 10.5f );			// Randomize the horizontal speed of the object.
+		speedX = Random.Range( 1.0f, 2.5f );			// Randomize the horizontal speed of the object.
 
 		// Randomize the vertical speed of the object.
 		if( posY > 0 )
@@ -61,7 +61,14 @@ public class Asteroid : MonoBehaviour
             DestroySelf();            // Destroy the asteroid.
             Destroy(col.gameObject);  // And also destroy the laser blast.
         }
-        
+
+        // If the asteroid collides with an enemy...
+        if (col.gameObject.tag == "Enemy")
+        {
+            DestroySelf();            // Destroy the asteroid.
+            Destroy(col.gameObject);  // And also destroy the enemy.
+        }
+
         // If the asteroid collides with a player...
         if (col.gameObject.tag == "Player")
         {

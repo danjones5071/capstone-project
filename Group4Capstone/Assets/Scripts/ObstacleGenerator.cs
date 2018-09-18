@@ -14,7 +14,7 @@ public class ObstacleGenerator : MonoBehaviour
 	// Public variables which can be modified in the editor at runtime.
 	public GameObject asteroid;				// The asteroid prefab.
 	public float asteroidTimer = 3.2f;      // How long we wait before generating another asteroid.
-    public float increseDificultyTimer = 7;
+    public float increseDificultyTimer = 50;
     public float dificultyMultiplier = 0.3F;
     private float secondsElapsed;
     private float startTime;
