@@ -120,4 +120,15 @@ public class PlayerControllerTest
 		yield return null;
 	}
 
+	[UnityTest]
+    	public IEnumerator ShootLaserTest()
+    	{
+    		playerController.ShootInferno();
+    		GameObject inferno = GameObject.Find( "Inferno(Clone)" );
+
+    		Assert.NotNull( inferno );
+
+    		yield return null;
+    	}
+
 }

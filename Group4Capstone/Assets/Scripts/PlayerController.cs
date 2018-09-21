@@ -76,6 +76,17 @@ public class PlayerController : MonoBehaviour
 				laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
 			}
 		}
+		// If the player hits the "z" key.
+        if( Input.GetKeyDown(KeyCode.Z) )
+        {
+            // If we don't need to wait more for our laser cooldown time.
+            if( laserTimer <= 0 )
+            {
+                ShootInferno();				// Call our method to shoot a laser.
+                laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
+            }
+        }
+
 		// Deal damage to self for testing purposes.
 		if( Input.GetKeyDown(KeyCode.K) )
 		{
@@ -97,17 +108,30 @@ public class PlayerController : MonoBehaviour
         {
             // Instantiate a laser blast at the laser origin point on our player.
 
-//            Commenting the laser to try out the Inferno attack
-//            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
-            Instantiate(infernoPrefab, laserOrigin.position, Quaternion.identity);
+            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
+
 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
             // Play the laser sound effect.
-//			References.global.soundEffects.PlayLaserSound();
-			References.global.soundEffects.PlayInfernoSound();
+			References.global.soundEffects.PlayLaserSound();
+
         }
 	}
+
+		public void ShootInferno()
+    	{
+            if (batteryCapacity >= laserEnergyCost)
+            {
+                // Instantiate a inferno blast at the laser origin point on our player.
+
+                Instantiate(infernoPrefab, laserOrigin.position, Quaternion.identity);
+
+                batteryCapacity -= laserEnergyCost; //Substracting energy value.
+
+    			References.global.soundEffects.PlayInfernoSound();
+            }
+    	}
 
 	IEnumerator Recharge()
 	{
