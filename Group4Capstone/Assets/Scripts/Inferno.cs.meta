@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: cadbc83eb7824814fb81cc1e8444b7cd
+guid: 5a70254b267e49b44bdfbce6bcb7d90e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - laserPrefab: {instanceID: 0}
-  - infernoPrefab: {instanceID: 0}
-  - explosion: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

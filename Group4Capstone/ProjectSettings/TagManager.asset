@@ -8,6 +8,7 @@ TagManager:
   - Fire
   - Asteroid
   - Enemy
+  - Inferno
   layers:
   - Default
   - TransparentFX

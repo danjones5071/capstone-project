@@ -12,11 +12,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {	
 	// Public variables which can be modified in the editor at runtime.
-	public float speed = 5.0f;			// How quickly the player an move.
+	public float speed = 5.0f;			// How quickly the player can move.
 	public float yMax;					// The highest point the player can move vertically.
 	public float yMin;					// The lowest point the player can move vertically.
+	public float xMax;					// The lowest point the player can move horizontally.
+	public float xMin;					// The lowest point the player can move horizontally.
+
 	public float laserCooldown = 0.5f;	// How long the user must wait between laser bursts.
 	public GameObject laserPrefab;		// The prefab used for a basic laser attack.
+	public GameObject infernoPrefab;    // The prefab used for a basic inferno attack.
 	public GameObject explosion;
 
 	// Private variables to cache necessary components.
@@ -45,14 +49,15 @@ public class PlayerController : MonoBehaviour
 	// FixedUpdate is called once for every frame that is rendered.
 	void FixedUpdate()
 	{
-		// The vertical input axis handles inputs from the up/down arrow keys, 'W'/'S' keys, or joystick.
-		float direction = Input.GetAxis( "Vertical" );
+		// The vertical and horizontal input axises handle inputs from the up/down/left/right arrow keys, 'W'/'S'/'A'/'D' keys, or joystick.
+		float directionY = Input.GetAxis( "Vertical" );
+		float directionX = Input.GetAxis( "Horizontal" );
 
-		// Move the player based on the user's input to the vertical axis and defined movement speed.
-		References.global.playerRigid.velocity = Vector2.up * speed * direction;
-		
-		// Make sure we do not let the player move above or below the camera's view.
-		References.global.playerRigid.position = new Vector2( -8, Mathf.Clamp(References.global.playerRigid.position.y, yMin, yMax) );
+		// Move the player based on the user's input to the vertical/horizontal axis and defined movement speed.
+		References.global.playerRigid.velocity = Vector2.up * speed * directionY + Vector2.right * speed * directionX;
+
+		// Make sure we do not let the player move away of the camera's view.
+		References.global.playerRigid.position = new Vector2(Mathf.Clamp(References.global.playerRigid.position.x, xMin, xMax), Mathf.Clamp(References.global.playerRigid.position.y, yMin, yMax) );
 
 		// If there is still some time to cool down after our last laser shot...
 		if( laserTimer > 0 )
@@ -91,7 +96,10 @@ public class PlayerController : MonoBehaviour
         if (batteryCapacity >= laserEnergyCost)
         {
             // Instantiate a laser blast at the laser origin point on our player.
-            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
+
+//            Commenting the laser to try out the Inferno attack
+//            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
+            Instantiate(infernoPrefab, laserOrigin.position, Quaternion.identity);
 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 

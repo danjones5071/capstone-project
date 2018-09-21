@@ -253,8 +253,12 @@ MonoBehaviour:
   speed: 5
   yMax: 4.2
   yMin: -4.2
+  xMax: 13
+  xMin: -13
   laserCooldown: 0.5
   laserPrefab: {fileID: 180230, guid: 2fe9d5015edd489468e406f097affb6a, type: 2}
+  infernoPrefab: {fileID: 1972909802645380, guid: d13bbb4c21101d248bd80840f63e5a47,
+    type: 2}
   explosion: {fileID: 1554514207725318, guid: 16727275690b6ac44a97a3a0b3477bdf, type: 2}
   batteryCapacity: 100
   health: 100
