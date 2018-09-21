@@ -121,7 +121,7 @@ public class PlayerControllerTest
 	}
 
 	[UnityTest]
-    	public IEnumerator ShootLaserTest()
+    	public IEnumerator ShootInfernoTest()
     	{
     		playerController.ShootInferno();
     		GameObject inferno = GameObject.Find( "Inferno(Clone)" );
