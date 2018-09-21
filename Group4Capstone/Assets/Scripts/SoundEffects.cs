@@ -12,6 +12,7 @@ public class SoundEffects : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
 	public AudioClip laserBlast;
+	public AudioClip infernoBlast;
 	public AudioClip explosion;
 	public AudioClip crash;
 
@@ -35,6 +36,11 @@ public class SoundEffects : MonoBehaviour
 	{
 		audioSource.PlayOneShot( laserBlast );
 	}
+
+	public void PlayInfernoSound()
+    	{
+    		audioSource.PlayOneShot( infernoBlast );
+    	}
 
 	public void PlayExplosionSound()
 	{

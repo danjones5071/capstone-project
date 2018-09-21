@@ -104,7 +104,8 @@ public class PlayerController : MonoBehaviour
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
             // Play the laser sound effect.
-			References.global.soundEffects.PlayLaserSound();
+//			References.global.soundEffects.PlayLaserSound();
+			References.global.soundEffects.PlayInfernoSound();
         }
 	}
 
