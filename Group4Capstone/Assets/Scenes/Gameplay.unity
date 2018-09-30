@@ -5335,6 +5335,50 @@ Transform:
   m_Father: {fileID: 260333476}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &539960560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539960561}
+  - component: {fileID: 539960562}
+  m_Layer: 0
+  m_Name: HealthPickupSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &539960561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539960560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1847837955}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539960562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539960560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56ff5d0c4d5a9e46a5d0195922c6b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopSpawning: 0
+  spawnTime: 0
+  spawnDelay: 15
+  pickup: {fileID: 1726453678487340, guid: efc0bc72a18f7894b8db55221c782a62, type: 2}
 --- !u!1 &579259010
 GameObject:
   m_ObjectHideFlags: 0
@@ -5494,7 +5538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &782118233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10686,7 +10730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1147452554
 Transform:
   m_ObjectHideFlags: 0
@@ -11020,7 +11064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserBlast: {fileID: 8300000, guid: 08c86c3a846059b409fabdc472689598, type: 3}
-  infernoBlast: {fileID: 0}
+  infernoBlast: {fileID: 8300000, guid: 93b78094b6a7b4847aef240f1dc93387, type: 3}
   explosion: {fileID: 8300000, guid: 42dc9d817c4f8c044a035d017bc90a89, type: 3}
   crash: {fileID: 8300000, guid: 75d500a0264b38047849f101a2d2d498, type: 3}
 --- !u!4 &1491784008
@@ -11126,7 +11170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1671587322
 Transform:
   m_ObjectHideFlags: 0
@@ -11185,7 +11229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
+    dataString: UEsDBBQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -11389,6 +11433,35 @@ Transform:
   m_Father: {fileID: 260333476}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847837954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847837955}
+  m_Layer: 0
+  m_Name: Pickups
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847837955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847837954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4982846, y: 0.115070894, z: 0.17578125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 539960561}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964169310
 GameObject:
   m_ObjectHideFlags: 0
@@ -11545,7 +11618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2030402937
 Transform:
   m_ObjectHideFlags: 0
