@@ -139,4 +139,33 @@ public class PlayerControllerTest
     	yield return null;
     }
 
+	[Test]
+	public void LaserDualOriginExists()
+	{
+		Transform laserOriginL = player.transform.Find( "LaserOriginL" );
+		Transform laserOriginR = player.transform.Find( "LaserOriginR" );
+
+		Assert.NotNull( laserOriginL );
+		Assert.NotNull( laserOriginL );
+	}
+
+	[UnityTest]
+	public IEnumerator ShootDoubleLaserTest()
+	{
+		int laserCounter = 0;
+
+		playerController.ShootDoubleLaser();
+		GameObject[] go = GameObject.FindObjectsOfType( typeof( GameObject ) ) as GameObject[];
+
+		foreach( GameObject g in go )
+		{
+			if( g.name == "Laser(Clone)" )
+				laserCounter++;
+		}
+
+		Assert.GreaterOrEqual( laserCounter, 2 );
+
+		yield return null;
+	}
+
 }
