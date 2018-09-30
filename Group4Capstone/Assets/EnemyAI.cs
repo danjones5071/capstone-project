@@ -8,14 +8,6 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    public GameObject enemyLaser;
-    private float enemyAllowedShootingDistance = 5F;
-    private bool weaponDisable = false;
-
-    // Private variables to cache necessary components.
-    public GameObject laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
-
-
     //Time to maintain stay in the waypoint.
     public float holdingPositionTime = 0.5F;
 
@@ -54,12 +46,6 @@ public class EnemyAI : MonoBehaviour
     private float startTimeEnemyMov;
     private float secondsElapsedEnemyMov;
 
-    //Time variables to keep track of shooting cycle
-    private float startTimeShooting;
-    private float secondsElapsedLastShooting;
-
-    private Vector3 initialPosition;
-
     //Reference game object that contains all the destination for the enemy.
     public GameObject enemyArea;
 
@@ -79,11 +65,7 @@ public class EnemyAI : MonoBehaviour
 
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 
-        initialPosition = transform.position;
-
         StartCoroutine(UpdatePath());
-
-        startTimeShooting = Time.time;
     }
 	
     /// <summary>
@@ -125,34 +107,6 @@ public class EnemyAI : MonoBehaviour
     {
         //Rotating the enemy towards the player
         transform.up = playerLocation.position - transform.position;
-
-        secondsElapsedLastShooting = Time.time - startTimeShooting;
-
-        if (secondsElapsedLastShooting > 3f) 
-        {    
-            ShootLaser();
-
-            if(secondsElapsedLastShooting > 4f)
-            {
-                startTimeShooting = Time.time;
-                weaponDisable = false;
-            }
-        }
-
-    }
-
-    void ShootLaser()
-    {
-        if (!weaponDisable && ( enemyAllowedShootingDistance < Vector3.Distance(playerLocation.position, transform.position)))
-        {
-            GameObject laserRef = Instantiate(enemyLaser, laserOrigin.transform.position, Quaternion.identity);
-
-            //Rotating the laser towards the player           
-            laserRef.transform.up = (playerLocation.position - transform.position);
-            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
-            
-            weaponDisable = true;
-        }
     }
     
     /// <summary>
@@ -204,51 +158,5 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;
             return;
         }     
-    }
-
-    void ExecuteBehavior()
-    {
-        transform.position = initialPosition;
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser")
-        {
-            RespawnSelf();            // Destroy the asteroid.
-            Destroy(col.gameObject);  // And also destroy the laser blast.
-        }
-
-        // If the asteroid collides with a player...
-        if (col.gameObject.tag == "Player")
-        {
-            // Cache player controller component.
-            PlayerController pc = col.gameObject.GetComponent<PlayerController>();
-
-            // Play the crash sound effect.
-            References.global.soundEffects.PlayCrashSound();
-
-            // Player takes damage from impact.
-            pc.TakeDamage(15);
-
-            // Destroy asteroid on impact with player ship.
-            RespawnSelf();
-        }
-    }
-
-    private void RespawnSelf()
-    {
-        // Instantiate our explosion particle effects and destroy them after some time.
-        // Destroy(Instantiate(explosion, asteroidTransform.position, Quaternion.identity), 4);
-
-        // Destroy the asteroid.
-        ExecuteBehavior();
-
-        // Destroy the asteroid.
-        Destroy(gameObject);
-
-        // Play the explosion sound effect.
-        References.global.soundEffects.PlayExplosionSound();
-    }
+    }  
 }
