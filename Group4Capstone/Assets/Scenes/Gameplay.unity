@@ -518,8 +518,6 @@ Transform:
   m_Children:
   - {fileID: 693078371}
   - {fileID: 1464842182}
-  - {fileID: 1766417979}
-  - {fileID: 1590915611}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -5380,50 +5378,6 @@ Transform:
   m_Father: {fileID: 260333476}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &539960560
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 539960561}
-  - component: {fileID: 539960562}
-  m_Layer: 0
-  m_Name: HealthPickupSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &539960561
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539960560}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1847837955}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &539960562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539960560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56ff5d0c4d5a9e46a5d0195922c6b8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopSpawning: 0
-  spawnTime: 0
-  spawnDelay: 15
-  pickup: {fileID: 1726453678487340, guid: efc0bc72a18f7894b8db55221c782a62, type: 2}
 --- !u!1 &579259010
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,51 +10386,6 @@ Transform:
   m_Father: {fileID: 849576045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1147452553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1147452554}
-  - component: {fileID: 1147452555}
-  m_Layer: 0
-  m_Name: EnemyTypeASpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1147452554
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1147452553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1390276192}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1147452555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1147452553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bfe315dca51e9e4e9a0ed1688691dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1810228549208046, guid: 52bf45e5aa1dbe64da6ec5cb107c949b,
-    type: 2}
-  stopSpawning: 0
-  spawnTime: 0
-  spawnDelay: 5
 --- !u!1 &1213437954
 GameObject:
   m_ObjectHideFlags: 0
@@ -10684,7 +10593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1390276192
 Transform:
   m_ObjectHideFlags: 0
@@ -10699,12 +10608,7 @@ Transform:
   - {fileID: 2030402937}
   - {fileID: 834789039}
   - {fileID: 374456954}
-<<<<<<< HEAD
   - {fileID: 351426145}
-=======
-  - {fileID: 1147452554}
-  - {fileID: 1671587322}
->>>>>>> 81b3ee58f0725a7aa62d7b5164eb68750896aded
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10889,11 +10793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserBlast: {fileID: 8300000, guid: 08c86c3a846059b409fabdc472689598, type: 3}
-<<<<<<< HEAD
   infernoBlast: {fileID: 0}
-=======
-  infernoBlast: {fileID: 8300000, guid: 93b78094b6a7b4847aef240f1dc93387, type: 3}
->>>>>>> 81b3ee58f0725a7aa62d7b5164eb68750896aded
   explosion: {fileID: 8300000, guid: 42dc9d817c4f8c044a035d017bc90a89, type: 3}
   crash: {fileID: 8300000, guid: 75d500a0264b38047849f101a2d2d498, type: 3}
 --- !u!4 &1491784008
@@ -10984,81 +10884,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536125988}
   m_CullTransparentMesh: 0
---- !u!1 &1590915610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1164925505080938, guid: b8c5aaf154f422349b27e268d3ca34c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1590915611}
-  m_Layer: 0
-  m_Name: LaserOriginR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1590915611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4352659221544492, guid: b8c5aaf154f422349b27e268d3ca34c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1590915610}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.178, y: 0.216, z: 0}
-  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
-  m_Children: []
-  m_Father: {fileID: 162462233}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1671587321
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1671587322}
-  - component: {fileID: 1671587323}
-  m_Layer: 0
-  m_Name: EnemyTypeBSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1671587322
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671587321}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1390276192}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1671587323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671587321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bfe315dca51e9e4e9a0ed1688691dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1540796563106872, guid: ebd8f600bf4474144a97a4b83df7906a,
-    type: 2}
-  stopSpawning: 0
-  spawnTime: 0
-  spawnDelay: 7
 --- !u!1 &1741314868
 GameObject:
   m_ObjectHideFlags: 0
@@ -11088,7 +10913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
+    dataString: UEsDBBQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -11202,36 +11027,6 @@ Transform:
   m_Father: {fileID: 849576045}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1766417978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1164925505080938, guid: b8c5aaf154f422349b27e268d3ca34c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1766417979}
-  m_Layer: 0
-  m_Name: LaserOriginL
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1766417979
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4352659221544492, guid: b8c5aaf154f422349b27e268d3ca34c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1766417978}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1, y: 0.22, z: 0}
-  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
-  m_Children: []
-  m_Father: {fileID: 162462233}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777116023
 GameObject:
   m_ObjectHideFlags: 0
@@ -11321,35 +11116,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 260333476}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1847837954
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1847837955}
-  m_Layer: 0
-  m_Name: Pickups
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1847837955
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1847837954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4982846, y: 0.115070894, z: 0.17578125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 539960561}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964169310
 GameObject:

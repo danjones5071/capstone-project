@@ -24,6 +24,7 @@ public class References : MonoBehaviour
 	{
 		global = this;
 
+
 		playerTrans = player.transform;
 		playerRigid = player.GetComponent<Rigidbody2D>();
 		playerController = player.GetComponent<PlayerController>();

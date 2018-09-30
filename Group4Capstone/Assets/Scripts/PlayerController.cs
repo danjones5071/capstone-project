@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
 
 	// Private variables to cache necessary components.
 	private Transform laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
-	private Transform laserOriginL;		// A child of the player game object to specify where the laser should shoot from.
-	private Transform laserOriginR;		// A child of the player game object to specify where the laser should shoot from.
 
     public float batteryCapacity = 100;
     public int health = 100;			// The current amount of health the player has.
@@ -41,8 +39,6 @@ public class PlayerController : MonoBehaviour
     void Awake()
 	{
 		laserOrigin = transform.Find( "LaserOrigin" );	// Cache a reference to the transform of the laser's origin point.
-		laserOriginL = transform.Find( "LaserOriginL" );	// Cache a reference to the transform of the laser's origin point.
-		laserOriginR = transform.Find( "LaserOriginR" );	// Cache a reference to the transform of the laser's origin point.
 	}
 
 	void Start()
@@ -91,17 +87,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-		// If the player hits the "x" key.
-		if( Input.GetKeyDown(KeyCode.X) )
-		{
-			// If we don't need to wait more for our laser cooldown time.
-			if( laserTimer <= 0 )
-			{
-				ShootDoubleLaser();			// Call our method to shoot a double laser.
-				laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
-			}
-		}
-
 		// Deal damage to self for testing purposes.
 		if( Input.GetKeyDown(KeyCode.K) )
 		{
@@ -132,23 +117,6 @@ public class PlayerController : MonoBehaviour
 			References.global.soundEffects.PlayLaserSound();
 
         }
-	}
-
-	public void ShootDoubleLaser()
-	{
-		if (batteryCapacity >= laserEnergyCost)
-		{
-			// Instantiate a laser blast at the laser origin point on our player.
-
-			Instantiate(laserPrefab, laserOriginL.position, Quaternion.identity);
-			Instantiate(laserPrefab, laserOriginR.position, Quaternion.identity);
-
-			batteryCapacity -= laserEnergyCost * 2; //Substracting energy value.
-
-			// Play the laser sound effect.
-			References.global.soundEffects.PlayLaserSound();
-
-		}
 	}
 
 		public void ShootInferno()
@@ -187,12 +155,7 @@ public class PlayerController : MonoBehaviour
         health -= damage;
     }
 
-    public void Heal(int healing)
-    {
-        health = System.Math.Min(health + healing, 100);
-    }
-
-    public void AddEnergy( float energy )
+	public void AddEnergy( float energy )
 	{
 		// We don't want the energy to exceed 100.
 		// So take the minimum between 100 and the sum of the current energy plus energy being added.

@@ -56,14 +56,6 @@ public class PlayerControllerTest
 		Assert.NotNull( laserPrefab );
 	}
 
-	[Test]
-	public void InfernoPrefabExists()
-	{
-		GameObject infernoPrefab = playerController.infernoPrefab;
-
-		Assert.NotNull( infernoPrefab );
-	}
-
 	[UnityTest]
 	public IEnumerator PlayerLivesPositive()
 	{
@@ -129,43 +121,14 @@ public class PlayerControllerTest
 	}
 
 	[UnityTest]
-    public IEnumerator ShootInfernoTest()
-    {
-    	playerController.ShootInferno();
-    	GameObject inferno = GameObject.Find( "Inferno(Clone)" );
-  
-		Assert.NotNull( inferno );
+    	public IEnumerator ShootInfernoTest()
+    	{
+    		playerController.ShootInferno();
+    		GameObject inferno = GameObject.Find( "Inferno(Clone)" );
 
-    	yield return null;
-    }
+    		Assert.NotNull( inferno );
 
-	[Test]
-	public void LaserDualOriginExists()
-	{
-		Transform laserOriginL = player.transform.Find( "LaserOriginL" );
-		Transform laserOriginR = player.transform.Find( "LaserOriginR" );
-
-		Assert.NotNull( laserOriginL );
-		Assert.NotNull( laserOriginL );
-	}
-
-	[UnityTest]
-	public IEnumerator ShootDoubleLaserTest()
-	{
-		int laserCounter = 0;
-
-		playerController.ShootDoubleLaser();
-		GameObject[] go = GameObject.FindObjectsOfType( typeof( GameObject ) ) as GameObject[];
-
-		foreach( GameObject g in go )
-		{
-			if( g.name == "Laser(Clone)" )
-				laserCounter++;
-		}
-
-		Assert.GreaterOrEqual( laserCounter, 2 );
-
-		yield return null;
-	}
+    		yield return null;
+    	}
 
 }
