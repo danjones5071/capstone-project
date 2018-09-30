@@ -41,11 +41,11 @@ public class SoundEffectsTest
 	}
 
 	[UnityTest]
-    public IEnumerator InfernoSoundPlays()
-    {
-        soundEffects.PlayInfernoSound();
-        Assert.NotNull( soundEffects.infernoBlast );
+	public IEnumerator InfernoSoundPlays()
+	{
+		soundEffects.PlayInfernoSound();
+		Assert.NotNull( soundEffects.infernoBlast );
 
-        yield return null;
-    }
+		yield return null;
+	}
 }
