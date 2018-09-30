@@ -56,6 +56,14 @@ public class PlayerControllerTest
 		Assert.NotNull( laserPrefab );
 	}
 
+	[Test]
+	public void InfernoPrefabExists()
+	{
+		GameObject infernoPrefab = playerController.infernoPrefab;
+
+		Assert.NotNull( infernoPrefab );
+	}
+
 	[UnityTest]
 	public IEnumerator PlayerLivesPositive()
 	{
@@ -121,14 +129,14 @@ public class PlayerControllerTest
 	}
 
 	[UnityTest]
-    	public IEnumerator ShootInfernoTest()
-    	{
-    		playerController.ShootInferno();
-    		GameObject inferno = GameObject.Find( "Inferno(Clone)" );
+    public IEnumerator ShootInfernoTest()
+    {
+    	playerController.ShootInferno();
+    	GameObject inferno = GameObject.Find( "Inferno(Clone)" );
+  
+		Assert.NotNull( inferno );
 
-    		Assert.NotNull( inferno );
-
-    		yield return null;
-    	}
+    	yield return null;
+    }
 
 }

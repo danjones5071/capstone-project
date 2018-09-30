@@ -10871,7 +10871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1390276192
 Transform:
   m_ObjectHideFlags: 0
@@ -11020,7 +11020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserBlast: {fileID: 8300000, guid: 08c86c3a846059b409fabdc472689598, type: 3}
-  infernoBlast: {fileID: 0}
+  infernoBlast: {fileID: 8300000, guid: 93b78094b6a7b4847aef240f1dc93387, type: 3}
   explosion: {fileID: 8300000, guid: 42dc9d817c4f8c044a035d017bc90a89, type: 3}
   crash: {fileID: 8300000, guid: 75d500a0264b38047849f101a2d2d498, type: 3}
 --- !u!4 &1491784008
