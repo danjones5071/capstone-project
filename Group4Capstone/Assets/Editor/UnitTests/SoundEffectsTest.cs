@@ -39,13 +39,4 @@ public class SoundEffectsTest
 
 		yield return null;
 	}
-
-	[UnityTest]
-	public IEnumerator InfernoSoundPlays()
-	{
-		soundEffects.PlayInfernoSound();
-		Assert.NotNull( soundEffects.infernoBlast );
-
-		yield return null;
-	}
 }
