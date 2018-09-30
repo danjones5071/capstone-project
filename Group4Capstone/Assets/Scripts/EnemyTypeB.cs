@@ -68,8 +68,14 @@ public class EnemyTypeB : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser")
+        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno")
         {
+            // Play the explosion sound effect.
+            References.global.soundEffects.PlayExplosionSound();
+
+            // Destroy the asteroid.
+            Destroy(gameObject);  
+
             Destroy(col.gameObject);  // And also destroy the laser blast.
         }
 

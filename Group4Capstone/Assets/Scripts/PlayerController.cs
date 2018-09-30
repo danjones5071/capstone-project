@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno")
+        if (col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
         {
             // Cache player controller component.
             PlayerController pc = gameObject.GetComponent<PlayerController>();

@@ -9,6 +9,7 @@ TagManager:
   - Asteroid
   - Enemy
   - Inferno
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX

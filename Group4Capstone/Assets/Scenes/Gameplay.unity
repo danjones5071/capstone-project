@@ -10817,6 +10817,12 @@ Prefab:
       propertyPath: enemyArea
       value: 
       objectReference: {fileID: 260333475}
+    - target: {fileID: 114337656309886016, guid: ebd8f600bf4474144a97a4b83df7906a,
+        type: 2}
+      propertyPath: enemyLaser
+      value: 
+      objectReference: {fileID: 1397715384517130, guid: 44953aec1ad364d41b421ac616b1daf2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebd8f600bf4474144a97a4b83df7906a, type: 2}
   m_IsPrefabAsset: 0
@@ -11134,8 +11140,14 @@ Prefab:
       objectReference: {fileID: 849576044}
     - target: {fileID: 4330869800147886, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.26
+      value: 3.98
       objectReference: {fileID: 0}
+    - target: {fileID: 114571306525861114, guid: 52bf45e5aa1dbe64da6ec5cb107c949b,
+        type: 2}
+      propertyPath: enemyLaser
+      value: 
+      objectReference: {fileID: 1397715384517130, guid: 44953aec1ad364d41b421ac616b1daf2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
   m_IsPrefabAsset: 0
