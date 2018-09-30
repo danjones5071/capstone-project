@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5017416}
   - component: {fileID: 61240511740001992}
   - component: {fileID: 114990917143435896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyLaser
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180230}
   m_BodyType: 1
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
