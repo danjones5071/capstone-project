@@ -29,7 +29,13 @@ public class EnemyTypeB : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       rb = GetComponent<Rigidbody2D>();
+        if (playerLocation == null)
+            playerLocation = GameObject.Find("Player").transform;
+
+        if (enemyArea == null)
+            enemyArea = GameObject.Find("EnemyTypeBareas");
+
+        rb = GetComponent<Rigidbody2D>();
 
         ExecuteBehavior();
     }
@@ -105,5 +111,10 @@ public class EnemyTypeB : MonoBehaviour
 
             weaponDisable = true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        EnemyGenerator.enemyTypeBspotAvailable = true;
     }
 }

@@ -16,32 +16,32 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject enemyA;
     public GameObject enemyB;
 
-    //private float secondsElapsed;
-    //private float startTime;
+
+    public static bool enemyTypeAspotAvailable = false;
+    public static bool enemyTypeBspotAvailable = false;
 
     public static bool enemyTypeA_alive = false;
 
-    void Start()
-    {
-
-    }
 
     void Update()
     {
-     //   if (!enemyA.activeInHierarchy)
-       //     CreateTypeAenemy();
+        if (enemyTypeAspotAvailable)
+            CreateTypeAenemy();
+        if (enemyTypeBspotAvailable)
+            CreateTypeBenemy();
 
-      //  if (!enemyB.activeInHierarchy)
-           // CreateTypeBenemy();
 
     }
 
     public void CreateTypeBenemy()
 	{
-		Instantiate(enemyB);	
+        enemyTypeBspotAvailable = false;
+
+        Instantiate(enemyB);	
 	}
     public void CreateTypeAenemy()
     {
+        enemyTypeAspotAvailable = false;
         Instantiate(enemyA);   
     }
 }

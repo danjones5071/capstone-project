@@ -65,7 +65,13 @@ public class EnemyAI : MonoBehaviour
 
     // Use this for initialization
     void Start ()
-    { 
+    {
+        if (playerLocation == null)
+            playerLocation = GameObject.Find("Player").transform;
+
+        if (enemyArea == null)
+            enemyArea = GameObject.Find("EnemyTypeBareas");
+
         target = playerLocation;
         target = enemyArea.transform.GetChild(0);
         seeker = GetComponent<Seeker>();
@@ -250,5 +256,10 @@ public class EnemyAI : MonoBehaviour
 
         // Play the explosion sound effect.
         References.global.soundEffects.PlayExplosionSound();
+    }
+
+    private void OnDestroy()
+    {
+        EnemyGenerator.enemyTypeAspotAvailable = true;
     }
 }

@@ -9,22 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1181930219957470}
+  m_RootGameObject: {fileID: 1244702092066892}
   m_IsPrefabAsset: 1
---- !u!1 &1181930219957470
+--- !u!1 &1244702092066892
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4653930180074334}
-  - component: {fileID: 212754671276348464}
-  - component: {fileID: 114472625753179816}
-  - component: {fileID: 50624021598330178}
-  - component: {fileID: 114571306525861114}
-  - component: {fileID: 58166420486531440}
-  - component: {fileID: 60238563135861714}
+  - component: {fileID: 4257794241733434}
+  - component: {fileID: 212815620094307548}
+  - component: {fileID: 114831300903542888}
+  - component: {fileID: 50595844779932658}
+  - component: {fileID: 114185215611842556}
+  - component: {fileID: 58457858513712422}
+  - component: {fileID: 60696191289132994}
   m_Layer: 0
   m_Name: EnemyTypeA
   m_TagString: Enemy
@@ -32,14 +32,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1516369138725852
+--- !u!1 &1284098640070292
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4330869800147886}
+  - component: {fileID: 4835147543324796}
   m_Layer: 0
   m_Name: LaserOrigin
   m_TagString: Untagged
@@ -47,40 +47,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4330869800147886
+--- !u!4 &4257794241733434
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516369138725852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4653930180074334}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4653930180074334
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
   m_LocalRotation: {x: -0.009934394, y: 0.009934394, z: 0.707037, w: 0.707037}
   m_LocalPosition: {x: 7.9778714, y: -14.138651, z: -0.17474432}
   m_LocalScale: {x: 0.36734986, y: 0.36734998, z: 0}
   m_Children:
-  - {fileID: 4330869800147886}
+  - {fileID: 4835147543324796}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.6100001, y: 0, z: 90}
---- !u!50 &50624021598330178
+--- !u!4 &4835147543324796
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284098640070292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4257794241733434}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50595844779932658
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -94,12 +94,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58166420486531440
+--- !u!58 &58457858513712422
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -109,12 +109,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5.04
---- !u!60 &60238563135861714
+--- !u!60 &60696191289132994
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -282,12 +282,33 @@ PolygonCollider2D:
       - {x: 1.03, y: -0.35}
       - {x: 0.7, y: -0.47}
       - {x: 0.66999996, y: -0.48999998}
---- !u!114 &114472625753179816
+--- !u!114 &114185215611842556
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9ee7c1d0b38044a97b5282d3c9af3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLaser: {fileID: 1397715384517130, guid: 44953aec1ad364d41b421ac616b1daf2, type: 2}
+  laserOrigin: {fileID: 1284098640070292}
+  holdingPositionTime: 0.25
+  playerLocation: {fileID: 0}
+  updateRate: 8
+  speed: 2000
+  fMode: 0
+  pathIsEnded: 0
+  nextWaypointDistance: 3
+  enemyArea: {fileID: 0}
+--- !u!114 &114831300903542888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244702092066892}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
@@ -308,33 +329,12 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask: -1
---- !u!114 &114571306525861114
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a9ee7c1d0b38044a97b5282d3c9af3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLaser: {fileID: 180230, guid: 44953aec1ad364d41b421ac616b1daf2, type: 2}
-  laserOrigin: {fileID: 1516369138725852}
-  holdingPositionTime: 0.25
-  playerLocation: {fileID: 0}
-  updateRate: 8
-  speed: 2000
-  fMode: 0
-  pathIsEnded: 0
-  nextWaypointDistance: 3
-  enemyArea: {fileID: 0}
---- !u!212 &212754671276348464
+--- !u!212 &212815620094307548
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181930219957470}
+  m_GameObject: {fileID: 1244702092066892}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
