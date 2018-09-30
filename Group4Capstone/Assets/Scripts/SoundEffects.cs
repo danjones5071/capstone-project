@@ -39,7 +39,12 @@ public class SoundEffects : MonoBehaviour
 		audioSource.PlayOneShot( laserBlast );
 	}
 
-	public void PlayInfernoSound()
+    public void PlayEnemyLaserSound()
+    {
+        audioSource.PlayOneShot(laserBlast); //Need unique Audio for enemy laser. 
+    }
+
+    public void PlayInfernoSound()
     	{
     		audioSource.PlayOneShot( infernoBlast );
     	}

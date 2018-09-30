@@ -11447,7 +11447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroid: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
   asteroidTimer: 3
-  increseDificultyTimer: 50
+  increseDificultyTimer: 27
   dificultyMultiplier: 0.3
 --- !u!1 &2102261085
 GameObject:
