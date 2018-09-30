@@ -29,7 +29,9 @@ public class SoundEffects : MonoBehaviour
 	{
 		// Preload all the desired sound effects.
 		laserBlast.LoadAudioData();
+		infernoBlast.LoadAudioData();
 		explosion.LoadAudioData();
+		crash.LoadAudioData();
 	}
 
 	public void PlayLaserSound()
