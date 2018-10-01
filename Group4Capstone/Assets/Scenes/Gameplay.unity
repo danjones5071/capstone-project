@@ -11508,6 +11508,7 @@ MonoBehaviour:
   soundEffects: {fileID: 1491784007}
   uiManager: {fileID: 236586183}
   playAgainUI: {fileID: 138442390}
+  enemyGenerator: {fileID: 3660065}
   playerTrans: {fileID: 162462233}
   playerRigid: {fileID: 162462231}
   playerController: {fileID: 162462229}
