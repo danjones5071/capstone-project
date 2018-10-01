@@ -15,7 +15,7 @@ public class EnemyLaser : MonoBehaviour
     void Start()
     {
         // Play the laser sound effect.
-        References.global.soundEffects.PlayLaserSound();
+        References.global.soundEffects.PlayEnemyLaserSound();
     }
 
     void Update()

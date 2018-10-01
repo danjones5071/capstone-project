@@ -15,9 +15,10 @@ public class SoundEffects : MonoBehaviour
 	public AudioClip infernoBlast;
 	public AudioClip explosion;
 	public AudioClip crash;
+    public AudioClip cybergun;
 
-	// Private variables to cache necessary components.
-	private AudioSource audioSource;
+    // Private variables to cache necessary components.
+    private AudioSource audioSource;
 
 	void Awake()
 	{
@@ -41,7 +42,7 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayEnemyLaserSound()
     {
-        audioSource.PlayOneShot(laserBlast); //Need unique Audio for enemy laser. 
+        audioSource.PlayOneShot(cybergun); //Need unique Audio for enemy laser. 
     }
 
     public void PlayInfernoSound()
