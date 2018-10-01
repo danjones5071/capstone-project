@@ -56,7 +56,7 @@ public class Asteroid : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno")
+        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
         {
             DestroySelf();            // Destroy the asteroid.
             Destroy(col.gameObject);  // And also destroy the laser blast.
