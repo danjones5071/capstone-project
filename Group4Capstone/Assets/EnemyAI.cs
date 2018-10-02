@@ -9,7 +9,7 @@ using Pathfinding;
 public class EnemyAI : MonoBehaviour
 {
     public GameObject enemyLaser;
-    private float enemyAllowedShootingDistance = 5F;
+    private float enemyAllowedShootingDistance = 6F;
     private bool weaponDisable = false;
 
     // Private variables to cache necessary components.
@@ -86,10 +86,12 @@ public class EnemyAI : MonoBehaviour
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 
         initialPosition = transform.position;
+        
+        startTimeShooting = Time.time;
 
         StartCoroutine(UpdatePath());
 
-        startTimeShooting = Time.time;
+       
     }
 	
     /// <summary>
@@ -220,7 +222,7 @@ public class EnemyAI : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
+        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
         {
             RespawnSelf();            // Destroy the asteroid.
             Destroy(col.gameObject);  // And also destroy the laser blast.
