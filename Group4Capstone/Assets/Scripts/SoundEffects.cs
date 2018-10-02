@@ -16,6 +16,7 @@ public class SoundEffects : MonoBehaviour
 	public AudioClip explosion;
 	public AudioClip crash;
     public AudioClip cybergun;
+    public AudioClip blackHolePull;
 
     // Private variables to cache necessary components.
     private AudioSource audioSource;
@@ -59,5 +60,10 @@ public class SoundEffects : MonoBehaviour
 	{
 		audioSource.PlayOneShot( crash );
 	}
+
+	public void PlayBlackHolePullSound()
+    	{
+    		audioSource.PlayOneShot( blackHolePull );
+    	}
 
 }

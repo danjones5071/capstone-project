@@ -13,7 +13,9 @@ public class ObstacleGenerator : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
 	public GameObject asteroid;				// The asteroid prefab.
+	public GameObject blackhole;				// The blackHole prefab.
 	public float asteroidTimer = 3.2f;      // How long we wait before generating another asteroid.
+	public float blackHoleTimer = 8.2f;      // How long we wait before generating another asteroid.
     public float increseDificultyTimer = 50;
     public float dificultyMultiplier = 0.3F;
     private float secondsElapsed;
@@ -23,10 +25,11 @@ public class ObstacleGenerator : MonoBehaviour
 	{
         startTime = Time.time;
         // Start the infinite coroutine to generate asteroids.
-        StartCoroutine( GenerateObstacles() );
+        StartCoroutine( GenerateAsteroids() );
+        StartCoroutine( GenerateBlackHole() );
 	}
 
-	IEnumerator GenerateObstacles()
+	IEnumerator GenerateAsteroids()
 	{
 		// Continue generating infinitely.
 		while( true )
@@ -53,8 +56,25 @@ public class ObstacleGenerator : MonoBehaviour
 		}
 	}
 
+	IEnumerator GenerateBlackHole()
+	{
+	    while(true)
+	    {
+	        CreateBlackHole();
+
+	        secondsElapsed = Time.time - startTime;
+
+
+            yield return new WaitForSeconds( blackHoleTimer );	// Wait a bit to generate another obstacle.
+		}
+	}
+
 	public void CreateAsteroid()
 	{
 		Instantiate( asteroid );	// Instantiate a new astroid.
+	}
+	public void CreateBlackHole()
+	{
+		Instantiate( blackhole );	// Instantiate a new astroid.
 	}
 }
