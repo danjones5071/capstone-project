@@ -48,4 +48,13 @@ public class SoundEffectsTest
 
 		yield return null;
 	}
+
+	[UnityTest]
+	public IEnumerator BlackHolePullPlays()
+	{
+		soundEffects.PlayBlackHolePullSound();
+		Assert.NotNull( soundEffects.blackHolePull );
+
+		yield return null;
+	}
 }

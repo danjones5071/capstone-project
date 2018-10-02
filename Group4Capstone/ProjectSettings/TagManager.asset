@@ -9,6 +9,7 @@ TagManager:
   - Asteroid
   - Enemy
   - Inferno
+  - BlackHole
   - EnemyLaser
   layers:
   - Default
