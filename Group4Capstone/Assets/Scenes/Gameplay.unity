@@ -10695,6 +10695,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 42dc9d817c4f8c044a035d017bc90a89, type: 3}
   crash: {fileID: 8300000, guid: 75d500a0264b38047849f101a2d2d498, type: 3}
   cybergun: {fileID: 8300000, guid: 5a26470fcf57fd24c972629ac376ee32, type: 3}
+  blackHolePull: {fileID: 8300000, guid: 8cd64b184eef8f448bc685207bf449c8, type: 3}
 --- !u!4 &1491784008
 Transform:
   m_ObjectHideFlags: 0
@@ -11447,7 +11448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+  blackhole: {fileID: 1455282034936094, guid: df5be8b83dbfb984db28fa512d01abdc, type: 2}
   asteroidTimer: 3
+  blackHoleTimer: 10.2
   increseDificultyTimer: 27
   dificultyMultiplier: 0.3
 --- !u!1 &2102261085

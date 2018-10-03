@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
             // Play the laser sound effect.
             References.global.soundEffects.PlayLaserSound();
+            References.global.soundEffects.PlayLaserSound();
 
         }
     }
@@ -211,6 +212,11 @@ public class PlayerController : MonoBehaviour
 
             Destroy(col.gameObject);  // And also destroy the laser.
                                              
+        }
+
+        if (col.gameObject.tag == "BlackHole")
+        {
+            References.global.uiManager.ShowPlayAgainUI();
         }
     }
 }
