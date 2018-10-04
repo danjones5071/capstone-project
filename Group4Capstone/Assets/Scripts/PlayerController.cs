@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     private float laserTimer;			// A timer to track how long it has been since the last laser was fired.
     private int laserEnergyCost = 5;    // Ammount of energy to be deducted out of the batteries per laser shot.
 
+    //Player Directions towards the mouse.
+    private Vector3 playerDirection;
+
     void Awake()
     {
         laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
@@ -63,6 +66,10 @@ public class PlayerController : MonoBehaviour
         // Make sure we do not let the player move away of the camera's view.
         References.global.playerRigid.position = new Vector2(Mathf.Clamp(References.global.playerRigid.position.x, xMin, xMax), Mathf.Clamp(References.global.playerRigid.position.y, yMin, yMax));
 
+        playerDirection = FaceMouse();
+
+
+
         // If there is still some time to cool down after our last laser shot...
         if (laserTimer > 0)
         {
@@ -71,7 +78,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // If the player hits the "space" key.
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             // If we don't need to wait more for our laser cooldown time.
             if (laserTimer <= 0)
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         // If the player hits the "z" key.
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(3))
         {
             // If we don't need to wait more for our laser cooldown time.
             if (laserTimer <= 0)
@@ -92,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // If the player hits the "x" key.
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetMouseButtonDown(1))
         {
             // If we don't need to wait more for our laser cooldown time.
             if (laserTimer <= 0)
@@ -123,15 +130,16 @@ public class PlayerController : MonoBehaviour
         {
             // Instantiate a laser blast at the laser origin point on our player.
 
-            Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
+            GameObject laserRef = Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
 
+            //Rotating the laser towards the player 
+            laserRef.transform.up = playerDirection;
+            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
 
+ 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
             // Play the laser sound effect.
-            References.global.soundEffects.PlayLaserSound();
-            References.global.soundEffects.PlayLaserSound();
-
         }
     }
 
@@ -141,13 +149,20 @@ public class PlayerController : MonoBehaviour
         {
             // Instantiate a laser blast at the laser origin point on our player.
 
-            Instantiate(laserPrefab, laserOriginL.position, Quaternion.identity);
-            Instantiate(laserPrefab, laserOriginR.position, Quaternion.identity);
+            GameObject laserRef_L = Instantiate(laserPrefab, laserOriginL.position, Quaternion.identity);
+            GameObject laserRef_R = Instantiate(laserPrefab, laserOriginR.position, Quaternion.identity);
+
+            //Rotating the laser towards the player 
+            laserRef_L.transform.up = playerDirection;
+            laserRef_L.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
+
+            //Rotating the laser towards the player 
+            laserRef_R.transform.up = playerDirection;
+            laserRef_R.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
 
             batteryCapacity -= laserEnergyCost * 2; //Substracting energy value.
-
-            // Play the laser sound effect.
-            References.global.soundEffects.PlayLaserSound();
 
         }
     }
@@ -158,11 +173,14 @@ public class PlayerController : MonoBehaviour
         {
             // Instantiate a inferno blast at the laser origin point on our player.
 
-            Instantiate(infernoPrefab, laserOrigin.position, Quaternion.identity);
+            GameObject laserRef = Instantiate(infernoPrefab, laserOrigin.position, Quaternion.identity);
+
+            //Rotating the laser towards the player 
+            laserRef.transform.up = playerDirection;
+            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
-            References.global.soundEffects.PlayInfernoSound();
         }
     }
 
@@ -216,7 +234,19 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "BlackHole")
         {
-            References.global.uiManager.ShowPlayAgainUI();
+            //References.global.uiManager.ShowPlayAgainUI();
         }
+    }
+
+    Vector3 FaceMouse()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector3 direction = new Vector3(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y,0);
+
+        transform.up = direction;
+
+        return direction;
     }
 }

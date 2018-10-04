@@ -17,8 +17,8 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject enemyB;
 
 
-    public static bool enemyTypeAspotAvailable = false;
-    public static bool enemyTypeBspotAvailable = false;
+    public static bool enemyTypeAspotAvailable = true;
+    public static bool enemyTypeBspotAvailable = true;
 
     public static bool enemyTypeA_alive = false;
 

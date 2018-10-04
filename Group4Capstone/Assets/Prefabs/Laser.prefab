@@ -10,8 +10,8 @@ GameObject:
   - component: {fileID: 443000}
   - component: {fileID: 21274906}
   - component: {fileID: 5017416}
-  - component: {fileID: 11484184}
   - component: {fileID: 61240511740001992}
+  - component: {fileID: 11484184}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -41,7 +41,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 180230}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea6924f0dc6ea428a5237d34e04f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
 --- !u!212 &21274906
 SpriteRenderer:
   m_ObjectHideFlags: 1
