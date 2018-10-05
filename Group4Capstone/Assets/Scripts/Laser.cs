@@ -10,14 +10,16 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
-	public float speed = 6;				// Speed of a laser blast.
-	
-	// Private variables to cache necessary components.
-	private Rigidbody2D laserRigid;		// Blast's rigidbody component.	
+	public float speed = 8;             // Speed of a laser blast.
 
-	void Awake()
+    void Start()
+    {
+        // Play the laser sound effect.
+        References.global.soundEffects.PlayLaserSound();
+    }
+
+    void Update()
 	{
-		laserRigid = GetComponent<Rigidbody2D>();			// Cache a reference to the laser's rigidbody component.
-		laserRigid.velocity = Vector2.right * speed;		// Set the velocity of the laser blast.
-	}
+        transform.Translate(speed * Time.deltaTime, 0, 0);
+    }
 }

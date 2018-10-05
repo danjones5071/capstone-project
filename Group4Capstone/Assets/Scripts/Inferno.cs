@@ -9,15 +9,18 @@ using UnityEngine;
 
 public class Inferno : MonoBehaviour
 {
-	// Public variables which can be modified in the editor at runtime.
-	public float speed = 10;				// Speed of a laser blast.
+    // Public variables which can be modified in the editor at runtime.
+    public float speed = 11;             // Speed of a laser blast.
 
-	// Private variables to cache necessary components.
-	private Rigidbody2D laserRigid;		// Blast's rigidbody component.
+    void Start()
+    {
+        // Play the laser sound effect.
+        References.global.soundEffects.PlayInfernoSound();
+    }
 
-	void Awake()
-	{
-		laserRigid = GetComponent<Rigidbody2D>();			// Cache a reference to the laser's rigidbody component.
-		laserRigid.velocity = Vector2.right * speed;		// Set the velocity of the laser blast.
-	}
+    void Update()
+    {
+        transform.Translate(speed * Time.deltaTime, 0, 0);
+    }
 }
+

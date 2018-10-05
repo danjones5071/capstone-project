@@ -10867,6 +10867,10 @@ Prefab:
       propertyPath: m_Name
       value: LaserOriginB
       objectReference: {fileID: 0}
+    - target: {fileID: 1938228354216298, guid: ebd8f600bf4474144a97a4b83df7906a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebd8f600bf4474144a97a4b83df7906a, type: 2}
   m_IsPrefabAsset: 0
@@ -11186,6 +11190,10 @@ Prefab:
       propertyPath: m_Name
       value: LaserOriginA
       objectReference: {fileID: 0}
+    - target: {fileID: 1244702092066892, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
   m_IsPrefabAsset: 0
@@ -11448,7 +11456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
-  blackhole: {fileID: 1455282034936094, guid: df5be8b83dbfb984db28fa512d01abdc, type: 2}
+  blackhole: {fileID: 0}
   asteroidTimer: 3
   blackHoleTimer: 10.2
   increseDificultyTimer: 27
