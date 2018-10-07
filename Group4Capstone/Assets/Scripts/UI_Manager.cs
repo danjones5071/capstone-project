@@ -18,6 +18,9 @@ public class UI_Manager : MonoBehaviour {
     [SerializeField]
     private Text totalTimeSurvived;
 
+	[SerializeField]
+	private Text currencyCount;
+
     public Slider energyBar;
     public Slider healthBar;
 
@@ -67,5 +70,10 @@ public class UI_Manager : MonoBehaviour {
         totalTimeSurvived.text = timeText;
 
 		References.global.playAgainUI.SetActive( true );   
+	}
+
+	public void UpdateCurrencyCount( int amount )
+	{
+		currencyCount.text = "x " + amount;
 	}
 }

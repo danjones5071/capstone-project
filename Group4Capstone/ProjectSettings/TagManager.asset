@@ -11,6 +11,7 @@ TagManager:
   - Inferno
   - BlackHole
   - EnemyLaser
+  - Currency
   layers:
   - Default
   - TransparentFX

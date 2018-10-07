@@ -15,6 +15,7 @@ public class GameMaster : MonoBehaviour
 	private int score = 0;				// Player's current score for this round.
 	private int scoreInterval = 1;		// How many seconds we should wait to add to the score.
 	private int scorePerInterval = 5;	// How much is added to the score each interval.
+	private int currency = 0;
 
 	void Start () {
 		// Start the infinite coroutine to add to our score for surviving a certain number of seconds.
@@ -36,8 +37,21 @@ public class GameMaster : MonoBehaviour
 		score += amount;
 	}
 
+	public void AddToCurrency( int amount )
+	{
+		currency += amount;
+		References.global.uiManager.UpdateCurrencyCount( currency );
+	}
+
 	// Getter & setter methods for the score variable.
 	public int Score
+	{
+		get{ return score; }
+		set{ score = value; }
+	}
+
+	// Getter & setter methods for the score variable.
+	public int Currency
 	{
 		get{ return score; }
 		set{ score = value; }

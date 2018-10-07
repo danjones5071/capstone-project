@@ -238,6 +238,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+	void OnTriggerEnter2D( Collider2D col )
+	{
+		if( col.tag == "Currency" )
+		{
+			References.global.gameMaster.AddToCurrency( 1 );
+			Destroy( col.gameObject );
+		}
+	}
+
     Vector3 FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
