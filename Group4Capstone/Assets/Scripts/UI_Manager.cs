@@ -18,8 +18,7 @@ public class UI_Manager : MonoBehaviour {
     [SerializeField]
     private Text totalTimeSurvived;
 
-	[SerializeField]
-	private Text currencyCount;
+	public Text currencyCount;
 
     public Slider energyBar;
     public Slider healthBar;

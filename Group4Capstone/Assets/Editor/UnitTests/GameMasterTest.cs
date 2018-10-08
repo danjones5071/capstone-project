@@ -49,4 +49,16 @@ public class GameMasterTest
 
 		yield return null;
 	}
+
+	[Test]
+	public void CurrencyGetterSetterTest()
+	{
+		GameMaster gm = new GameMaster();
+		gm.Currency = 100;
+		Assert.AreNotEqual( gm.Currency, 0 );
+		Assert.AreEqual( gm.Currency, 100 );
+
+		gm.Currency = 22;
+		Assert.AreEqual( gm.Currency, 22 );
+	}
 }

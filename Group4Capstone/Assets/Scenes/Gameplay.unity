@@ -11707,6 +11707,7 @@ MonoBehaviour:
   gameMaster: {fileID: 2102261086}
   player: {fileID: 162462228}
   obstacleGenerator: {fileID: 2058457132}
+  currencyGenerator: {fileID: 21024141}
   soundEffects: {fileID: 1491784007}
   uiManager: {fileID: 236586183}
   playAgainUI: {fileID: 138442390}

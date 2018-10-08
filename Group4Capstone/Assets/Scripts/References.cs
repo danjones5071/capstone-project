@@ -11,6 +11,7 @@ public class References : MonoBehaviour
 	public GameMaster gameMaster;
 	public GameObject player;
 	public ObstacleGenerator obstacleGenerator;
+	public CurrencyGenerator currencyGenerator;
 	public SoundEffects soundEffects;
 	public UI_Manager uiManager;
 	public GameObject playAgainUI;
