@@ -43,6 +43,10 @@ public class EnemyTypeB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If player is killed and a new instance is made bacause the player had more lifes.
+        if (playerLocation == null)
+            playerLocation = GameObject.Find("Player").transform;
+
         //Rotating the enemy towards the player
         transform.up = playerLocation.position - transform.position;
 
