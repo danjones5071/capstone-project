@@ -146,7 +146,7 @@ public class PlayerControllerTest
 		Transform laserOriginR = player.transform.Find( "LaserOriginR" );
 
 		Assert.NotNull( laserOriginL );
-		Assert.NotNull( laserOriginL );
+		Assert.NotNull( laserOriginR );
 	}
 
 	[UnityTest]

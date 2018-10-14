@@ -206,6 +206,11 @@ public class PlayerController : MonoBehaviour
         health -= damage;
     }
 
+    public void Heal(int healing)
+    {
+        health += System.Math.Min(health + healing, 100);
+    }
+
     public void AddEnergy(float energy)
     {
         // We don't want the energy to exceed 100.

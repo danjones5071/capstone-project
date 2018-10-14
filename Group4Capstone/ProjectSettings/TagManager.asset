@@ -12,6 +12,8 @@ TagManager:
   - BlackHole
   - EnemyLaser
   - Currency
+  - HealthPickup
+  - EnergyPickup
   layers:
   - Default
   - TransparentFX
