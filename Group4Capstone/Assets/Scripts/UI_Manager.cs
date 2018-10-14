@@ -71,6 +71,12 @@ public class UI_Manager : MonoBehaviour {
 		References.global.playAgainUI.SetActive( true );   
 	}
 
+	public void ToggleStoreUI()
+	{
+		GameObject storeUI = References.global.storeUI;
+		storeUI.SetActive( !storeUI.activeSelf );
+	}
+
 	public void UpdateCurrencyCount( int amount )
 	{
 		currencyCount.text = "x " + amount;

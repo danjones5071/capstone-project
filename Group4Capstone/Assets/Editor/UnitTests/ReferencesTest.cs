@@ -62,6 +62,14 @@ public class ReferencesTest {
 	}
 
 	[Test]
+	public void StoreUIReferenced()
+	{
+		GameObject storeUI = References.global.storeUI;
+
+		Assert.NotNull( storeUI );
+	}
+
+	[Test]
 	public void PlayerTransformReferenced()
 	{
 		Transform playerTrans = References.global.playerTrans;

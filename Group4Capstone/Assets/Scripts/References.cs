@@ -15,6 +15,7 @@ public class References : MonoBehaviour
 	public SoundEffects soundEffects;
 	public UI_Manager uiManager;
 	public GameObject playAgainUI;
+	public GameObject storeUI;
 	public EnemyGenerator enemyGenerator;
 
 	// No need to show these in the inspector. Can be derived from above.
