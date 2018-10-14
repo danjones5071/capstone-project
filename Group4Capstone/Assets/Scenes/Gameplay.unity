@@ -242,6 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 55851255}
+  - component: {fileID: 55851256}
   m_Layer: 0
   m_Name: StoreUI
   m_TagString: Untagged
@@ -270,6 +271,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &55851256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 55851254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92538a4382083e47ac79c47889f1c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &75252423
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,8 +6080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 566.6, y: 254}
-  m_SizeDelta: {x: 32.7, y: 19.98}
+  m_AnchoredPosition: {x: 529.08, y: 254}
+  m_SizeDelta: {x: 56.93, y: 19.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &569211092
 MonoBehaviour:
@@ -6097,7 +6109,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -11288,7 +11300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 539.4, y: 256.333}
+  m_AnchoredPosition: {x: 570.2, y: 255.6}
   m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948572654
@@ -12491,7 +12503,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1611892388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55851256}
+        m_MethodName: Purchase
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Inferno
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1611892388
@@ -13523,7 +13546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 592.94995, y: 256.333}
+  m_AnchoredPosition: {x: 592.94995, y: 257.8}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991306087
