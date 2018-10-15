@@ -13920,6 +13920,7 @@ MonoBehaviour:
   playAgainUI: {fileID: 138442390}
   storeUI: {fileID: 55851254}
   enemyGenerator: {fileID: 3660065}
+  pickupGenerator: {fileID: 1631965061}
   playerTrans: {fileID: 162462233}
   playerRigid: {fileID: 162462231}
   playerController: {fileID: 162462229}

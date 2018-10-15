@@ -30,24 +30,34 @@ public class PickupGenerator : MonoBehaviour {
     {
         while (spawnHealthPickupActive)
         {
-            // Randomize starting Y position of the pickup.
-            float posY = Random.Range(-4.9f, 4.9f);
-
-            Instantiate(HealthPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
+            CreateHealthPickup();
             yield return new WaitForSeconds(healthPickupTimer);
         }
+    }
+
+    public void CreateHealthPickup()
+    {
+        // Randomize starting Y position of the pickup.
+        float posY = Random.Range(-4.9f, 4.9f);
+
+        Instantiate(HealthPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
     }
 
     IEnumerator SpawnEnergyPickup()
     {
         while (spawnEnergyPickupActive)
         {
-            // Randomize starting Y position of the pickup.
-            float posY = Random.Range(-4.9f, 4.9f);
-
-            Instantiate(EnergyPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
+            CreateEnergyPickup();
             yield return new WaitForSeconds(energyPickupTimer);
         }
+    }
+
+    public void CreateEnergyPickup()
+    {
+        // Randomize starting Y position of the pickup.
+        float posY = Random.Range(-4.9f, 4.9f);
+
+        Instantiate(EnergyPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
     }
 
 }

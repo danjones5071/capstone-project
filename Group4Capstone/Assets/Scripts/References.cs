@@ -17,6 +17,7 @@ public class References : MonoBehaviour
 	public GameObject playAgainUI;
 	public GameObject storeUI;
 	public EnemyGenerator enemyGenerator;
+    public PickupGenerator pickupGenerator;
 
 	// No need to show these in the inspector. Can be derived from above.
 	[HideInInspector] public Transform playerTrans;
