@@ -67,7 +67,7 @@ public class EnemyTypeB : MonoBehaviour
     void ExecuteBehavior()
     {
         endLocation = enemyArea.transform.GetChild(Random.Range(0, 4)).position;
-        startingLocation = new Vector3(8F, endLocation.y);
+        startingLocation = new Vector3(14F, endLocation.y); //Spawn outside of camera view 14 units to the right.
         transform.position = startingLocation;
 
         Vector3 dir = (endLocation - startingLocation).normalized;

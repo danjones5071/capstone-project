@@ -83,6 +83,9 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
+        //spawn outside of camera view up side or down side, random.
+        transform.position = ((Random.Range(0, 1) == 1 ? (new Vector3(14F, -7F)) : (new Vector3(14F, 7F))));
+
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 
         initialPosition = transform.position;
