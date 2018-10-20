@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;               // Ammount of lives the player has.
     public float rechargeInterval = 1;
     public float rechargeAmount = 2;
+	public int currentWeapon = 0;
 
     // Private variables to track player-related data and statistics.
     private float laserTimer;			// A timer to track how long it has been since the last laser was fired.
@@ -40,6 +41,13 @@ public class PlayerController : MonoBehaviour
 
     //Player Directions towards the mouse.
     private Vector3 playerDirection;
+
+	private enum Weapons
+	{
+		Laser = 0,
+		Inferno = 1,
+		DoubleLaser = 2
+	}
 
     void Awake()
     {
@@ -83,31 +91,19 @@ public class PlayerController : MonoBehaviour
             // If we don't need to wait more for our laser cooldown time.
             if (laserTimer <= 0)
             {
-                ShootLaser();               // Call our method to shoot a laser.
+                FireWeapon();               // Call our method to shoot a laser.
                 laserTimer = laserCooldown; // Set the laser timer to our cooldown time.
             }
         }
-        // If the player hits the "z" key.
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(3))
-        {
-            // If we don't need to wait more for our laser cooldown time.
-            if (laserTimer <= 0)
-            {
-                ShootInferno();				// Call our method to shoot a laser.
-                laserTimer = laserCooldown;	// Set the laser timer to our cooldown time.
-            }
-        }
-
-        // If the player hits the "x" key.
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetMouseButtonDown(1))
-        {
-            // If we don't need to wait more for our laser cooldown time.
-            if (laserTimer <= 0)
-            {
-                ShootDoubleLaser();         // Call our method to shoot a double laser.
-                laserTimer = laserCooldown; // Set the laser timer to our cooldown time.
-            }
-        }
+        // If the player hits the "E" key.
+		if( Input.GetKeyDown(KeyCode.E) || Input.GetAxis("Mouse ScrollWheel") > 0.0f )
+		{
+			CycleWeapon( 1 );
+		}
+		else if( Input.GetKeyDown (KeyCode.Q) || Input.GetAxis("Mouse ScrollWheel") < 0.0f )
+		{
+			CycleWeapon( -1 );
+		}
 
         // Deal damage to self for testing purposes.
         if (Input.GetKeyDown(KeyCode.K))
@@ -123,6 +119,31 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+	public void CycleWeapon( int i )
+	{
+		currentWeapon += i;
+		if( currentWeapon > 2 )
+			currentWeapon = 0;
+		else if( currentWeapon < 0 )
+			currentWeapon = 2;
+	}
+
+	public void FireWeapon()
+	{
+		switch (currentWeapon)
+		{
+		case 0:
+			ShootLaser();
+			break;
+		case 1:
+			ShootInferno();
+			break;
+		case 2:
+			ShootDoubleLaser();
+			break;
+		}
+	}
 
     public void ShootLaser()
     {
