@@ -19,6 +19,7 @@ public class UI_Manager : MonoBehaviour {
     private Text totalTimeSurvived;
 
 	public Text currencyCount;
+	public Text weaponText;
 
     public Slider energyBar;
     public Slider healthBar;
@@ -80,5 +81,10 @@ public class UI_Manager : MonoBehaviour {
 	public void UpdateCurrencyCount( int amount )
 	{
 		currencyCount.text = "x " + amount;
+	}
+
+	public void SetWeaponText( string text )
+	{
+		weaponText.text = text;
 	}
 }

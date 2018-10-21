@@ -42,15 +42,14 @@ public class PlayerController : MonoBehaviour
     //Player Directions towards the mouse.
     private Vector3 playerDirection;
 
-	private enum Weapons
-	{
-		Laser = 0,
-		Inferno = 1,
-		DoubleLaser = 2
-	}
+	public ArrayList weapons = new ArrayList();
 
     void Awake()
     {
+		weapons.Add( "Laser" );
+		weapons.Add( "Inferno" );
+		weapons.Add( "Double Laser" );
+
         laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
         laserOriginL = transform.Find("LaserOriginL");  // Cache a reference to the transform of the laser's origin point.
         laserOriginR = transform.Find("LaserOriginR");  // Cache a reference to the transform of the laser's origin point.
@@ -123,10 +122,13 @@ public class PlayerController : MonoBehaviour
 	public void CycleWeapon( int i )
 	{
 		currentWeapon += i;
-		if( currentWeapon > 2 )
+		if( currentWeapon > weapons.Count - 1 )
 			currentWeapon = 0;
 		else if( currentWeapon < 0 )
-			currentWeapon = 2;
+			currentWeapon = weapons.Count - 1;
+
+		References.global.uiManager.SetWeaponText( weapons[currentWeapon].ToString() );
+
 	}
 
 	public void FireWeapon()
