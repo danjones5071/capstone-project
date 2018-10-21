@@ -56,4 +56,10 @@ public class GameMaster : MonoBehaviour
 		get{ return score; }
 		set{ score = value; }
 	}
+
+	public void PauseGame()
+	{
+		Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+		References.global.uiManager.TogglePauseUI();
+	}
 }

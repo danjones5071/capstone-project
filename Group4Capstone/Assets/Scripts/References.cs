@@ -16,6 +16,7 @@ public class References : MonoBehaviour
 	public UI_Manager uiManager;
 	public GameObject playAgainUI;
 	public GameObject storeUI;
+	public GameObject pauseUI;
 	public EnemyGenerator enemyGenerator;
     public PickupGenerator pickupGenerator;
 

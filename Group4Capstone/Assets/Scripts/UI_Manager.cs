@@ -27,6 +27,7 @@ public class UI_Manager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {  
+		InitializeUIPages();
         startTime = Time.time;
     }
 	
@@ -63,6 +64,14 @@ public class UI_Manager : MonoBehaviour {
 
     }
 
+	// Ensure all unnecessary UI pages like pause and store screens are disabled at first.
+	public void InitializeUIPages()
+	{
+		References.global.storeUI.SetActive( false );
+		References.global.pauseUI.SetActive( false );
+		References.global.playAgainUI.SetActive( false );
+	}
+
 	public void ShowPlayAgainUI()
 	{
         gameOver = true;
@@ -76,6 +85,12 @@ public class UI_Manager : MonoBehaviour {
 	{
 		GameObject storeUI = References.global.storeUI;
 		storeUI.SetActive( !storeUI.activeSelf );
+	}
+
+	public void TogglePauseUI()
+	{
+		GameObject pauseUI = References.global.pauseUI;
+		pauseUI.SetActive( !pauseUI.activeInHierarchy );
 	}
 
 	public void UpdateCurrencyCount( int amount )

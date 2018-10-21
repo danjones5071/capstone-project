@@ -94,14 +94,20 @@ public class PlayerController : MonoBehaviour
                 laserTimer = laserCooldown; // Set the laser timer to our cooldown time.
             }
         }
-        // If the player hits the "E" key.
+        // If the player hits the "E" key or scrolls up on the mouse wheel.
 		if( Input.GetKeyDown(KeyCode.E) || Input.GetAxis("Mouse ScrollWheel") > 0.0f )
 		{
 			CycleWeapon( 1 );
 		}
+		// If the player hits the "Q" key or scrolls down on the mouse wheel.
 		else if( Input.GetKeyDown (KeyCode.Q) || Input.GetAxis("Mouse ScrollWheel") < 0.0f )
 		{
 			CycleWeapon( -1 );
+		}
+
+		if (Input.GetKeyDown (KeyCode.Escape))
+		{
+			References.global.gameMaster.PauseGame();
 		}
 
         // Deal damage to self for testing purposes.

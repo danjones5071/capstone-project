@@ -70,6 +70,14 @@ public class ReferencesTest {
 	}
 
 	[Test]
+	public void PauseUIReferenced()
+	{
+		GameObject pauseUI = References.global.pauseUI;
+		
+		Assert.NotNull( pauseUI );
+	}
+
+	[Test]
 	public void PlayerTransformReferenced()
 	{
 		Transform playerTrans = References.global.playerTrans;

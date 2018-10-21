@@ -31,6 +31,18 @@ public class UIManagerTest
 		Assert.NotNull( uiManager.energyBar );
 	}
 
+	[Test]
+	public void CurrencyCountTextExists()
+	{
+		Assert.NotNull( uiManager.currencyCount );
+	}
+
+	[Test]
+	public void WeaponTextExists()
+	{
+		Assert.NotNull( uiManager.weaponText );
+	}
+
 	[UnityTest]
 	public IEnumerator CurrencyCountTextUpdates()
 	{
@@ -42,6 +54,48 @@ public class UIManagerTest
 
 		Assert.AreEqual( uiManager.currencyCount.text, "x 25" );
 
+		yield return null;
+	}
+
+	[UnityTest]
+	public IEnumerator WeaponTextUpdates()
+	{
+		uiManager.SetWeaponText( "Laser" );
+
+		Assert.AreEqual( uiManager.weaponText.text, "Laser" );
+
+		uiManager.SetWeaponText( "Testing..." );
+
+		Assert.AreEqual( uiManager.weaponText.text, "Testing..." );
+		
+		yield return null;
+	}
+
+	[UnityTest]
+	public IEnumerator ToggleStoreUITest()
+	{
+		bool enabled = References.global.storeUI.activeInHierarchy;
+
+		uiManager.ToggleStoreUI();
+
+		bool newState = References.global.storeUI.activeInHierarchy;
+
+		Assert.AreEqual( newState, !enabled );
+
+		yield return null;
+	}
+
+	[UnityTest]
+	public IEnumerator TogglePauseUITest()
+	{
+		bool enabled = References.global.pauseUI.activeInHierarchy;
+		
+		uiManager.TogglePauseUI();
+		
+		bool newState = References.global.pauseUI.activeInHierarchy;
+		
+		Assert.AreEqual( newState, !enabled );
+		
 		yield return null;
 	}
 }
