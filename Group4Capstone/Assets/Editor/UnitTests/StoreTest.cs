@@ -26,10 +26,11 @@ public class StoreTest
 	{
 		int startCoins = References.global.gameMaster.currency;
 
-		storeScript.Purchase( "Inferno" );
+		storeScript.Purchase( References.WNAME_INFERNO );
 
 		int endCoins = References.global.gameMaster.currency;
-		Assert.AreEqual( startCoins - (int)Store.Weapons.Inferno, endCoins );
+		Item item = storeScript.weapons.Find( i => i.name == References.WNAME_INFERNO );
+		Assert.AreEqual( startCoins - item.price, endCoins );
 
 		yield return null;
 	}
@@ -39,10 +40,11 @@ public class StoreTest
 	{
 		int startCoins = References.global.gameMaster.currency;
 
-		storeScript.Purchase( "DoubleLaser" );
+		storeScript.Purchase( References.WNAME_2LASER );
 
 		int endCoins = References.global.gameMaster.currency;
-		Assert.AreEqual( startCoins - (int)Store.Weapons.DoubleLaser, endCoins );
+		Item item = storeScript.weapons.Find( i => i.name == References.WNAME_2LASER );
+		Assert.AreEqual( startCoins - item.price, endCoins );
 
 		yield return null;
 	}

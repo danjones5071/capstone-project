@@ -25,6 +25,11 @@ public class References : MonoBehaviour
 	[HideInInspector] public Rigidbody2D playerRigid;
 	[HideInInspector] public PlayerController playerController;
 
+	// Weapon Name Constants.
+	public const string WNAME_LASER = "Laser";
+	public const string WNAME_INFERNO = "Inferno";
+	public const string WNAME_2LASER = "Double Laser";
+
 	void Awake()
 	{
 		global = this;

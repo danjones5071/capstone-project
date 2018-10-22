@@ -6,6 +6,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -42,13 +43,13 @@ public class PlayerController : MonoBehaviour
     //Player Directions towards the mouse.
     private Vector3 playerDirection;
 
-	public ArrayList weapons = new ArrayList();
+	// List of all weapons currently possessed by the player.
+	public List<string> weapons = new List<string>();
 
     void Awake()
     {
-		weapons.Add( "Laser" );
-		weapons.Add( "Inferno" );
-		weapons.Add( "Double Laser" );
+		// Make sure the default laser is included as the first weapon.
+		weapons.Add( References.WNAME_LASER );
 
         laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
         laserOriginL = transform.Find("LaserOriginL");  // Cache a reference to the transform of the laser's origin point.
@@ -144,17 +145,17 @@ public class PlayerController : MonoBehaviour
 
 	public void FireWeapon()
 	{
-		switch (currentWeapon)
+		switch( weapons[currentWeapon].ToString() )
 		{
-		case 0:
-			ShootLaser();
-			break;
-		case 1:
-			ShootInferno();
-			break;
-		case 2:
-			ShootDoubleLaser();
-			break;
+			case References.WNAME_LASER:
+				ShootLaser();
+				break;
+			case References.WNAME_INFERNO:
+				ShootInferno();
+				break;
+			case References.WNAME_2LASER:
+				ShootDoubleLaser();
+				break;
 		}
 	}
 
