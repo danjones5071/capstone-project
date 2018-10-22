@@ -10,6 +10,7 @@ public class PlayAgain : MonoBehaviour
 	public GameObject prompt;
 	public GameObject timeSurvived;
 	public GameObject storeButton;
+	public GameObject mainMenuButton;
 	public Color fadeColor;
 
 	public float fadeSpeed = 2.0f;
@@ -19,13 +20,14 @@ public class PlayAgain : MonoBehaviour
 		prompt.SetActive( false );
 		timeSurvived.SetActive( false );
 		storeButton.SetActive( false );
+		mainMenuButton.SetActive( false );
 		StartCoroutine( ShowPrompt() );
 	}
 
 	void Update () {
 		background.color = Color.Lerp( background.color, fadeColor, fadeSpeed * Time.deltaTime );
 
-		if( Input.GetKeyDown( KeyCode.Space ) )
+		if( Input.GetKeyDown( KeyCode.Space ) && prompt.activeInHierarchy )
 		{
 			RestartGame();
 		}
@@ -37,10 +39,16 @@ public class PlayAgain : MonoBehaviour
 		prompt.SetActive( true );
 		timeSurvived.SetActive( true );
 		storeButton.SetActive( true );
+		mainMenuButton.SetActive( true );
 	}
 
 	public void RestartGame()
 	{
 		SceneManager.LoadScene( "Gameplay" );
+	}
+
+	public void ReturnToMainMenu()
+	{
+		SceneManager.LoadScene( "Home" );
 	}
 }
