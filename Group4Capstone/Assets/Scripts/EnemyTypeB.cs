@@ -30,7 +30,17 @@ public class EnemyTypeB : MonoBehaviour
     void Start()
     {
         if (playerLocation == null)
-            playerLocation = GameObject.Find("Player").transform;
+        {
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                playerLocation = GameObject.Find("Player").transform;
+            }
+            else
+            {
+                return;
+            }
+        }
 
         if (enemyArea == null)
             enemyArea = GameObject.Find("EnemyTypeBareas");
@@ -45,7 +55,17 @@ public class EnemyTypeB : MonoBehaviour
     {
         //If player is killed and a new instance is made bacause the player had more lifes.
         if (playerLocation == null)
-            playerLocation = GameObject.Find("Player").transform;
+        {
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                playerLocation = GameObject.Find("Player").transform;
+            }
+            else
+            {
+                return;
+            }
+        }
 
         //Rotating the enemy towards the player
         transform.up = playerLocation.position - transform.position;

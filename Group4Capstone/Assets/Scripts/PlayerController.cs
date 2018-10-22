@@ -118,14 +118,19 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            References.global.uiManager.ShowPlayAgainUI();
-            References.global.soundEffects.PlayExplosionSound();
-            Destroy(gameObject);
+            Die();
         }
     }
 
-	public void CycleWeapon( int i )
+    public void Die()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        References.global.uiManager.ShowPlayAgainUI();
+        References.global.soundEffects.PlayExplosionSound();
+        Destroy(gameObject);
+    }
+
+    public void CycleWeapon( int i )
 	{
 		currentWeapon += i;
 		if( currentWeapon > weapons.Count - 1 )
@@ -268,6 +273,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "BlackHole")
         {
+            Die();
             //References.global.uiManager.ShowPlayAgainUI();
         }
     }

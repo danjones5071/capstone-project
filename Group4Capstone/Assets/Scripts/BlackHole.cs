@@ -29,13 +29,13 @@ public class BlackHole : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Randomize physical attributes of our new asteroid.
-        		posY = Random.Range( -4.9f, 4.9f  );			// Randomize the vertical position of the object.
+   	    posY = Random.Range( -4.9f, 4.9f  );			// Randomize the vertical position of the object.
 
+        // Apply move the object to the desired position.
+        blackHoleTransform.position = new Vector2( createPosX, posY );
 
-        	// Apply move the object to the desired position.
-            		blackHoleTransform.position = new Vector2( createPosX, posY );
-            		blackHoleRigid.velocity = new Vector2((Vector2.left * speedX).x, Vector2.zero.y);
-            		// Multiply the left vector by our speed to obtain velocity.
+        // Multiply the left vector by our speed to obtain velocity.
+        blackHoleRigid.velocity = new Vector2((Vector2.left * speedX).x, Vector2.zero.y);
 
 	}
 
@@ -45,15 +45,15 @@ public class BlackHole : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject != null)
         {
-                if (col.gameObject != null)
-                {
-            		blackHoleRigid.velocity = new Vector2((Vector2.left * speedX).x, Vector2.zero.y);// Multiply the left vector by our speed to obtain velocity.
-                    Destroy(col.gameObject);
-                    References.global.soundEffects.PlayBlackHolePullSound();
-                }
-
+            //blackHoleRigid.velocity = new Vector2((Vector2.left * speedX).x, Vector2.zero.y);// Multiply the left vector by our speed to obtain velocity.
+            Destroy(col.gameObject);
+            References.global.soundEffects.PlayBlackHolePullSound();
         }
+
+    }
 
 
 }
