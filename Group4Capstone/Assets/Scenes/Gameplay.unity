@@ -14697,6 +14697,7 @@ GameObject:
   - component: {fileID: 2048131797}
   - component: {fileID: 2048131799}
   - component: {fileID: 2048131798}
+  - component: {fileID: 2048131800}
   m_Layer: 0
   m_Name: Prompt
   m_TagString: Untagged
@@ -14762,6 +14763,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2048131796}
   m_CullTransparentMesh: 0
+--- !u!95 &2048131800
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2048131796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6eda934ecfd6274094fc012cdbba9b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2058457130
 GameObject:
   m_ObjectHideFlags: 0
