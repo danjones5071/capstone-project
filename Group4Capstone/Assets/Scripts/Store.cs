@@ -5,7 +5,8 @@ using UnityEngine;
 public class Store : MonoBehaviour
 {
 	public enum Weapons {
-		Inferno = 100
+		Inferno = 100,
+		DoubleLaser = 200
 	}
 
 	public void Purchase( string item )
@@ -13,8 +14,13 @@ public class Store : MonoBehaviour
 		switch( item )
 		{
 			case "Inferno":
-				Debug.Log( "purchase inferno" );
 				References.global.gameMaster.AddToCurrency( -1 * (int)Weapons.Inferno );
+				break;
+			case "DoubleLaser":
+				References.global.gameMaster.AddToCurrency( -1 * (int)Weapons.DoubleLaser );
+				break;
+			default:
+				References.global.gameMaster.currency = 999;
 				break;
 		}
 			

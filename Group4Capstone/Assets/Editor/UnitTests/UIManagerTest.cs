@@ -48,11 +48,15 @@ public class UIManagerTest
 	{
 		GameMaster gameMaster = References.global.gameMaster;
 
-		Assert.AreEqual( uiManager.currencyCount.text, "x 0" );
+		int startCoins = gameMaster.currency;
+
+		Assert.AreEqual( uiManager.currencyCount.text, "x " + startCoins );
 
 		gameMaster.AddToCurrency( 25 );
 
-		Assert.AreEqual( uiManager.currencyCount.text, "x 25" );
+		int endCoins = gameMaster.currency;
+
+		Assert.AreEqual( uiManager.currencyCount.text, "x " + endCoins );
 
 		yield return null;
 	}
