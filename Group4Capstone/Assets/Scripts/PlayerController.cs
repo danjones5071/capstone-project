@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class PlayerController : MonoBehaviour
 {
     // Public variables which can be modified in the editor at runtime.
@@ -44,13 +44,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerDirection;
 
 	// List of all weapons currently possessed by the player.
-	public List<string> weapons = new List<string>();
+	public List<string> weapons = new List<string>(){ References.WNAME_LASER };
 
     void Awake()
     {
-		// Make sure the default laser is included as the first weapon.
-		weapons.Add( References.WNAME_LASER );
-
         laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
         laserOriginL = transform.Find("LaserOriginL");  // Cache a reference to the transform of the laser's origin point.
         laserOriginR = transform.Find("LaserOriginR");  // Cache a reference to the transform of the laser's origin point.

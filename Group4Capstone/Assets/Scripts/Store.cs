@@ -10,12 +10,6 @@ public class Store : MonoBehaviour
 		new Item( References.WNAME_2LASER, 200 )
 	};
 
-	void Awake()
-	{
-		weapons.Add( new Item( References.WNAME_INFERNO, 100 ) );
-		weapons.Add( new Item( References.WNAME_2LASER, 200 ) );
-	}
-
 	public void Purchase( string itemName )
 	{
 		Item item = weapons.Find( i => i.name == itemName );
@@ -24,6 +18,7 @@ public class Store : MonoBehaviour
 		{
 			References.global.playerController.weapons.Add( item.name );
 			References.global.gameMaster.AddToCurrency( -1 * item.price );
+			PlayerPrefs.SetInt( item.name, 1 );
 		}
 		else
 		{

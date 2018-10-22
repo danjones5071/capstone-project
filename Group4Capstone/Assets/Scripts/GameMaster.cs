@@ -17,9 +17,12 @@ public class GameMaster : MonoBehaviour
 	private int scorePerInterval = 5;	// How much is added to the score each interval.
 	public int currency = 0;
 
-	void Start () {
+	void Start ()
+	{
 		// Start the infinite coroutine to add to our score for surviving a certain number of seconds.
 		StartCoroutine( TimedScoreIncrease() );
+
+		LoadSavedData();
 	}
 
 	IEnumerator TimedScoreIncrease()
@@ -41,6 +44,7 @@ public class GameMaster : MonoBehaviour
 	{
 		currency += amount;
 		References.global.uiManager.UpdateCurrencyCount( currency );
+		PlayerPrefs.SetInt( "Currency", currency );
 	}
 
 	// Getter & setter methods for the score variable.
@@ -61,5 +65,18 @@ public class GameMaster : MonoBehaviour
 	{
 		Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
 		References.global.uiManager.TogglePauseUI();
+	}
+
+	public void LoadSavedData()
+	{
+		// Load Currency.
+		currency = PlayerPrefs.GetInt( "Currency" );
+		References.global.uiManager.UpdateCurrencyCount( currency );
+
+		// Load Weapon Purchases.
+		if( PlayerPrefs.GetInt( References.WNAME_INFERNO ) != 0 )
+			References.global.playerController.weapons.Add( References.WNAME_INFERNO );
+		if( PlayerPrefs.GetInt( References.WNAME_2LASER ) != 0 )
+			References.global.playerController.weapons.Add( References.WNAME_2LASER );
 	}
 }

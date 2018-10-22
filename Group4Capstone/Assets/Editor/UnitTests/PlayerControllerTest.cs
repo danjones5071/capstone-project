@@ -131,6 +131,7 @@ public class PlayerControllerTest
 	[UnityTest]
     public IEnumerator ShootInfernoTest()
     {
+		playerController.weapons.Add( References.WNAME_INFERNO );
     	playerController.ShootInferno();
     	GameObject inferno = GameObject.Find( "Inferno(Clone)" );
   
@@ -153,7 +154,7 @@ public class PlayerControllerTest
 	public IEnumerator ShootDoubleLaserTest()
 	{
 		int laserCounter = 0;
-
+		playerController.weapons.Add( References.WNAME_2LASER );
 		playerController.ShootDoubleLaser();
 		GameObject[] go = GameObject.FindObjectsOfType( typeof( GameObject ) ) as GameObject[];
 
