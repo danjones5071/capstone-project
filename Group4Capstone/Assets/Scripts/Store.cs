@@ -12,6 +12,7 @@ public class Store : MonoBehaviour
 
 	public void Purchase( string itemName )
 	{
+		Debug.Log( "Purchasing" + itemName );
 		Item item = weapons.Find( i => i.name == itemName );
 
 		if( !References.global.playerController.weapons.Contains( item.name ) )
