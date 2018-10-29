@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
     public void Heal(int healing)
     {
-        health += System.Math.Min(health + healing, 100);
+        health = System.Math.Min(health + healing, 100);
     }
 
     public void AddEnergy(float energy)

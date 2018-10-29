@@ -19,6 +19,7 @@ public class References : MonoBehaviour
 	public GameObject pauseUI;
 	public EnemyGenerator enemyGenerator;
     public PickupGenerator pickupGenerator;
+    public PhaseManger phaseManger;
 
 	// No need to show these in the inspector. Can be derived from above.
 	[HideInInspector] public Transform playerTrans;
@@ -29,6 +30,15 @@ public class References : MonoBehaviour
 	public const string WNAME_LASER = "Laser";
 	public const string WNAME_INFERNO = "Inferno";
 	public const string WNAME_2LASER = "Double Laser";
+
+    public enum GamePhases
+    {
+        AsteroidPhase, // Might need to start enumeration at 1
+        TypeBEnemyPhase,
+        TypeAEnemyPhase,
+        BlackholePhase,
+        EventPhase
+    }
 
 	void Awake()
 	{

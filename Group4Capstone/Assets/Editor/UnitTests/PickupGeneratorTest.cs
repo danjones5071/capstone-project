@@ -6,12 +6,12 @@ using System.Collections;
 public class PickupGeneratorTest {
 
     GameObject pickupGenerator = GameObject.Find("Pickup Generator");
-    PickupGenerator pc;
+    PickupGenerator pg;
 
     [OneTimeSetUp]
     public  void TestSetup()
     {
-        pc = References.global.pickupGenerator;
+        pg = References.global.pickupGenerator;
     }
 
     [Test]
@@ -23,13 +23,13 @@ public class PickupGeneratorTest {
     [Test]
     public void PickupGeneratorReferenceExists()
     {
-        Assert.NotNull(pc);
+        Assert.NotNull(pg);
     }
 
     [UnityTest]
     public IEnumerator HealthPickupIsGenerated()
     {
-        pc.CreateHealthPickup();
+        pg.CreateHealthPickup();
         GameObject pickup = GameObject.Find("HealthPickup(Clone)");
         Assert.NotNull(pickup);
         yield return null;
@@ -38,7 +38,7 @@ public class PickupGeneratorTest {
     [UnityTest]
     public IEnumerator EnergyPickupIsGenerated()
     {
-        pc.CreateEnergyPickup();
+        pg.CreateEnergyPickup();
         GameObject pickup = GameObject.Find("EnergyPickup(Clone)");
         Assert.NotNull(pickup);
         yield return null;
