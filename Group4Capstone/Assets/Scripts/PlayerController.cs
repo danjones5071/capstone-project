@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 	// List of all weapons currently possessed by the player.
 	public List<string> weapons;
 
+    public Transform damageSparks;
+
     void Awake()
     {
 		weapons = new List<string>(){ References.WNAME_LASER };
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
         StartCoroutine(Recharge());
     }
 
@@ -267,6 +270,15 @@ public class PlayerController : MonoBehaviour
             pc.TakeDamage(15);
 
             Destroy(col.gameObject);  // And also destroy the laser.
+
+            damageSparks.GetComponent<ParticleSystem>().enableEmission = true;
+
+            ContactPoint2D contact = col.contacts[0];  
+            Vector3 pos = contact.point;
+            damageSparks.position = pos;
+       
+
+            StartCoroutine(StopDamageSparks());
                                              
         }
 
@@ -275,6 +287,12 @@ public class PlayerController : MonoBehaviour
             Die();
             //References.global.uiManager.ShowPlayAgainUI();
         }
+    }
+
+    IEnumerator StopDamageSparks()
+    {
+        yield return new WaitForSeconds(.1F);
+        damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
     }
 
 	void OnTriggerEnter2D( Collider2D col )
