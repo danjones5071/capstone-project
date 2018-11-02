@@ -70,13 +70,19 @@ public class GameMaster : MonoBehaviour
 	public void LoadSavedData()
 	{
 		// Load Currency.
-		currency = PlayerPrefs.GetInt( "Currency" );
+		currency = PlayerPrefs.GetInt( "Currency", 0 );
 		References.global.uiManager.UpdateCurrencyCount( currency );
 
 		// Load Weapon Purchases.
-		if( PlayerPrefs.GetInt( References.WNAME_INFERNO ) != 0 )
+		if( PlayerPrefs.GetInt( References.WNAME_INFERNO, 0 ) != 0 )
+		{
 			References.global.playerController.weapons.Add( References.WNAME_INFERNO );
-		if( PlayerPrefs.GetInt( References.WNAME_2LASER ) != 0 )
+			Debug.Log( "Inferno Weapon Loaded" );
+		}
+		if( PlayerPrefs.GetInt( References.WNAME_2LASER, 0 ) != 0 )
+		{
 			References.global.playerController.weapons.Add( References.WNAME_2LASER );
+			Debug.Log( "Double Laser Weapon Loaded" );
+		}
 	}
 }

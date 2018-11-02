@@ -131,13 +131,13 @@ public class PlayerControllerTest
 	[UnityTest]
     public IEnumerator ShootInfernoTest()
     {
-		playerController.weapons.Add( References.WNAME_INFERNO );
-    	playerController.ShootInferno();
-    	GameObject inferno = GameObject.Find( "Inferno(Clone)" );
-  
-		Assert.NotNull( inferno );
+        playerController.weapons.Add(References.WNAME_INFERNO);
+        playerController.ShootInferno();
+        GameObject inferno = GameObject.Find("Inferno(Clone)");
 
-    	yield return null;
+        Assert.NotNull(inferno);
+
+        yield return null;
     }
 
 	[Test]

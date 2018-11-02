@@ -585,7 +585,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 3.18, y: 0}
   m_SizeDelta: {x: 6.37, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6502,7 +6502,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 3.18, y: 0}
   m_SizeDelta: {x: 6.37, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11657,8 +11657,8 @@ RectTransform:
   m_Father: {fileID: 53533602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13081,8 +13081,8 @@ RectTransform:
   m_Father: {fileID: 75252424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13689,7 +13689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
+    dataString: UEsDBBQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuu2jAQ/RXkdZESHpfSXQtc2gUXdNOqm2yMPSEWjh3ZzuUl/r1jJyEpVVex55yZOfOIb0QoWwJz2qyN4BvNgXwZEH8mnwaEBuydOqHRHKNFWF2AM4J9VQfpuREaKyUybYoVP8BCW2fRnFFpASGjnfdWaLoNyBk/w7l3ueBpNPOnK57m0eCORwbKgemoLbGl1axKMUmLEngirtCRxy17XNMU1tIwvHCmpRS2UULcpQyFJmUOBnypXFAsLGSf4DUHccidF9n33WaZBdcoMvSyFAb7Uwcl37TLfaSC2mMt64PKyqcZTV+CpDro5h98GAc4M7r43uaNI5/D5YId3+mFUet6Xe2bl53wOHTnROWR7iX8zkG96bXRleIIOlN518rCaNldH6UtcmDHzl5LfTJW5f9n42u4h+rPCymKfQPhNZE6NDvMHQyO5QfKDVthGxZavYZfFn7SQ399GuBVGOsQampUXtxeV8ZTySp0zNdSuYU2CoK5kVyCotJddhjGPQ/wCeulfUJeqf9BmuQN1u7/k0swd/woeoJ2+vQYlc31aQM231ZOCgWdaA+8YZ8WWql6v/o9ad2SymSU9dwOleB/LxaZjKNomrEshs/xPNvPhvP5LGbTUTbhLyM2izkJmycU1knlrhbatAenprrgCresfRoGa0PLsOvc0NNaXAvda7lQmU6YAVDbOsJDOBhMgr8kX3GBDUrAOaHCvMktJVKzI/D0ESgNla7OztC0i5KSUnxo5y0pWYQHIyV3cv8DUEsDBBQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSibGBgWlacpphqoWhZVqSua6lpblhsqlRmkmKmVGyuWGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+ufMZM3PgIAAMoEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+tcHOwWbQAAAHgAAAAJACQAAAAAAAAAAAAAAIsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAQwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -14060,6 +14060,49 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1882126479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1882126481}
+  - component: {fileID: 1882126480}
+  m_Layer: 0
+  m_Name: Phase Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1882126480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882126479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7086c8fcb5ce2b449931652bb8a91788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseDuration: 5
+  phaseCount: 0
+  currentPhase: 0
+--- !u!4 &1882126481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882126479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30, y: 22, z: -9.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902187226
 GameObject:
   m_ObjectHideFlags: 0
@@ -14964,6 +15007,7 @@ MonoBehaviour:
   pauseUI: {fileID: 762932510}
   enemyGenerator: {fileID: 3660065}
   pickupGenerator: {fileID: 1631965061}
+  phaseManger: {fileID: 1882126480}
   playerTrans: {fileID: 162462233}
   playerRigid: {fileID: 162462231}
   playerController: {fileID: 162462229}
