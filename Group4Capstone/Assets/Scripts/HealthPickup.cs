@@ -27,7 +27,7 @@ public class HealthPickup : MonoBehaviour {
             PlayerController pc = col.gameObject.GetComponent<PlayerController>();
 
             // Play the crash sound effect.
-            References.global.soundEffects.PlayCrashSound();
+            References.global.soundEffects.PlayHealthPickUpSound();
 
             // Pickup heals player.
             pc.Heal(15);

@@ -27,7 +27,7 @@ public class EnergyPickup : MonoBehaviour {
             PlayerController pc = col.gameObject.GetComponent<PlayerController>();
 
             // Play the crash sound effect.
-            References.global.soundEffects.PlayCrashSound();
+            References.global.soundEffects.PlayEnergyPickUpSound();
 
             // Pickup recharges player's battery.
             pc.AddEnergy(15);
