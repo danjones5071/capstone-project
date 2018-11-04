@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &70719915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6361,7 +6361,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1373463557}
-        m_MethodName: DisplayScores
+        m_MethodName: FetchScores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6932,7 +6932,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1373463557}
-        m_MethodName: DisplayScores
+        m_MethodName: FetchScores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18238,7 +18238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameField: {fileID: 1148590018}
   timeText: {fileID: 771034036}
-  topScores: {fileID: 70719915}
+  submitScoreUI: {fileID: 811295437}
+  topScores: {fileID: 70719914}
+  scoreTextPrefab: {fileID: 1762630020326482, guid: ff481453af07b8e4c9549ad3e7c35b01,
+    type: 2}
 --- !u!1 &1390276191
 GameObject:
   m_ObjectHideFlags: 0

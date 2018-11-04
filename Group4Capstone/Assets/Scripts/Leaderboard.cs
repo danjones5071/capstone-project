@@ -5,15 +5,24 @@ using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
+	// Visit the following URL for more information on dreamlo high scores: 
 	private const string privateCode = "XybC6RGIukOjul8H5_vxogufrL0ynV5U2In6agZsUwgw";
 	private const string publicCode = "5bdf467661f94409f8b4fd68";
 	private const string url = "http://dreamlo.com/lb/";
 
 	public InputField nameField;
 	public Text timeText;
-	public Transform topScores;
+	public GameObject submitScoreUI;
+	public GameObject topScores;
+	public GameObject scoreTextPrefab;
 
 	private Score[] scoresList;
+
+	void OnEnable()
+	{
+		submitScoreUI.SetActive( true );
+		topScores.SetActive( false );
+	}
 
 	public void SubmitScore()
 	{
@@ -29,21 +38,27 @@ public class Leaderboard : MonoBehaviour
 
 	public void DisplayScores()
 	{
-		FetchScores();
 		for( int i = 0; i < scoresList.Length; i++ )
 		{
-			Transform newText = createScoreTextComponent( scoresList[i] );
-			Vector2 pos = newText.position;
-			newText.position = new Vector2( pos.x, pos.y - 10 * i );
+			GameObject newTextObj = Instantiate( scoreTextPrefab, topScores.transform );
+			Text newText = newTextObj.GetComponent<Text>();
+			Score currentScore = scoresList[i];
+			newText.text = i+1 + ". " + currentScore.name + ", " + currentScore.score;
+			Vector2 pos = newTextObj.transform.position;
+			newTextObj.transform.position = new Vector2( pos.x, pos.y - 50 * i );
 		}
 	}
 
 	public Transform createScoreTextComponent( Score score )
 	{
 		GameObject newText = new GameObject( "ScoreText" );
-		newText.transform.SetParent( topScores );
+		RectTransform trans = newText.AddComponent<RectTransform>();
+		trans.SetParent( topScores.transform );
+		trans.anchoredPosition = topScores.GetComponent<RectTransform>().anchoredPosition;
 		Text text = newText.AddComponent<Text>();
 		text.text = score.name + ", " + score.score;
+		text.fontSize = 14;
+		text.color = Color.white;
 		return newText.transform;
 	}
 
@@ -77,6 +92,7 @@ public class Leaderboard : MonoBehaviour
 		{
 			Debug.Log( "Scores fetched successfully!" );
 			FormatScores( src.text );
+			DisplayScores();
 		}
 		else
 		{
