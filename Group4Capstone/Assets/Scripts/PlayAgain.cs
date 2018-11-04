@@ -11,6 +11,7 @@ public class PlayAgain : MonoBehaviour
 	public GameObject timeSurvived;
 	public GameObject storeButton;
 	public GameObject mainMenuButton;
+	public GameObject leaderboardButton;
 	public Color fadeColor;
 
 	public float fadeSpeed = 2.0f;
@@ -21,6 +22,7 @@ public class PlayAgain : MonoBehaviour
 		timeSurvived.SetActive( false );
 		storeButton.SetActive( false );
 		mainMenuButton.SetActive( false );
+		leaderboardButton.SetActive( false );
 		StartCoroutine( ShowPrompt() );
 	}
 
@@ -40,6 +42,7 @@ public class PlayAgain : MonoBehaviour
 		timeSurvived.SetActive( true );
 		storeButton.SetActive( true );
 		mainMenuButton.SetActive( true );
+		leaderboardButton.SetActive( true );
 	}
 
 	public void RestartGame()
