@@ -16,32 +16,49 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject enemyA;
     public GameObject enemyB;
 
-
-    public static bool enemyTypeAspotAvailable = true;
-    public static bool enemyTypeBspotAvailable = true;
-
-    public static bool enemyTypeA_alive = false;
-
+    public static int ActiveEnemyTypeB = 0;
+    public static int MaxEnemyTypeB = 0;
+    public static int ActiveEnemyTypeA = 0;
+    public static int MaxEnemyTypeA = 0;
 
     void Update()
     {
-        if (enemyTypeAspotAvailable)
-            CreateTypeAenemy();
-        if (enemyTypeBspotAvailable)
-            CreateTypeBenemy();
+        MaxEnemyTypeB = PhaseManger.PhaseMultipliers[1];
+        MaxEnemyTypeA = PhaseManger.PhaseMultipliers[2];
 
+        while (ActiveEnemyTypeB < MaxEnemyTypeB)
+        {
+            CreateTypeBenemy();
+            ActiveEnemyTypeB++;
+        }
+
+        while (ActiveEnemyTypeA < MaxEnemyTypeA)
+        {
+            CreateTypeAenemy();
+            ActiveEnemyTypeA++;
+        }
 
     }
 
     public void CreateTypeBenemy()
 	{
-        enemyTypeBspotAvailable = false;
+        // Randomize physical attributes of our new asteroid.
+        float posY = Random.Range(-4.9f, 4.9f);			// Randomize the vertical position of the object.
 
-        Instantiate(enemyB);	
+        Instantiate(enemyB, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);	
 	}
     public void CreateTypeAenemy()
     {
-        enemyTypeAspotAvailable = false;
         Instantiate(enemyA);   
+    }
+
+    public void EnemyTypeBDestroyed()
+    {
+        ActiveEnemyTypeB--;
+    }
+
+    public void EnemyTypeADestroyed()
+    {
+        ActiveEnemyTypeA--;
     }
 }

@@ -248,10 +248,10 @@ public class EnemyAI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // If the asteroid collides with a laser...
+        // If the Enemy collides with a laser...
         if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
         {
-            RespawnSelf();            // Destroy the asteroid.
+            RespawnSelf();            // Destroy the Enemy.
             Destroy(col.gameObject);  // And also destroy the laser blast.
         }
 
@@ -275,13 +275,15 @@ public class EnemyAI : MonoBehaviour
     private void RespawnSelf()
     {
         // Instantiate our explosion particle effects and destroy them after some time.
-        // Destroy(Instantiate(explosion, asteroidTransform.position, Quaternion.identity), 4);
+        //Destroy(Instantiate(explosion, asteroidTransform.position, Quaternion.identity), 4);
 
         // Destroy the asteroid.
         ExecuteBehavior();
 
         // Destroy the asteroid.
-        Destroy(gameObject);
+        // Temp fix to avoid slow down in higher phases.
+        // Object pooling should be inserted to properly handle this
+        //Destroy(gameObject);
 
         // Play the explosion sound effect.
         References.global.soundEffects.PlayExplosionSound();
@@ -289,6 +291,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDestroy()
     {
-        EnemyGenerator.enemyTypeAspotAvailable = true;
+        //EnemyGenerator.enemyTypeAspotAvailable = true;
+        References.global.enemyGenerator.EnemyTypeADestroyed();
     }
 }

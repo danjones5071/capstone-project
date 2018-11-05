@@ -25,6 +25,9 @@ public class EnemyTypeB : MonoBehaviour
     private Vector3 startingLocation;
     private Vector3 endLocation;
 
+    private Vector3 initialPosition;
+
+
     private Rigidbody2D rb;
     // Use this for initialization
     void Start()
@@ -47,7 +50,8 @@ public class EnemyTypeB : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        ExecuteBehavior();
+
+    ExecuteBehavior();
     }
 
     // Update is called once per frame
@@ -97,14 +101,17 @@ public class EnemyTypeB : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // If the asteroid collides with a laser...
+        // If the enemy collides with a laser...
         if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
         {
             // Play the explosion sound effect.
             References.global.soundEffects.PlayExplosionSound();
 
-            // Destroy the asteroid.
-            Destroy(gameObject);  
+            // Destroy the enemy.
+            // Destroy(gameObject);
+            // Temp fix to avoid slow down in higher phases.
+            // Object pooling should be inserted to properly handle this
+            ExecuteBehavior();
 
             Destroy(col.gameObject);  // And also destroy the laser blast.
         }
@@ -139,6 +146,6 @@ public class EnemyTypeB : MonoBehaviour
 
     private void OnDestroy()
     {
-        EnemyGenerator.enemyTypeBspotAvailable = true;
+        References.global.enemyGenerator.EnemyTypeBDestroyed();
     }
 }
