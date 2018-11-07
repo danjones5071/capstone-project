@@ -13,7 +13,7 @@ public class ObstacleGenerator : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
 	public GameObject asteroid;				// The asteroid prefab.
-	public GameObject blackhole;				// The blackHole prefab.
+	public GameObject blackHole;				// The blackHole prefab.
 	public float asteroidTimer = 3.2f;      // How long we wait before generating another asteroid.
 	public float blackHoleTimer = 8.2f;      // How long we wait before generating another asteroid.
     public float increseDificultyTimer = 50;
@@ -75,6 +75,6 @@ public class ObstacleGenerator : MonoBehaviour
 	}
 	public void CreateBlackHole()
 	{
-		Instantiate( blackhole );	// Instantiate a new astroid.
+		Instantiate( blackHole );	// Instantiate a new blackhole.
 	}
 }

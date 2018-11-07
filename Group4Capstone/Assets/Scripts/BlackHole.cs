@@ -48,12 +48,9 @@ public class BlackHole : MonoBehaviour {
     {
         if (col.gameObject != null)
         {
-            //blackHoleRigid.velocity = new Vector2((Vector2.left * speedX).x, Vector2.zero.y);// Multiply the left vector by our speed to obtain velocity.
             Destroy(col.gameObject);
             References.global.soundEffects.PlayBlackHolePullSound();
         }
-
     }
-
 
 }
