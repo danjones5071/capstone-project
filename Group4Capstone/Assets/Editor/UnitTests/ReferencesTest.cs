@@ -30,14 +30,6 @@ public class ReferencesTest {
 	}
 
 	[Test]
-	public void CurrencyGeneratorReferenced()
-	{
-		CurrencyGenerator currencyGenerator = References.global.currencyGenerator;
-
-		Assert.NotNull( currencyGenerator );
-	}
-
-	[Test]
 	public void SoundEffectsManagerReferenced()
 	{
 		SoundEffects soundEffects = References.global.soundEffects;

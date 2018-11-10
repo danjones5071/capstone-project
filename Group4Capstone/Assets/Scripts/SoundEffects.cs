@@ -17,8 +17,9 @@ public class SoundEffects : MonoBehaviour
 	public AudioClip crash;
     public AudioClip cybergun;
     public AudioClip blackHolePull;
-    public AudioClip energyPickIp;
-    public AudioClip healthPickUp;
+    public AudioClip energyPickup;
+    public AudioClip healthPickup;
+	public AudioClip currencyPickup;
 
     // Private variables to cache necessary components.
     private AudioSource audioSource;
@@ -40,13 +41,18 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayEnergyPickUpSound()
     {
-        audioSource.PlayOneShot(energyPickIp);
+        audioSource.PlayOneShot( energyPickup );
     }
 
     public void PlayHealthPickUpSound()
     {
-        audioSource.PlayOneShot(healthPickUp);
+        audioSource.PlayOneShot( healthPickup );
     }
+
+	public void PlayCurrencyPickUpSound()
+	{
+		audioSource.PlayOneShot( currencyPickup );
+	}
 
     public void PlayLaserSound()
 	{

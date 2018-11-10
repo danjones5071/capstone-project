@@ -294,6 +294,7 @@ public class PlayerController : MonoBehaviour
 		switch( col.tag )
 		{
 			case "Currency":
+				References.global.soundEffects.PlayCurrencyPickUpSound();
 				References.global.gameMaster.AddToCurrency( 1 );
 				Destroy( col.gameObject );
 				break;

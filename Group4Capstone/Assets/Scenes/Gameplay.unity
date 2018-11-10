@@ -156,48 +156,6 @@ MonoBehaviour:
   enemyTypeBtimer: 6.3
   enemyA: {fileID: 1244702092066892, guid: 52bf45e5aa1dbe64da6ec5cb107c949b, type: 2}
   enemyB: {fileID: 1938228354216298, guid: ebd8f600bf4474144a97a4b83df7906a, type: 2}
---- !u!1 &21024139
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 21024140}
-  - component: {fileID: 21024141}
-  m_Layer: 0
-  m_Name: Currency Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &21024140
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 21024139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &21024141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 21024139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61590d2154a9c8340ac73dc4c601822e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin: {fileID: 1429053927835786, guid: ff1013289d0310342836442a35878fde, type: 2}
-  coinTimer: 10
 --- !u!1 &52494472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1071,7 @@ Transform:
   - {fileID: 1590915611}
   - {fileID: 1226491699}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &212644767
 GameObject:
@@ -1144,7 +1102,7 @@ Transform:
   - {fileID: 926264445}
   - {fileID: 316631167}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &212644769
 MonoBehaviour:
@@ -12583,7 +12541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969948795
 GameObject:
@@ -12662,6 +12620,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969948795}
   m_CullTransparentMesh: 0
+--- !u!1001 &1053193074
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 433.59482
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 141.13469
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504207827384764, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1108791729
 GameObject:
   m_ObjectHideFlags: 0
@@ -18046,7 +18046,7 @@ Transform:
   m_LocalScale: {x: 15.5, y: 1.18, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1344083471
 MonoBehaviour:
@@ -18262,7 +18262,7 @@ Transform:
   - {fileID: 374456954}
   - {fileID: 3660064}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1431962355
 GameObject:
@@ -18596,8 +18596,9 @@ MonoBehaviour:
   crash: {fileID: 8300000, guid: 75d500a0264b38047849f101a2d2d498, type: 3}
   cybergun: {fileID: 8300000, guid: 5a26470fcf57fd24c972629ac376ee32, type: 3}
   blackHolePull: {fileID: 8300000, guid: 8cd64b184eef8f448bc685207bf449c8, type: 3}
-  energyPickIp: {fileID: 8300000, guid: 7ae6e08f8fef63b4688a1ef1e36e6ff7, type: 3}
-  healthPickUp: {fileID: 8300000, guid: efc121d21aa35bb4c90266fe3868df4c, type: 3}
+  energyPickup: {fileID: 8300000, guid: 7ae6e08f8fef63b4688a1ef1e36e6ff7, type: 3}
+  healthPickup: {fileID: 8300000, guid: efc121d21aa35bb4c90266fe3868df4c, type: 3}
+  currencyPickup: {fileID: 8300000, guid: 2ea673026c6eec14086770f9d7494c8f, type: 3}
 --- !u!4 &1491784008
 Transform:
   m_ObjectHideFlags: 0
@@ -18609,7 +18610,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536125988
 GameObject:
@@ -19294,14 +19295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c21f0cd4f7c09142b8222ec1fbc928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPickup: {fileID: 1191546444085882, guid: 5690a81ea135f0349b029c2669319e37,
+  healthPickup: {fileID: 1191546444085882, guid: 5690a81ea135f0349b029c2669319e37,
     type: 2}
-  EnergyPickup: {fileID: 1191546444085882, guid: f9618a4a1831ccd408606cfb8dc43f12,
+  energyPickup: {fileID: 1191546444085882, guid: f9618a4a1831ccd408606cfb8dc43f12,
     type: 2}
+  coinPickup: {fileID: 1429053927835786, guid: ff1013289d0310342836442a35878fde, type: 2}
   healthPickupTimer: 17
   energyPickupTimer: 8
+  coinPickupTimer: 10
   spawnHealthPickupActive: 1
   spawnEnergyPickupActive: 1
+  spawnCoinPickupActive: 1
 --- !u!1 &1646876908
 GameObject:
   m_ObjectHideFlags: 0
@@ -19332,7 +19336,7 @@ Transform:
   - {fileID: 2130851645}
   - {fileID: 1294470510}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676212443
 GameObject:
@@ -19979,7 +19983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814557082
 GameObject:
@@ -20937,7 +20941,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2058457132
 MonoBehaviour:
@@ -21069,7 +21073,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102261088
 MonoBehaviour:
@@ -21085,7 +21089,6 @@ MonoBehaviour:
   gameMaster: {fileID: 2102261086}
   player: {fileID: 162462228}
   obstacleGenerator: {fileID: 2058457132}
-  currencyGenerator: {fileID: 21024141}
   soundEffects: {fileID: 1491784007}
   uiManager: {fileID: 236586183}
   playAgainUI: {fileID: 138442390}
