@@ -60,8 +60,9 @@ public class Leaderboard : MonoBehaviour
 
 	public void DisplayScores()
 	{
-		int xOff = 0;
-		int yOff = 0;
+		int yStart = -100;
+		int xOff = -300;
+		int yOff = yStart;
 
 		for( int i = 0; i < 10; i++ )
 		{
@@ -80,14 +81,15 @@ public class Leaderboard : MonoBehaviour
 
 			Vector2 pos = newTextObj.transform.position;
 
-			yOff += 50;
 			if( i == 5 )
 			{
-				yOff = 50;
-				xOff = 250;
+				yOff = yStart;
+				xOff = 100;
 			}
 			
 			newTextObj.transform.position = new Vector2( pos.x + xOff, pos.y - yOff );
+
+			yOff += 50;
 		}
 	}
 
