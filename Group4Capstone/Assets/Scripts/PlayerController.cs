@@ -190,12 +190,12 @@ public class PlayerController : MonoBehaviour
 
             //Rotating the laser towards the player 
             laserRef_L.transform.up = playerDirection;
-            laserRef_L.transform.rotation *= Quaternion.Euler(0, 0, 90);
+            laserRef_L.transform.rotation *= Quaternion.Euler( 0, 0, 90 );
 
 
             //Rotating the laser towards the player 
             laserRef_R.transform.up = playerDirection;
-            laserRef_R.transform.rotation *= Quaternion.Euler(0, 0, 90);
+            laserRef_R.transform.rotation *= Quaternion.Euler( 0, 0, 90 );
 
 
             batteryCapacity -= laserEnergyCost * 2; //Substracting energy value.
@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
 
             //Rotating the laser towards the player 
             laserRef.transform.up = playerDirection;
-            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
+            laserRef.transform.rotation *= Quaternion.Euler( 0, 0, 90 );
 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
@@ -222,85 +222,91 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Recharge()
     {
-        while (true)
+        while( true )
         {
-            if (batteryCapacity < 100)
+            if( batteryCapacity < 100 )
             {
-                AddEnergy(rechargeAmount);
+                AddEnergy( rechargeAmount );
             }
-            yield return new WaitForSeconds(rechargeInterval);
+            yield return new WaitForSeconds( rechargeInterval );
         }
     }
 
-    public void SetLaserOrigin(Transform origin)
+    public void SetLaserOrigin( Transform origin )
     {
         laserOrigin = origin;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage( int damage )
     {
         health -= damage;
     }
 
-    public void Heal(int healing)
+    public void Heal( int healing )
     {
-        health = System.Math.Min(health + healing, 100);
+        health = System.Math.Min( health + healing, 100 );
     }
 
-    public void AddEnergy(float energy)
+    public void AddEnergy( float energy )
     {
         // We don't want the energy to exceed 100.
         // So take the minimum between 100 and the sum of the current energy plus energy being added.
-        batteryCapacity = System.Math.Min(batteryCapacity + energy, 100);
+        batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
     }
 
     // Controls what happens when an asteroid collides with another object.
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D( Collision2D col )
     {
         // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
+        if( col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy" )
         {
-            // Cache player controller component.
-            PlayerController pc = gameObject.GetComponent<PlayerController>();
-
             // Play the crash sound effect.
             References.global.soundEffects.PlayCrashSound();
 
             // Player takes damage from impact.
-            pc.TakeDamage(15);
+            TakeDamage( 15 );
 
-            Destroy(col.gameObject);  // And also destroy the laser.
+            Destroy( col.gameObject );  // And also destroy the laser.
 
             damageSparks.GetComponent<ParticleSystem>().enableEmission = true;
 
             ContactPoint2D contact = col.contacts[0];  
             Vector3 pos = contact.point;
             damageSparks.position = pos;
-       
 
-            StartCoroutine(StopDamageSparks());
-                                             
+            StartCoroutine( StopDamageSparks() );
         }
 
-        if (col.gameObject.tag == "BlackHole")
+        if( col.gameObject.tag == "BlackHole" )
         {
             Die();
-            //References.global.uiManager.ShowPlayAgainUI();
         }
     }
 
     IEnumerator StopDamageSparks()
     {
-        yield return new WaitForSeconds(.1F);
+        yield return new WaitForSeconds( 0.1f );
         damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
     }
 
 	void OnTriggerEnter2D( Collider2D col )
 	{
-		if( col.tag == "Currency" )
+		switch( col.tag )
 		{
-			References.global.gameMaster.AddToCurrency( 1 );
-			Destroy( col.gameObject );
+			case "Currency":
+				References.global.gameMaster.AddToCurrency( 1 );
+				Destroy( col.gameObject );
+				break;
+			case "EnergyPickup":
+				References.global.soundEffects.PlayEnergyPickUpSound();
+				AddEnergy( 15 );
+				Destroy( col.gameObject );
+				break;
+			case "HealthPickup":
+				References.global.soundEffects.PlayHealthPickUpSound();
+				Heal( 15 );
+				Destroy( col.gameObject );
+				break;
 		}
 	}
 

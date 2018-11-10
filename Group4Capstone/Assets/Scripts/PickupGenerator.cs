@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupGenerator : MonoBehaviour {
-
+public class PickupGenerator : MonoBehaviour
+{
     public GameObject HealthPickup;
     public GameObject EnergyPickup;
     public float healthPickupTimer = 10.0f;
@@ -12,7 +12,8 @@ public class PickupGenerator : MonoBehaviour {
     public bool spawnEnergyPickupActive = true;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
         // Start coroutine loop for spawning health pickups
         if (spawnHealthPickupActive)
         {
@@ -26,7 +27,7 @@ public class PickupGenerator : MonoBehaviour {
         }
     }
 
-    IEnumerator SpawnHealthPickup ()
+    IEnumerator SpawnHealthPickup()
     {
         while (spawnHealthPickupActive)
         {
@@ -38,9 +39,9 @@ public class PickupGenerator : MonoBehaviour {
     public void CreateHealthPickup()
     {
         // Randomize starting Y position of the pickup.
-        float posY = Random.Range(-4.9f, 4.9f);
+        //float posY = Random.Range(-4.9f, 4.9f);
 
-        Instantiate(HealthPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
+        Instantiate( HealthPickup );
     }
 
     IEnumerator SpawnEnergyPickup()
@@ -55,9 +56,9 @@ public class PickupGenerator : MonoBehaviour {
     public void CreateEnergyPickup()
     {
         // Randomize starting Y position of the pickup.
-        float posY = Random.Range(-4.9f, 4.9f);
+        //float posY = Random.Range(-4.9f, 4.9f);
 
-        Instantiate(EnergyPickup, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);
+        Instantiate( EnergyPickup );
     }
 
 }
