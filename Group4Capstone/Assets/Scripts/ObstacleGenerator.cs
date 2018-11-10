@@ -12,10 +12,10 @@ using System.Collections;
 public class ObstacleGenerator : MonoBehaviour
 {
 	// Public variables which can be modified in the editor at runtime.
-	public GameObject asteroid;				// The asteroid prefab.
-	public GameObject blackHole;				// The blackHole prefab.
-	public float asteroidTimer = 3.2f;      // How long we wait before generating another asteroid.
-	public float blackHoleTimer = 8.2f;      // How long we wait before generating another asteroid.
+	public GameObject asteroid;               // The asteroid prefab.
+	public GameObject blackHole;              // The blackHole prefab.
+	public float asteroidTimer = 3.2f;        // How long we wait before generating another asteroid.
+	public float blackHoleTimer = 8.2f;       // How long we wait before generating another asteroid.
     public float increseDificultyTimer = 50;
     public float dificultyMultiplier = 0.3F;
     private float secondsElapsed;
@@ -38,9 +38,9 @@ public class ObstacleGenerator : MonoBehaviour
 
             secondsElapsed = Time.time - startTime;
 
-            if(secondsElapsed > increseDificultyTimer)
+            if( secondsElapsed > increseDificultyTimer )
             {
-                if (asteroidTimer > dificultyMultiplier)
+                if( asteroidTimer > dificultyMultiplier )
                 {
                     asteroidTimer -= dificultyMultiplier;                    
                 }
@@ -58,7 +58,7 @@ public class ObstacleGenerator : MonoBehaviour
 
 	IEnumerator GenerateBlackHole()
 	{
-	    while(true)
+	    while( true )
 	    {
 	        CreateBlackHole();
 
@@ -73,6 +73,7 @@ public class ObstacleGenerator : MonoBehaviour
 	{
 		Instantiate( asteroid );	// Instantiate a new astroid.
 	}
+
 	public void CreateBlackHole()
 	{
 		Instantiate( blackHole );	// Instantiate a new blackhole.

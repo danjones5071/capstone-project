@@ -12,8 +12,8 @@ public class Asteroid : ScrollingObject
 	public GameObject explosion;
 
 	// Declare variables to store asteroid-specific physics and position related values.
-    private float speedY;              // Speed at which the object moves.
-    private float spin;				// Angular velocity of the object.
+    private float speedY;  // Speed at which the object moves vertically.
+    private float spin;    // Angular velocity of the object.
 
 	protected override void Start()
 	{
@@ -25,12 +25,13 @@ public class Asteroid : ScrollingObject
 			speedY = Random.Range( -0.7f, 0 );
 		else
 			speedY = Random.Range( 0, 0.7f );
-		 
-        spin = Random.Range( -50.0f, 50.0f );			// Randomize the angular velocity of the object.
+
+		// Randomize the angular velocity of the object.
+        spin = Random.Range( -50.0f, 50.0f );
 
         // Apply physical values to the asteroid's rigidbody.
 		rigid.velocity = (Vector2.left * speedX) + (Vector2.up * speedY); // Multiply the left vector by our speed to obtain velocity.
-        rigid.angularVelocity = spin;			// Apply angular velocity to create a spin.
+        rigid.angularVelocity = spin; // Apply angular velocity to create a spin.
 	}
 
     // Controls what happens when an asteroid collides with another object.
