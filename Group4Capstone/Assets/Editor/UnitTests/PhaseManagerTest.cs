@@ -11,7 +11,7 @@ public class PhaseManagerTest {
     [OneTimeSetUp]
     public void TestSetup()
     {
-        pm = References.global.phaseManger;
+        pm = References.global.phaseManager;
     }
 
     [Test]

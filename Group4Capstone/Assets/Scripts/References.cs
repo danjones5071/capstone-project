@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class References : MonoBehaviour
 	public GameObject pauseUI;
 	public EnemyGenerator enemyGenerator;
     public PickupGenerator pickupGenerator;
-    public PhaseManger phaseManger;
+    public PhaseManger phaseManager;
 	public Leaderboard leaderboard;
 
 	// No need to show these in the inspector. Can be derived from above.
@@ -47,5 +48,9 @@ public class References : MonoBehaviour
 		playerTrans = player.transform;
 		playerRigid = player.GetComponent<Rigidbody2D>();
 		playerController = player.GetComponent<PlayerController>();
+
+		//phaseManager.setCurrentPhase( 0 );
+		//phaseManager.setPhaseCount( 0 );
+		//Array.Clear( phaseManager.PhaseMultipliers, 0, phaseManager.PhaseMultipliers.Length );
 	}
 }

@@ -6,7 +6,7 @@ public class PhaseManger : MonoBehaviour {
 
     public float phaseDuration = 5;  // Duration of each phase in seconds.
 
-    public static int[] PhaseMultipliers = { 0, 0, 0, 0, 0 };
+    public int[] phaseMultipliers = { 0, 0, 0, 0, 0 };
 
     // Phase tracking variables
     [SerializeField] private int phaseCount;
@@ -51,7 +51,7 @@ public class PhaseManger : MonoBehaviour {
 
         // Increase appropriate Phase Multiplier
         currentPhase = phaseCount % 5;
-        PhaseMultipliers[currentPhase]++;
+        phaseMultipliers[currentPhase]++;
     }
 
     public int getCurrentPhase()
@@ -59,9 +59,19 @@ public class PhaseManger : MonoBehaviour {
         return currentPhase;
     }
 
+	public void setCurrentPhase( int phase )
+	{
+		currentPhase = phase;
+	}
+
     public int getPhaseCount()
     {
         return phaseCount;
     }
+
+	public void setPhaseCount( int count )
+	{
+		phaseCount = count;
+	}
 
 }

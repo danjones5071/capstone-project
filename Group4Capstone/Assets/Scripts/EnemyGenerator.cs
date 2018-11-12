@@ -23,8 +23,8 @@ public class EnemyGenerator : MonoBehaviour
 
     void Update()
     {
-        MaxEnemyTypeB = PhaseManger.PhaseMultipliers[1];
-        MaxEnemyTypeA = PhaseManger.PhaseMultipliers[2];
+		MaxEnemyTypeB = References.global.phaseManager.phaseMultipliers[1];
+		MaxEnemyTypeA = References.global.phaseManager.phaseMultipliers[2];
 
         while (ActiveEnemyTypeB < MaxEnemyTypeB)
         {
