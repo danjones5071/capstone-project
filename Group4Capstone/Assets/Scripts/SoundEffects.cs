@@ -4,7 +4,7 @@
 //	A manager for playing sound effects at runtime.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -65,13 +65,14 @@ public class SoundEffects : MonoBehaviour
     }
 
     public void PlayInfernoSound()
-    	{
+    {
     		audioSource.PlayOneShot( infernoBlast );
-    	}
+    }
 
 	public void PlayExplosionSound()
 	{
 		audioSource.PlayOneShot( explosion );
+
 	}
 
 	public void PlayCrashSound()
@@ -80,8 +81,8 @@ public class SoundEffects : MonoBehaviour
 	}
 
 	public void PlayBlackHolePullSound()
-    	{
+    {
     		audioSource.PlayOneShot( blackHolePull );
-    	}
+    }
 
 }

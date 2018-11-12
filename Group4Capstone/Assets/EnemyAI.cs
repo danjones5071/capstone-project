@@ -249,7 +249,7 @@ public class EnemyAI : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the Enemy collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
         {
             RespawnSelf();            // Destroy the Enemy.
             Destroy(col.gameObject);  // And also destroy the laser blast.

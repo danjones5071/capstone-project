@@ -16,10 +16,10 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject enemyA;
     public GameObject enemyB;
 
-    public static int ActiveEnemyTypeB = 0;
-    public static int MaxEnemyTypeB = 0;
-    public static int ActiveEnemyTypeA = 0;
-    public static int MaxEnemyTypeA = 0;
+    public int ActiveEnemyTypeB = 0;
+    public int MaxEnemyTypeB = 0;
+    public int ActiveEnemyTypeA = 0;
+    public int MaxEnemyTypeA = 0;
 
     void Update()
     {

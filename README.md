@@ -1,7 +1,7 @@
 # Capstone Project
 SWENG Capstone Project made by Group 4 in the Unity Game Engine.
 
-[Playable Link](https://htmlpreview.github.io/?https://github.com/danjones5071/capstone-project/blob/master/Group4Capstone/Export/index.html)
+[Playable Link](http://htmlpreview.github.io/?https://github.com/danjones5071/capstone-project/blob/master/Group4Capstone/Export/index.html)
 
 ### Current Project State
 The game currently includes the following basic features:
