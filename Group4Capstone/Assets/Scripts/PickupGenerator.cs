@@ -76,6 +76,7 @@ public class PickupGenerator : MonoBehaviour
 
 	public void CreateCoinPickup()
 	{
-		Instantiate( coinPickup );
+		GameObject coin = Instantiate( coinPickup );
+		//coin.GetComponent<Rigidbody2D>().rotation = 45;
 	}
 }
