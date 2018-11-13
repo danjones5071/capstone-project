@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
             laserRef.transform.up = playerDirection;
             laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
 
+			References.global.soundEffects.PlayLaserSound();
  
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 
@@ -197,6 +198,8 @@ public class PlayerController : MonoBehaviour
             laserRef_R.transform.up = playerDirection;
             laserRef_R.transform.rotation *= Quaternion.Euler( 0, 0, 90 );
 
+			References.global.soundEffects.PlayLaserSound();
+
 
             batteryCapacity -= laserEnergyCost * 2; //Substracting energy value.
 
@@ -214,6 +217,8 @@ public class PlayerController : MonoBehaviour
             //Rotating the laser towards the player 
             laserRef.transform.up = playerDirection;
             laserRef.transform.rotation *= Quaternion.Euler( 0, 0, 90 );
+
+			References.global.soundEffects.PlayInfernoSound();
 
             batteryCapacity -= laserEnergyCost; //Substracting energy value.
 

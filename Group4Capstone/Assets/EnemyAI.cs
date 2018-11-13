@@ -186,6 +186,8 @@ public class EnemyAI : MonoBehaviour
             laserRef.transform.up = (playerLocation.position - transform.position);
             laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
             
+			References.global.soundEffects.PlayEnemyLaserSound();
+
             weaponDisable = true;
         }
     }

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4233114086705576}
   - component: {fileID: 212622801322314930}
   - component: {fileID: 50687124662227282}
-  - component: {fileID: 114255053484693526}
   - component: {fileID: 61825937453108058}
+  - component: {fileID: 114143571977109588}
   m_Layer: 0
   m_Name: Inferno
   m_TagString: Inferno
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.0654936, y: 8.0534935}
   m_EdgeRadius: 0
---- !u!114 &114255053484693526
+--- !u!114 &114143571977109588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,10 +96,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972909802645380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a70254b267e49b44bdfbce6bcb7d90e, type: 3}
+  m_Script: {fileID: 11500000, guid: ca56f4886bc7e6849b7bc28854846725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 11
 --- !u!212 &212622801322314930
 SpriteRenderer:
   m_ObjectHideFlags: 1
