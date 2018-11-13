@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private Transform laserOriginR;		// A child of the player game object to specify where the laser should shoot from.
 
     public float batteryCapacity = 100;
-    public int health = 100;			// The current amount of health the player has.
+    public int health = 100;			// The current amount of health the pl ayer has.
     public int lives = 3;               // Ammount of lives the player has.
     public float rechargeInterval = 1;
     public float rechargeAmount = 2;
