@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	ObstacleGenerator.cs
+//	EnemyGenerator.cs
 //
-//	Generates objects which the player must avoid or destroy. Currently using the Instantiate and Destroy method,
+//	Generates AI enemies that target the player. Currently using the Instantiate and Destroy method,
 //  which will ultimately be replaced by a more efficient object pool.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -11,8 +11,7 @@ using System.Collections;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    public float enemyTypeBtimer = 6.3F;
-
+	public bool generate = true;
     public GameObject enemyA;
     public GameObject enemyB;
 
@@ -21,35 +20,60 @@ public class EnemyGenerator : MonoBehaviour
     public int ActiveEnemyTypeA = 0;
     public int MaxEnemyTypeA = 0;
 
-    void Update()
+    void Start()
     {
-		MaxEnemyTypeB = References.global.phaseManager.phaseMultipliers[1];
-		MaxEnemyTypeA = References.global.phaseManager.phaseMultipliers[2];
-
-        while (ActiveEnemyTypeB < MaxEnemyTypeB)
-        {
-            CreateTypeBenemy();
-            ActiveEnemyTypeB++;
-        }
-
-        while (ActiveEnemyTypeA < MaxEnemyTypeA)
-        {
-            CreateTypeAenemy();
-            ActiveEnemyTypeA++;
-        }
-
+		if( generate )
+		{
+			StartCoroutine( GeneratorTypeA() );
+			StartCoroutine( GeneratorTypeB() );
+		}
     }
 
-    public void CreateTypeBenemy()
+	IEnumerator GeneratorTypeA()
+	{
+		while( generate )
+		{
+			// Get the current phase to determine how many enemies should be generated.
+			MaxEnemyTypeA = References.global.phaseManager.phaseMultipliers[2];
+
+			while( ActiveEnemyTypeA < MaxEnemyTypeA )
+			{
+				CreateTypeAEnemy();
+				ActiveEnemyTypeA++;
+			}
+
+			yield return new WaitForSeconds( 1 );
+		}
+	}
+
+	IEnumerator GeneratorTypeB()
+	{
+		while( generate )
+		{
+			// Get the current phase to determine how many enemies should be generated.
+			MaxEnemyTypeB = References.global.phaseManager.phaseMultipliers[1];
+
+			while( ActiveEnemyTypeB < MaxEnemyTypeB )
+			{
+				CreateTypeBEnemy();
+				ActiveEnemyTypeB++;
+			}
+
+			yield return new WaitForSeconds( 1 );
+		}
+	}
+
+    public void CreateTypeBEnemy()
 	{
         // Randomize physical attributes of our new asteroid.
-        float posY = Random.Range(-4.9f, 4.9f);			// Randomize the vertical position of the object.
+        float posY = Random.Range( -4.9f, 4.9f );   // Randomize the vertical position of the object.
 
-        Instantiate(enemyB, new Vector3(transform.position.x, posY, transform.position.z), transform.rotation);	
+		Instantiate( enemyB, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity );	
 	}
-    public void CreateTypeAenemy()
+
+    public void CreateTypeAEnemy()
     {
-        Instantiate(enemyA);   
+        Instantiate( enemyA );   
     }
 
     public void EnemyTypeBDestroyed()

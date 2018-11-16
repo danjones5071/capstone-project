@@ -126,10 +126,11 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        Instantiate( explosion, transform.position, Quaternion.identity );
         References.global.uiManager.ShowPlayAgainUI();
         References.global.soundEffects.PlayExplosionSound();
-        Destroy(gameObject);
+		References.global.enemyGenerator.generate = false;
+        Destroy( gameObject );
     }
 
     public void CycleWeapon( int i )
