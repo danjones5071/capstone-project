@@ -11,72 +11,49 @@ public class PickupGenerator : MonoBehaviour
     public float healthPickupTimer = 10.0f;
     public float energyPickupTimer = 5.0f;
 	public float coinPickupTimer = 10.0f;
-    public bool spawnHealthPickupActive = true;
-    public bool spawnEnergyPickupActive = true;
-	public bool spawnCoinPickupActive = true;
+    public bool spawnHealthPickup = true;
+    public bool spawnEnergyPickup = true;
+	public bool spawnCoinPickup = true;
 
-	// Use this for initialization
+	private Transform trans;
+
+	void Awake()
+	{
+		trans = transform;
+	}
+
 	void Start()
 	{
-        // Start coroutine loop for spawning health pickups
-        if( spawnHealthPickupActive )
+        // Start coroutine loop for spawning health pickups.
+        if( spawnHealthPickup )
         {
-            StartCoroutine( SpawnHealthPickup() );
+			StartCoroutine( GeneratePickup(healthPickup, healthPickupTimer, spawnHealthPickup) );
         }
 
-        // Start coroutine loop for spawning energy pickups
-        if( spawnEnergyPickupActive )
+        // Start coroutine loop for spawning energy pickups.
+        if( spawnEnergyPickup )
         {
-            StartCoroutine( SpawnEnergyPickup() );
+			StartCoroutine( GeneratePickup(energyPickup, energyPickupTimer, spawnEnergyPickup) );
         }
 
-		// Start coroutine loop for spawning coin pickups
-		if( spawnCoinPickupActive )
+		// Start coroutine loop for spawning coin pickups.
+		if( spawnCoinPickup )
 		{
-			StartCoroutine( SpawnCoinPickup() );
+			StartCoroutine( GeneratePickup(coinPickup, coinPickupTimer, spawnCoinPickup) );
 		}
     }
 
-    IEnumerator SpawnHealthPickup()
+	IEnumerator GeneratePickup( GameObject pickup, float timer, bool spawn )
     {
-        while( spawnHealthPickupActive )
+        while( spawn )
         {
-			CreateHealthPickup();
-            yield return new WaitForSeconds( healthPickupTimer );
+			CreatePickup( pickup );
+            yield return new WaitForSeconds( timer );
         }
     }
 
-    IEnumerator SpawnEnergyPickup()
-    {
-        while( spawnEnergyPickupActive )
-        {
-			CreateEnergyPickup();
-            yield return new WaitForSeconds( energyPickupTimer );
-        }
-    }
-
-	IEnumerator SpawnCoinPickup()
+	public void CreatePickup( GameObject pickup )
 	{
-		while( spawnCoinPickupActive )
-		{
-			CreateCoinPickup();
-			yield return new WaitForSeconds( coinPickupTimer );
-		}
-	}
-
-	public void CreateHealthPickup()
-	{
-		Instantiate( healthPickup );
-	}
-
-	public void CreateEnergyPickup()
-	{
-		Instantiate( energyPickup );
-	}
-
-	public void CreateCoinPickup()
-	{
-		GameObject coin = Instantiate( coinPickup );
-		//coin.GetComponent<Rigidbody2D>().rotation = 45;
+		Instantiate( pickup ).transform.SetParent( trans );
 	}
 }

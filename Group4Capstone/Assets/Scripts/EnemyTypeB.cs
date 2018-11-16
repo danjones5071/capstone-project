@@ -27,9 +27,15 @@ public class EnemyTypeB : MonoBehaviour
 
     private Vector3 initialPosition;
 
-
+	private Transform trans;
     private Rigidbody2D rb;
-    // Use this for initialization
+    
+	void Awake()
+	{
+		trans = transform;
+		rb = GetComponent<Rigidbody2D>();
+	}
+
     void Start()
     {
         if (playerLocation == null)
@@ -48,10 +54,13 @@ public class EnemyTypeB : MonoBehaviour
         if (enemyArea == null)
             enemyArea = GameObject.Find("EnemyTypeBareas");
 
-        rb = GetComponent<Rigidbody2D>();
+        
 
+		// Randomize physical attributes of our new asteroid.
+		float posY = Random.Range( -4.9f, 4.9f );   // Randomize the vertical position of the object.
+		transform.position = new Vector2( 15, posY );
 
-    ExecuteBehavior();
+    	ExecuteBehavior();
     }
 
     // Update is called once per frame

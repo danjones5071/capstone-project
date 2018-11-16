@@ -15,74 +15,80 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject enemyA;
     public GameObject enemyB;
 
-    public int ActiveEnemyTypeB = 0;
-    public int MaxEnemyTypeB = 0;
-    public int ActiveEnemyTypeA = 0;
-    public int MaxEnemyTypeA = 0;
+    public int activeEnemyTypeB = 0;
+    public int activeEnemyTypeA = 0;
+
+	private Transform trans;
+
+	void Awake()
+	{
+		trans = transform;
+	}
 
     void Start()
     {
 		if( generate )
 		{
-			StartCoroutine( GeneratorTypeA() );
-			StartCoroutine( GeneratorTypeB() );
+			StartCoroutine( GenerateEnemy(enemyA, 2) );
+			StartCoroutine( GenerateEnemy(enemyB, 1) );
 		}
     }
 
-	IEnumerator GeneratorTypeA()
+	IEnumerator GenerateEnemy( GameObject enemy, int phase )
 	{
+		int active = 0;
+
 		while( generate )
 		{
 			// Get the current phase to determine how many enemies should be generated.
-			MaxEnemyTypeA = References.global.phaseManager.phaseMultipliers[2];
+			int max = References.global.phaseManager.phaseMultipliers[phase];
 
-			while( ActiveEnemyTypeA < MaxEnemyTypeA )
+			// Looking for a more elegant solution. Can't pass by reference to IEnumerator.
+			switch( phase )
 			{
-				CreateTypeAEnemy();
-				ActiveEnemyTypeA++;
+				case 1:
+					active = activeEnemyTypeB;
+					break;
+				case 2:
+					active = activeEnemyTypeA;
+					break;
 			}
 
+			while( active < max )
+			{
+				CreateEnemy( enemy );
+
+				// Looking for a more elegant solution. Can't pass by reference to IEnumerator.
+				switch( phase )
+				{
+					case 1:
+						++activeEnemyTypeB;
+						break;
+					case 2:
+						++activeEnemyTypeA;
+						break;
+				}
+
+				++active;
+			}
+
+			// Wait 1 second before checking if more enemies should be generated.
 			yield return new WaitForSeconds( 1 );
 		}
 	}
 
-	IEnumerator GeneratorTypeB()
+	public void CreateEnemy( GameObject enemy )
 	{
-		while( generate )
-		{
-			// Get the current phase to determine how many enemies should be generated.
-			MaxEnemyTypeB = References.global.phaseManager.phaseMultipliers[1];
-
-			while( ActiveEnemyTypeB < MaxEnemyTypeB )
-			{
-				CreateTypeBEnemy();
-				ActiveEnemyTypeB++;
-			}
-
-			yield return new WaitForSeconds( 1 );
-		}
+		Instantiate( enemy ).transform.SetParent( trans );	
 	}
-
-    public void CreateTypeBEnemy()
-	{
-        // Randomize physical attributes of our new asteroid.
-        float posY = Random.Range( -4.9f, 4.9f );   // Randomize the vertical position of the object.
-
-		Instantiate( enemyB, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity );	
-	}
-
-    public void CreateTypeAEnemy()
-    {
-        Instantiate( enemyA );   
-    }
 
     public void EnemyTypeBDestroyed()
     {
-        ActiveEnemyTypeB--;
+        activeEnemyTypeB--;
     }
 
     public void EnemyTypeADestroyed()
     {
-        ActiveEnemyTypeA--;
+        activeEnemyTypeA--;
     }
 }

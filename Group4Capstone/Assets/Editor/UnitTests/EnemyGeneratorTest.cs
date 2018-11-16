@@ -16,7 +16,7 @@ public class EnemyGeneratorTest
 	[UnityTest]
 	public IEnumerator EnemyAIsGenerated()
 	{
-		eg.CreateTypeAEnemy();
+		eg.CreateEnemy( eg.enemyA );
 		GameObject enemy = GameObject.Find( "EnemyTypeA(Clone)" );
 		Assert.NotNull( enemy );
 		yield return null;
@@ -25,7 +25,7 @@ public class EnemyGeneratorTest
 	[UnityTest]
 	public IEnumerator EnemyBIsGenerated()
 	{
-		eg.CreateTypeBEnemy();
+		eg.CreateEnemy( eg.enemyB );
 		GameObject enemy = GameObject.Find( "EnemyTypeB(Clone)" );
 		Assert.NotNull( enemy );
 		yield return null;

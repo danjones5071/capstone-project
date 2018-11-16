@@ -20,10 +20,17 @@ public class ObstacleGenerator : MonoBehaviour
     public float dificultyMultiplier = 0.3F;
     private float secondsElapsed;
     private float startTime;
+	private Transform trans;
+
+	void Awake()
+	{
+		trans = transform;
+	}
 
     void Start()
 	{
         startTime = Time.time;
+
         // Start the infinite coroutine to generate asteroids.
         StartCoroutine( GenerateAsteroids() );
         StartCoroutine( GenerateBlackHole() );
@@ -34,7 +41,7 @@ public class ObstacleGenerator : MonoBehaviour
 		// Continue generating infinitely.
 		while( true )
 		{
-			CreateAsteroid();
+			CreateObstacle( asteroid );
 
             secondsElapsed = Time.time - startTime;
 
@@ -60,22 +67,14 @@ public class ObstacleGenerator : MonoBehaviour
 	{
 	    while( true )
 	    {
-	        CreateBlackHole();
-
-	        secondsElapsed = Time.time - startTime;
-
+			CreateObstacle( blackHole );
 
             yield return new WaitForSeconds( blackHoleTimer );	// Wait a bit to generate another obstacle.
 		}
 	}
 
-	public void CreateAsteroid()
+	public void CreateObstacle( GameObject obstacle )
 	{
-		Instantiate( asteroid );	// Instantiate a new astroid.
-	}
-
-	public void CreateBlackHole()
-	{
-		Instantiate( blackHole );	// Instantiate a new blackhole.
+		Instantiate( obstacle ).transform.SetParent( trans );
 	}
 }
