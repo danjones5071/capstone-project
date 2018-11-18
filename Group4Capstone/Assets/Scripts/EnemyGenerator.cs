@@ -7,6 +7,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class EnemyGenerator : MonoBehaviour
@@ -20,6 +21,10 @@ public class EnemyGenerator : MonoBehaviour
 
 	private Transform trans;
 
+	// Delegate methods.
+	delegate int AddActive();
+	delegate int GetActive();
+
 	void Awake()
 	{
 		trans = transform;
@@ -29,47 +34,33 @@ public class EnemyGenerator : MonoBehaviour
     {
 		if( generate )
 		{
-			StartCoroutine( GenerateEnemy(enemyA, 2) );
-			StartCoroutine( GenerateEnemy(enemyB, 1) );
+			// Initialize delegates.
+			AddActive addA = AddEnemyTypeA;
+			AddActive addB = AddEnemyTypeB;
+			GetActive getA = GetEnemyTypeA;
+			GetActive getB = GetEnemyTypeB;
+
+			StartCoroutine( GenerateEnemy( enemyB, addB, getB, 1 ) );
+			StartCoroutine( GenerateEnemy( enemyA, addA, getA, 2 ) );
 		}
     }
 
-	IEnumerator GenerateEnemy( GameObject enemy, int phase )
+	IEnumerator GenerateEnemy( GameObject enemy, AddActive addActive, GetActive getActive, int phase )
 	{
 		int active = 0;
 
 		while( generate )
 		{
+			active = getActive();
+
 			// Get the current phase to determine how many enemies should be generated.
 			int max = References.global.phaseManager.phaseMultipliers[phase];
 
-			// Looking for a more elegant solution. Can't pass by reference to IEnumerator.
-			switch( phase )
-			{
-				case 1:
-					active = activeEnemyTypeB;
-					break;
-				case 2:
-					active = activeEnemyTypeA;
-					break;
-			}
-
 			while( active < max )
 			{
+				Debug.Log ("Phase: "+ phase + " Active: " + active + " Max: " + max);
 				CreateEnemy( enemy );
-
-				// Looking for a more elegant solution. Can't pass by reference to IEnumerator.
-				switch( phase )
-				{
-					case 1:
-						++activeEnemyTypeB;
-						break;
-					case 2:
-						++activeEnemyTypeA;
-						break;
-				}
-
-				++active;
+				active = addActive();
 			}
 
 			// Wait 1 second before checking if more enemies should be generated.
@@ -82,13 +73,35 @@ public class EnemyGenerator : MonoBehaviour
 		Instantiate( enemy ).transform.SetParent( trans );	
 	}
 
+	public int AddEnemyTypeA()
+	{
+		++activeEnemyTypeA;
+		return( activeEnemyTypeA );
+	}
+
+	public int AddEnemyTypeB()
+	{
+		++activeEnemyTypeB;
+		return( activeEnemyTypeB );
+	}
+
+	public int GetEnemyTypeA()
+	{
+		return( activeEnemyTypeA );
+	}
+
+	public int GetEnemyTypeB()
+	{
+		return( activeEnemyTypeB );
+	}
+
     public void EnemyTypeBDestroyed()
     {
-        activeEnemyTypeB--;
+        --activeEnemyTypeB;
     }
 
     public void EnemyTypeADestroyed()
     {
-        activeEnemyTypeA--;
+        --activeEnemyTypeA;
     }
 }
