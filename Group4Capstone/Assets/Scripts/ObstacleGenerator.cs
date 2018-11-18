@@ -23,7 +23,6 @@ public class ObstacleGenerator : Generator
 
     void Start()
 	{
-        objectPooler = ObjectPooler.Instance;
         startTime = Time.time;
 
         // Start the infinite coroutine to generate asteroids.
