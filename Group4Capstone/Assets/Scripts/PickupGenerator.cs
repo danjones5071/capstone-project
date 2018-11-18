@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupGenerator : MonoBehaviour
+public class PickupGenerator : Generator
 {
 	// Public variables which can be modified in the editor at runtime.
     public GameObject healthPickup;
@@ -15,45 +15,14 @@ public class PickupGenerator : MonoBehaviour
     public bool spawnEnergyPickup = true;
 	public bool spawnCoinPickup = true;
 
-	private Transform trans;
-
-	void Awake()
-	{
-		trans = transform;
-	}
-
 	void Start()
 	{
-        // Start coroutine loop for spawning health pickups.
+        // Start coroutine loop for spawning pickups.
         if( spawnHealthPickup )
         {
-			StartCoroutine( GeneratePickup(healthPickup, healthPickupTimer, spawnHealthPickup) );
-        }
-
-        // Start coroutine loop for spawning energy pickups.
-        if( spawnEnergyPickup )
-        {
-			StartCoroutine( GeneratePickup(energyPickup, energyPickupTimer, spawnEnergyPickup) );
-        }
-
-		// Start coroutine loop for spawning coin pickups.
-		if( spawnCoinPickup )
-		{
-			StartCoroutine( GeneratePickup(coinPickup, coinPickupTimer, spawnCoinPickup) );
+			StartCoroutine( GenerateObjects(healthPickup, healthPickupTimer) );
+			StartCoroutine( GenerateObjects(energyPickup, energyPickupTimer) );
+			StartCoroutine( GenerateObjects(coinPickup, coinPickupTimer) );
 		}
     }
-
-	IEnumerator GeneratePickup( GameObject pickup, float timer, bool spawn )
-    {
-        while( spawn )
-        {
-			CreatePickup( pickup );
-            yield return new WaitForSeconds( timer );
-        }
-    }
-
-	public void CreatePickup( GameObject pickup )
-	{
-		Instantiate( pickup ).transform.SetParent( trans );
-	}
 }
