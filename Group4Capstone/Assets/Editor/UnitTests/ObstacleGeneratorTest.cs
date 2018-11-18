@@ -23,7 +23,7 @@ public class ObstacleGeneratorTest
     [UnityTest]
     public IEnumerator AsteroidIsGenerated()
 	{
-		og.CreateObstacle( og.asteroid );
+		og.CreateObject( og.asteroid );
 		GameObject asteroid = GameObject.Find( "Asteroid(Clone)" );
 		Assert.NotNull( asteroid );
         yield return null;
@@ -32,7 +32,7 @@ public class ObstacleGeneratorTest
 	[UnityTest]
 	public IEnumerator BlackHoleIsGenerated()
 	{
-		og.CreateObstacle( og.blackHole );
+		og.CreateObject( og.blackHole );
 		GameObject blackHole = GameObject.Find( "BlackHole(Clone)" );
 		Assert.NotNull( blackHole );
 		yield return null;

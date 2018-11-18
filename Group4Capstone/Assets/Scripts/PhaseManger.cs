@@ -12,16 +12,11 @@ public class PhaseManger : MonoBehaviour
     [SerializeField] private int phaseCount;
     [SerializeField] private int currentPhase;
 
-    //Time variables to keep phase duration
-    private float startTimePhase;
-    private float secondsElapsedPhase;
-
     // Use this for initialization
     void Start ()
 	{
         currentPhase = 0;
         phaseCount = 0;
-        startTimePhase = Time.time;
 		StartCoroutine( PhaseTimer() );
 	}
 

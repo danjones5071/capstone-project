@@ -10,25 +10,17 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-public class EnemyGenerator : MonoBehaviour
+public class EnemyGenerator : Generator
 {
-	public bool generate = true;
     public GameObject enemyA;
     public GameObject enemyB;
 
     public int activeEnemyTypeB = 0;
     public int activeEnemyTypeA = 0;
 
-	private Transform trans;
-
 	// Delegate methods.
 	delegate int AddActive();
 	delegate int GetActive();
-
-	void Awake()
-	{
-		trans = transform;
-	}
 
     void Start()
     {
@@ -58,18 +50,13 @@ public class EnemyGenerator : MonoBehaviour
 
 			while( active < max )
 			{
-				CreateEnemy( enemy );
+				CreateObject( enemy );
 				active = addActive();
 			}
 
 			// Wait 1 second before checking if more enemies should be generated.
 			yield return new WaitForSeconds( 1 );
 		}
-	}
-
-	public void CreateEnemy( GameObject enemy )
-	{
-		Instantiate( enemy ).transform.SetParent( trans );	
 	}
 
 	public int AddEnemyTypeA()

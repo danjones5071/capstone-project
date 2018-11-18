@@ -29,7 +29,7 @@ public class PickupGeneratorTest {
     [UnityTest]
     public IEnumerator HealthPickupIsGenerated()
     {
-		pg.CreatePickup( pg.healthPickup );
+		pg.CreateObject( pg.healthPickup );
         GameObject pickup = GameObject.Find( "HealthPickup(Clone)" );
         Assert.NotNull( pickup );
         yield return null;
@@ -38,7 +38,7 @@ public class PickupGeneratorTest {
     [UnityTest]
     public IEnumerator EnergyPickupIsGenerated()
     {
-		pg.CreatePickup( pg.energyPickup );
+		pg.CreateObject( pg.energyPickup );
         GameObject pickup = GameObject.Find( "EnergyPickup(Clone)" );
         Assert.NotNull( pickup );
         yield return null;
@@ -47,7 +47,7 @@ public class PickupGeneratorTest {
 	[UnityTest]
 	public IEnumerator CurrencyIsGenerated()
 	{
-		pg.CreatePickup( pg.coinPickup );
+		pg.CreateObject( pg.coinPickup );
 		GameObject pickup = GameObject.Find( "Coin(Clone)" );
 		Assert.NotNull( pickup );
 		yield return null;

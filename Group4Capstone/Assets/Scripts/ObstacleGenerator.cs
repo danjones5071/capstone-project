@@ -9,7 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ObstacleGenerator : MonoBehaviour
+public class ObstacleGenerator : Generator
 {
 	// Public variables which can be modified in the editor at runtime.
 	public GameObject asteroid;               // The asteroid prefab.
@@ -20,12 +20,6 @@ public class ObstacleGenerator : MonoBehaviour
     public float dificultyMultiplier = 0.3F;
     private float secondsElapsed;
     private float startTime;
-	private Transform trans;
-
-	void Awake()
-	{
-		trans = transform;
-	}
 
     void Start()
 	{
@@ -33,7 +27,7 @@ public class ObstacleGenerator : MonoBehaviour
 
         // Start the infinite coroutine to generate asteroids.
         StartCoroutine( GenerateAsteroids() );
-        StartCoroutine( GenerateBlackHole() );
+        StartCoroutine( GenerateObjects(blackHole, blackHoleTimer) );
 	}
 
 	IEnumerator GenerateAsteroids()
@@ -41,7 +35,7 @@ public class ObstacleGenerator : MonoBehaviour
 		// Continue generating infinitely.
 		while( true )
 		{
-			CreateObstacle( asteroid );
+			CreateObject( asteroid );
 
             secondsElapsed = Time.time - startTime;
 
@@ -61,20 +55,5 @@ public class ObstacleGenerator : MonoBehaviour
 
             yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
 		}
-	}
-
-	IEnumerator GenerateBlackHole()
-	{
-	    while( true )
-	    {
-			CreateObstacle( blackHole );
-
-            yield return new WaitForSeconds( blackHoleTimer );	// Wait a bit to generate another obstacle.
-		}
-	}
-
-	public void CreateObstacle( GameObject obstacle )
-	{
-		Instantiate( obstacle ).transform.SetParent( trans );
 	}
 }
