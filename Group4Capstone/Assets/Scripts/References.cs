@@ -21,6 +21,7 @@ public class References : MonoBehaviour
     public PickupGenerator pickupGenerator;
     public PhaseManger phaseManager;
 	public Leaderboard leaderboard;
+    public ObjectPooler objectPooler;
 
 	// No need to show these in the inspector. Can be derived from above.
 	[HideInInspector] public Transform playerTrans;

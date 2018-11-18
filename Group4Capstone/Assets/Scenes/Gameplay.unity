@@ -7248,6 +7248,50 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771034034}
   m_CullTransparentMesh: 0
+--- !u!1 &776886832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776886834}
+  - component: {fileID: 776886833}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &776886833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776886832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84d0a2a4bf5948469198798b7472490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Asteroid
+    prefab: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
+    size: 10
+--- !u!4 &776886834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776886832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 505.31027, y: 367.78506, z: -9.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &782118237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4257794241733434, guid: 52bf45e5aa1dbe64da6ec5cb107c949b,
@@ -21248,6 +21292,7 @@ MonoBehaviour:
   pickupGenerator: {fileID: 1631965061}
   phaseManager: {fileID: 3660066}
   leaderboard: {fileID: 1373463557}
+  objectPooler: {fileID: 776886833}
   playerTrans: {fileID: 162462233}
   playerRigid: {fileID: 162462231}
   playerController: {fileID: 162462229}

@@ -21,6 +21,7 @@ public class ObstacleGenerator : MonoBehaviour
     private float secondsElapsed;
     private float startTime;
 	private Transform trans;
+    private ObjectPooler objectPooler;
 
 	void Awake()
 	{
@@ -29,6 +30,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Start()
 	{
+        objectPooler = ObjectPooler.Instance;
         startTime = Time.time;
 
         // Start the infinite coroutine to generate asteroids.
@@ -75,6 +77,7 @@ public class ObstacleGenerator : MonoBehaviour
 
 	public void CreateObstacle( GameObject obstacle )
 	{
-		Instantiate( obstacle ).transform.SetParent( trans );
+        //Instantiate( obstacle ).transform.SetParent( trans );
+        objectPooler.SpawnFromPool("Asteroid", trans.position, trans.rotation);
 	}
 }
