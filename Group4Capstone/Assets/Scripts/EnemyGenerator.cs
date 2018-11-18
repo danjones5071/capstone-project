@@ -40,8 +40,8 @@ public class EnemyGenerator : MonoBehaviour
 			GetActive getA = GetEnemyTypeA;
 			GetActive getB = GetEnemyTypeB;
 
-			StartCoroutine( GenerateEnemy( enemyB, addB, getB, 1 ) );
-			StartCoroutine( GenerateEnemy( enemyA, addA, getA, 2 ) );
+			StartCoroutine( GenerateEnemy( enemyB, addB, getB, (int) References.GamePhases.TypeBEnemyPhase ) );
+			StartCoroutine( GenerateEnemy( enemyA, addA, getA, (int) References.GamePhases.TypeAEnemyPhase ) );
 		}
     }
 
