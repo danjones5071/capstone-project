@@ -58,7 +58,6 @@ public class EnemyGenerator : MonoBehaviour
 
 			while( active < max )
 			{
-				Debug.Log ("Phase: "+ phase + " Active: " + active + " Max: " + max);
 				CreateEnemy( enemy );
 				active = addActive();
 			}

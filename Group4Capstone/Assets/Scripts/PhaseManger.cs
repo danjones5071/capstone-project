@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseManger : MonoBehaviour {
-
+public class PhaseManger : MonoBehaviour
+{
     public float phaseDuration = 5;  // Duration of each phase in seconds.
 
     public int[] phaseMultipliers = { 0, 0, 0, 0, 0 };
@@ -17,25 +17,22 @@ public class PhaseManger : MonoBehaviour {
     private float secondsElapsedPhase;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+	{
         currentPhase = 0;
         phaseCount = 0;
         startTimePhase = Time.time;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        secondsElapsedPhase = Time.time - startTimePhase;
-
-        if (secondsElapsedPhase > phaseDuration)
-        {
-            NextPhase();
-            startTimePhase = Time.time;
-        }
-		
+		StartCoroutine( PhaseTimer() );
 	}
 
+	IEnumerator PhaseTimer()
+	{
+		while( true )
+		{
+			yield return new WaitForSeconds( phaseDuration );
+			NextPhase();
+		}
+	}
 
     /* Phase Layout
      * Phase 0: Asteroids
@@ -44,7 +41,7 @@ public class PhaseManger : MonoBehaviour {
      * Phase 3: Blackholes
      * Phase 4: Event
      */
-    public void NextPhase ()
+    public void NextPhase()
     {
         // Increment phase count
         phaseCount++;
@@ -73,5 +70,4 @@ public class PhaseManger : MonoBehaviour {
 	{
 		phaseCount = count;
 	}
-
 }
