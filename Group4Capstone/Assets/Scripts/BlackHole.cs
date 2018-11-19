@@ -22,8 +22,16 @@ public class BlackHole : ScrollingObject
     {
         if( col.gameObject != null )
         {
-            Destroy( col.gameObject );
-            References.global.soundEffects.PlayBlackHolePullSound();
+            if (col.gameObject.GetComponents<IPooledObject>().Length > 0)
+            {
+                // Add the Asteroid back tot he Asteroid pool
+                ObjectPooler.Instance.ReturnToPool(col.gameObject.tag, gameObject);
+            }
+            else
+            {
+                Destroy( col.gameObject );
+                References.global.soundEffects.PlayBlackHolePullSound();
+            }
         }
     }
 

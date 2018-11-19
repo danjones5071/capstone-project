@@ -52,7 +52,28 @@ public class ObjectPooler : MonoBehaviour {
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        GameObject objectToSpawn = null;
+
+        if (poolDictionary[tag].Count > 0)
+        {
+            objectToSpawn = poolDictionary[tag].Dequeue();
+        }
+        else
+        {
+            Debug.LogWarning("Pool with tag " + tag + " exausted, creating additional " + tag);
+            foreach(Pool pool in pools)
+            {
+                if (pool.tag == tag)
+                {
+                    objectToSpawn = Instantiate(pool.prefab);
+                }
+            }
+            if (objectToSpawn == null)
+            {
+                Debug.LogWarning("Unable to find pool for " + tag);
+                return null;
+            }
+        }
 
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
