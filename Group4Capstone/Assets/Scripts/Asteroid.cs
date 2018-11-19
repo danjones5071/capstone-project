@@ -48,7 +48,7 @@ public class Asteroid : ScrollingObject
         if (col.gameObject.tag == "Enemy")
         {
             DestroySelf();            // Destroy the asteroid.
-            Destroy(col.gameObject);  // And also destroy the enemy.
+			col.gameObject.SetActive( false );  // And also destroy the enemy.
         }
 
         // If the asteroid collides with a player...
@@ -73,12 +73,10 @@ public class Asteroid : ScrollingObject
         // Instantiate our explosion particle effects and destroy them after some time.
         Destroy( Instantiate(explosion, trans.position, Quaternion.identity), 4 );
 
-        // Add the Asteroid back tot he Asteroid pool
-        //ObjectPooler.Instance.ReturnToPool("Asteroid", gameObject);
-
         // Play the explosion sound effect.
         References.global.soundEffects.PlayExplosionSound();
 
+		// Disable the asteroid, adding it back to the object pool.
 		gameObject.SetActive( false );
     }
 }

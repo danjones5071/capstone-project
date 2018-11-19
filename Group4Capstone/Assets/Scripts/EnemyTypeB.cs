@@ -36,7 +36,7 @@ public class EnemyTypeB : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-    void Start()
+    void OnEnable()
     {
         if (playerLocation == null)
         {
@@ -111,32 +111,20 @@ public class EnemyTypeB : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // If the enemy collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" )
         {
             // Play the explosion sound effect.
             References.global.soundEffects.PlayExplosionSound();
 
-            // Destroy the enemy.
-            // Destroy(gameObject);
-            // Temp fix to avoid slow down in higher phases.
-            // Object pooling should be inserted to properly handle this
-            ExecuteBehavior();
-
             Destroy(col.gameObject);  // And also destroy the laser blast.
+
+			OnDestroy();
         }
-
-        // If the asteroid collides with a player...
-        if (col.gameObject.tag == "Player")
-        {
-            // Cache player controller component.
-            PlayerController pc = col.gameObject.GetComponent<PlayerController>();
-
-            // Play the crash sound effect.
-            References.global.soundEffects.PlayCrashSound();
-
-            // Player takes damage from impact.
-            pc.TakeDamage(15);
-        }
+		if( col.gameObject.tag == "Enemy" )
+		{
+			References.global.soundEffects.PlayExplosionSound();
+			OnDestroy();
+		}
     }
 
     void ShootLaser()
@@ -157,6 +145,11 @@ public class EnemyTypeB : MonoBehaviour
 
     private void OnDestroy()
     {
-        References.global.enemyGenerator.EnemyTypeBDestroyed();
+		gameObject.SetActive( false );
     }
+
+	void OnDisable()
+	{
+		References.global.enemyGenerator.EnemyTypeBDestroyed();
+	}
 }

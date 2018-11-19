@@ -18,9 +18,20 @@ public class EnemyGenerator : Generator
     public int activeEnemyTypeB = 0;
     public int activeEnemyTypeA = 0;
 
+	private ObjectPooler enemyPoolA;
+	private ObjectPooler enemyPoolB;
+
 	// Delegate methods.
 	delegate int AddActive();
 	delegate int GetActive();
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		enemyPoolA = gameObject.AddComponent<ObjectPooler>();
+		enemyPoolB = gameObject.AddComponent<ObjectPooler>();
+	}
 
     void Start()
     {
@@ -32,12 +43,16 @@ public class EnemyGenerator : Generator
 			GetActive getA = GetEnemyTypeA;
 			GetActive getB = GetEnemyTypeB;
 
-			StartCoroutine( GenerateEnemy( enemyB, addB, getB, (int) References.GamePhases.TypeBEnemyPhase ) );
-			StartCoroutine( GenerateEnemy( enemyA, addA, getA, (int) References.GamePhases.TypeAEnemyPhase ) );
+			// Initialize object pools.
+			enemyPoolA.Initialize( enemyA, 5, trans );
+			enemyPoolB.Initialize( enemyB, 5, trans );
+
+			StartCoroutine( GenerateEnemy( enemyPoolA, addA, getA, (int) References.GamePhases.TypeAEnemyPhase ) );
+			StartCoroutine( GenerateEnemy( enemyPoolB, addB, getB, (int) References.GamePhases.TypeBEnemyPhase ) );
 		}
     }
 
-	IEnumerator GenerateEnemy( GameObject enemy, AddActive addActive, GetActive getActive, int phase )
+	IEnumerator GenerateEnemy( ObjectPooler enemyPool, AddActive addActive, GetActive getActive, int phase )
 	{
 		int active = 0;
 
@@ -50,7 +65,7 @@ public class EnemyGenerator : Generator
 
 			while( active < max )
 			{
-				CreateObject( enemy );
+				CreateObject( enemyPool );
 				active = addActive();
 			}
 
@@ -83,11 +98,13 @@ public class EnemyGenerator : Generator
 
     public void EnemyTypeBDestroyed()
     {
-        --activeEnemyTypeB;
+		if( activeEnemyTypeB > 0 )
+       		--activeEnemyTypeB;
     }
 
     public void EnemyTypeADestroyed()
     {
-        --activeEnemyTypeA;
+		if( activeEnemyTypeA > 0 )
+        	--activeEnemyTypeA;
     }
 }

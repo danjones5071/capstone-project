@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
     // Controls what happens when an asteroid collides with another object.
     void OnCollisionEnter2D( Collision2D col )
     {
-        // If the asteroid collides with a laser...
+        // If the asteroid collides with a laser or enemy...
         if( col.gameObject.tag == "EnemyLaser" || col.gameObject.tag == "Enemy" )
         {
             // Play the crash sound effect.
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
             // Player takes damage from impact.
             TakeDamage( 15 );
 
-            Destroy( col.gameObject );  // And also destroy the laser.
+			col.gameObject.SetActive( false ); // Enemy laser needs pooling!!!
 
             damageSparks.GetComponent<ParticleSystem>().enableEmission = true;
 

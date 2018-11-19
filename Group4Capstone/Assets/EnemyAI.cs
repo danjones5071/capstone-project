@@ -63,8 +63,7 @@ public class EnemyAI : MonoBehaviour
     //Reference game object that contains all the destination for the enemy.
     public GameObject enemyArea;
 
-    // Use this for initialization
-    void Start ()
+    void OnEnable()
     {
         if (playerLocation == null)
         {
@@ -103,8 +102,6 @@ public class EnemyAI : MonoBehaviour
         startTimeShooting = Time.time;
 
         StartCoroutine(UpdatePath());
-
-       
     }
 	
     /// <summary>
@@ -248,29 +245,13 @@ public class EnemyAI : MonoBehaviour
         transform.position = initialPosition;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D( Collision2D col )
     {
         // If the Enemy collides with a laser...
         if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
         {
-            RespawnSelf();            // Destroy the Enemy.
             Destroy(col.gameObject);  // And also destroy the laser blast.
-        }
-
-        // If the asteroid collides with a player...
-        if (col.gameObject.tag == "Player")
-        {
-            // Cache player controller component.
-            PlayerController pc = col.gameObject.GetComponent<PlayerController>();
-
-            // Play the crash sound effect.
-            References.global.soundEffects.PlayCrashSound();
-
-            // Player takes damage from impact.
-            pc.TakeDamage(15);
-
-            // Destroy asteroid on impact with player ship.
-            RespawnSelf();
+			OnDestroy();            // Destroy the Enemy.
         }
     }
 
@@ -282,18 +263,17 @@ public class EnemyAI : MonoBehaviour
         // Destroy the asteroid.
         ExecuteBehavior();
 
-        // Destroy the asteroid.
-        // Temp fix to avoid slow down in higher phases.
-        // Object pooling should be inserted to properly handle this
-        //Destroy(gameObject);
-
         // Play the explosion sound effect.
         References.global.soundEffects.PlayExplosionSound();
     }
 
     private void OnDestroy()
     {
-        //EnemyGenerator.enemyTypeAspotAvailable = true;
-        References.global.enemyGenerator.EnemyTypeADestroyed();
+		gameObject.SetActive( false );
     }
+
+	void OnDisable()
+	{
+		References.global.enemyGenerator.EnemyTypeADestroyed();
+	}
 }

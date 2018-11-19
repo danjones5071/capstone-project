@@ -39,15 +39,18 @@ public class ObstacleGenerator : Generator
 		asteroidPool.Initialize( asteroid, 10, trans );
 		blackHolePool.Initialize( blackHole, 5, trans );
 
-        // Start the infinite coroutine to generate asteroids.
-        StartCoroutine( GenerateAsteroids() );
-        StartCoroutine( GenerateObjects(blackHolePool, blackHoleTimer) );
+		if( generate )
+		{
+			// Start the infinite coroutine to generate asteroids.
+			StartCoroutine( GenerateAsteroids() );
+			StartCoroutine( GenerateObjects( blackHolePool, blackHoleTimer ) );
+		}
 	}
 
 	IEnumerator GenerateAsteroids()
 	{
 		// Continue generating infinitely.
-		while( true )
+		while( generate )
 		{
 			CreateObject( asteroidPool );
 
