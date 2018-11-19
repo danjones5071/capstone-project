@@ -12,7 +12,15 @@ public class DestroyArea : MonoBehaviour
 	// When a game object with a collider component leaves this region.
 	void OnTriggerExit2D( Collider2D col )
 	{
-		// Destroy the game object.
-		Destroy( col.gameObject );
+        if (col.gameObject.GetComponents<IPooledObject>().Length > 0)
+        {
+            // Repool a poolable object
+            ObjectPooler.Instance.ReturnToPool(col.gameObject.tag, col.gameObject);
+        }
+        else
+        {
+            // Destroy the game object.
+            Destroy( col.gameObject );
+        }
 	}
 }
