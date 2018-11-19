@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-public class Asteroid : ScrollingObject, IPooledObject
+public class Asteroid : ScrollingObject
 {
 	public GameObject explosion;
 
@@ -15,23 +15,23 @@ public class Asteroid : ScrollingObject, IPooledObject
     private float speedY;  // Speed at which the object moves vertically.
     private float spin;    // Angular velocity of the object.
 
-	protected override void Start()
+	protected override void OnEnable()
 	{
-		// Perform the tasks of the Start() method in the base class.
-		base.Start();
+		// Perform the tasks of the OnEnable() method in the base class.
+		base.OnEnable();
 
-		//// Randomize the vertical speed of the asteroid.
-		//if( posY > 0 )
-		//	speedY = Random.Range( -0.7f, 0 );
-		//else
-		//	speedY = Random.Range( 0, 0.7f );
+		// Randomize the vertical speed of the asteroid.
+		if( posY > 0 )
+			speedY = Random.Range( -0.7f, 0 );
+		else
+			speedY = Random.Range( 0, 0.7f );
 
-		//// Randomize the angular velocity of the object.
-  //      spin = Random.Range( -50.0f, 50.0f );
+		// Randomize the angular velocity of the object.
+        spin = Random.Range( -50.0f, 50.0f );
 
-  //      // Apply physical values to the asteroid's rigidbody.
-		//rigid.velocity = (Vector2.left * speedX) + (Vector2.up * speedY); // Multiply the left vector by our speed to obtain velocity.
-  //      rigid.angularVelocity = spin; // Apply angular velocity to create a spin.
+        // Apply physical values to the asteroid's rigidbody.
+		rigid.velocity = (Vector2.left * speedX) + (Vector2.up * speedY); // Multiply the left vector by our speed to obtain velocity.
+        rigid.angularVelocity = spin; // Apply angular velocity to create a spin.
 	}
 
     // Controls what happens when an asteroid collides with another object.
@@ -73,32 +73,12 @@ public class Asteroid : ScrollingObject, IPooledObject
         // Instantiate our explosion particle effects and destroy them after some time.
         Destroy( Instantiate(explosion, trans.position, Quaternion.identity), 4 );
 
-        // Destroy the asteroid.
-        //Destroy( gameObject );
-
         // Add the Asteroid back tot he Asteroid pool
-        ObjectPooler.Instance.ReturnToPool("Asteroid", gameObject);
+        //ObjectPooler.Instance.ReturnToPool("Asteroid", gameObject);
 
         // Play the explosion sound effect.
         References.global.soundEffects.PlayExplosionSound();
-    }
 
-    public void OnObjectSpawn()
-    {
-        base.Start();
-
-        // Randomize the vertical speed of the asteroid.
-        if (posY > 0)
-            speedY = Random.Range(-0.7f, 0);
-        else
-            speedY = Random.Range(0, 0.7f);
-
-        // Randomize the angular velocity of the object.
-        spin = Random.Range(-50.0f, 50.0f);
-
-        // Apply physical values to the asteroid's rigidbody.
-        rigid.velocity = (Vector2.left * speedX) + (Vector2.up * speedY); // Multiply the left vector by our speed to obtain velocity.
-        rigid.angularVelocity = spin; // Apply angular velocity to create a spin.
-
+		gameObject.SetActive( false );
     }
 }

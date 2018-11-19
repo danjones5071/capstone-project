@@ -9,10 +9,10 @@ using UnityEngine;
 
 public class BlackHole : ScrollingObject
 {
-	protected override void Start ()
+	protected override void OnEnable ()
 	{
 		// Perform the tasks of the Start() method in the base class.
-		base.Start();
+		base.OnEnable();
 
         // Apply rotation to the black hole.
 		rigid.angularVelocity = 50.0f;
@@ -25,7 +25,7 @@ public class BlackHole : ScrollingObject
             if (col.gameObject.GetComponents<IPooledObject>().Length > 0)
             {
                 // Add the Asteroid back tot he Asteroid pool
-                ObjectPooler.Instance.ReturnToPool(col.gameObject.tag, gameObject);
+				col.gameObject.SetActive( false );
             }
             else
             {

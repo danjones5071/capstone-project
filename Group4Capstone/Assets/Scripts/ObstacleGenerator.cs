@@ -21,13 +21,27 @@ public class ObstacleGenerator : Generator
     private float secondsElapsed;
     private float startTime;
 
+	private ObjectPooler asteroidPool;
+	private ObjectPooler blackHolePool;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		asteroidPool = gameObject.AddComponent<ObjectPooler>();
+		blackHolePool = gameObject.AddComponent<ObjectPooler>();
+	}
+
     void Start()
 	{
         startTime = Time.time;
 
+		asteroidPool.Initialize( asteroid, 10, trans );
+		blackHolePool.Initialize( blackHole, 5, trans );
+
         // Start the infinite coroutine to generate asteroids.
         StartCoroutine( GenerateAsteroids() );
-        StartCoroutine( GenerateObjects(blackHole, blackHoleTimer) );
+        StartCoroutine( GenerateObjects(blackHolePool, blackHoleTimer) );
 	}
 
 	IEnumerator GenerateAsteroids()
@@ -35,7 +49,7 @@ public class ObstacleGenerator : Generator
 		// Continue generating infinitely.
 		while( true )
 		{
-			CreateObject( asteroid );
+			CreateObject( asteroidPool );
 
             secondsElapsed = Time.time - startTime;
 

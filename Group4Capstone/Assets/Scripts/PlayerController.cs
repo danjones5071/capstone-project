@@ -302,17 +302,17 @@ public class PlayerController : MonoBehaviour
 			case "Currency":
 				References.global.soundEffects.PlayCurrencyPickUpSound();
 				References.global.gameMaster.AddToCurrency( 1 );
-				Destroy( col.gameObject );
+				col.gameObject.SetActive( false );
 				break;
 			case "EnergyPickup":
 				References.global.soundEffects.PlayEnergyPickUpSound();
 				AddEnergy( 15 );
-				Destroy( col.gameObject );
+				col.gameObject.SetActive( false );
 				break;
 			case "HealthPickup":
 				References.global.soundEffects.PlayHealthPickUpSound();
 				Heal( 15 );
-				Destroy( col.gameObject );
+				col.gameObject.SetActive( false );
 				break;
 		}
 	}

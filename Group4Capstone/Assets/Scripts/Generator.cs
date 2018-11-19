@@ -11,6 +11,7 @@ public class Generator : MonoBehaviour
 		trans = transform;
 	}
 
+	// GenerateObjects method without object pooling.
 	protected virtual IEnumerator GenerateObjects( GameObject obj, float timer )
 	{
 		while( generate )
@@ -20,20 +21,27 @@ public class Generator : MonoBehaviour
 		}
 	}
 
+	// GenerateObjects method with object pooling.
+	protected virtual IEnumerator GenerateObjects( ObjectPooler pool, float timer )
+	{
+		while( generate )
+		{
+			CreateObject( pool );
+			yield return new WaitForSeconds( timer );
+		}
+	}
+
+	// CreateObject method without object pooling.
 	public virtual GameObject CreateObject( GameObject obj )
 	{
-        if (obj.GetComponents<IPooledObject>().Length > 0)
-        {
-            // This is very hacky need to find better way to check for IPooledObject at runtime
-            // also the "obj.tag" will only work for objects where their tag matches the prefab name.
-            // Need to find a way to access the prefab name programatically
-            return ObjectPooler.Instance.SpawnFromPool(obj.tag, trans.position, trans.rotation);
-        }
-        else
-        {
-			GameObject created = Instantiate( obj );
-			created.transform.SetParent( trans );
-		    return created;
-        }
+		GameObject created = Instantiate( obj );
+		created.transform.SetParent( trans );
+		return created;
+	}
+		
+	// CreateObject method with object pooling.
+	public virtual GameObject CreateObject( ObjectPooler pool )
+	{
+		return pool.SpawnFromPool();
 	}
 }

@@ -1,6 +1,18 @@
-﻿using UnityEngine;
+﻿//using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public interface IPooledObject {
+public class IPooledObject : MonoBehaviour
+{
+	private Queue<GameObject> poolQueue;
 
-    void OnObjectSpawn();
+	public void SetPoolQueue( Queue<GameObject> queue )
+	{
+		poolQueue = queue;
+	}
+
+	void OnDisable()
+	{
+		poolQueue.Enqueue( gameObject );
+	}
 }
