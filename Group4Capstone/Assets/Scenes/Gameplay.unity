@@ -740,7 +740,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 3.18, y: 0}
   m_SizeDelta: {x: 6.37, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6986,7 +6986,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 3.18, y: 0}
   m_SizeDelta: {x: 6.37, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12298,8 +12298,8 @@ RectTransform:
   m_Father: {fileID: 53533602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19158,8 +19158,8 @@ RectTransform:
   m_Father: {fileID: 75252424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19485,6 +19485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c21f0cd4f7c09142b8222ec1fbc928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generate: 1
   healthPickup: {fileID: 1140234151174082, guid: a230ff373f23263409c81d6bcaa2b567,
     type: 2}
   energyPickup: {fileID: 1102946932714506, guid: 9fbce031447af824e892d7434648847d,
@@ -21148,6 +21149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4305d794de86eb64baedd99e8d8394ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generate: 1
   asteroid: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
   blackHole: {fileID: 1455282034936094, guid: df5be8b83dbfb984db28fa512d01abdc, type: 2}
   asteroidTimer: 3

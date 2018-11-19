@@ -5,12 +5,25 @@ using System.Collections;
 
 public class EnemyGeneratorTest
 {
+	GameObject enemyGenerator = GameObject.Find( "EnemyGenerator" );
 	EnemyGenerator eg;
 
 	[OneTimeSetUp]
 	public void TestSetup()
 	{
 		eg = References.global.enemyGenerator;
+	}
+
+	[Test]
+	public void EnemyGeneratorExists()
+	{
+		Assert.NotNull( enemyGenerator );
+	}
+
+	[Test]
+	public void EnemyGeneratorReferenceExists()
+	{
+		Assert.NotNull( eg );
 	}
 
 	[UnityTest]

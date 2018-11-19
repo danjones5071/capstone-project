@@ -30,7 +30,7 @@ public class PickupGeneratorTest {
     public IEnumerator HealthPickupIsGenerated()
     {
 		pg.CreateObject( pg.healthPickup );
-        GameObject pickup = GameObject.Find( "HealthPickup(Clone)" );
+        GameObject pickup = GameObject.Find( "HealthPickup3D(Clone)" );
         Assert.NotNull( pickup );
         yield return null;
     }
@@ -39,7 +39,7 @@ public class PickupGeneratorTest {
     public IEnumerator EnergyPickupIsGenerated()
     {
 		pg.CreateObject( pg.energyPickup );
-        GameObject pickup = GameObject.Find( "EnergyPickup(Clone)" );
+        GameObject pickup = GameObject.Find( "EnergyPickup3D(Clone)" );
         Assert.NotNull( pickup );
         yield return null;
     }
@@ -48,7 +48,7 @@ public class PickupGeneratorTest {
 	public IEnumerator CurrencyIsGenerated()
 	{
 		pg.CreateObject( pg.coinPickup );
-		GameObject pickup = GameObject.Find( "Coin(Clone)" );
+		GameObject pickup = GameObject.Find( "Coin3D(Clone)" );
 		Assert.NotNull( pickup );
 		yield return null;
 	}

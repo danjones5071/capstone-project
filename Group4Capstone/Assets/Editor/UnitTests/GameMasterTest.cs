@@ -13,6 +13,12 @@ public class GameMasterTest
 		Assert.NotNull( gameMaster );
 	}
 
+	[Test] public void GameMasterReferenceExists()
+	{
+		GameMaster gm = References.global.gameMaster;
+		Assert.NotNull( gm );
+	}
+
     [Test]
     public void ScoreStartsAtZero()
 	{

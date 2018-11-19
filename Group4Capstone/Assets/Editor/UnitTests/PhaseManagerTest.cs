@@ -5,7 +5,7 @@ using System.Collections;
 
 public class PhaseManagerTest {
 
-    GameObject phaseManager = GameObject.Find("Phase Manager");
+    GameObject phaseManager = GameObject.Find("EnemyGenerator");
     PhaseManger pm;
 
     [OneTimeSetUp]
@@ -17,13 +17,13 @@ public class PhaseManagerTest {
     [Test]
     public void PhaseManagerExists()
     {
-        Assert.NotNull(phaseManager);
+        Assert.NotNull( phaseManager );
     }
 
     [Test]
     public void PhaseManagerReferenceExists()
     {
-        Assert.NotNull(pm);
+        Assert.NotNull( pm );
     }
 
     [UnityTest]
@@ -31,7 +31,7 @@ public class PhaseManagerTest {
     {
         int startingPhaseCount = pm.getPhaseCount();
         pm.NextPhase();
-        Assert.That(startingPhaseCount == (pm.getPhaseCount() - 1));
+        Assert.That( startingPhaseCount == (pm.getPhaseCount() - 1) );
         yield return null;
     }
 
@@ -40,7 +40,7 @@ public class PhaseManagerTest {
     {
         int startingCurrentPhase = pm.getCurrentPhase();
         pm.NextPhase();
-        Assert.That(startingCurrentPhase == (pm.getCurrentPhase() - 1));
+        Assert.That( startingCurrentPhase == (pm.getCurrentPhase() - 1) );
         yield return null;
     }
 
@@ -48,14 +48,14 @@ public class PhaseManagerTest {
     public IEnumerator CurrentPhaseRollsOver()
     {
         // Get Current Phase to phase 4 - the last phase
-        while(pm.getCurrentPhase() != 4)
+        while( pm.getCurrentPhase() != 4 )
         {
             pm.NextPhase();
         }
 
         // Increment one more time and the phase should be set back to 0
         pm.NextPhase();
-        Assert.Zero(pm.getCurrentPhase());
+        Assert.Zero( pm.getCurrentPhase() );
         yield return null;
     }
 }

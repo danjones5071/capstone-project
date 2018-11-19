@@ -20,18 +20,20 @@ public class Generator : MonoBehaviour
 		}
 	}
 
-	public virtual void CreateObject( GameObject obj )
+	public virtual GameObject CreateObject( GameObject obj )
 	{
         if (obj.GetComponents<IPooledObject>().Length > 0)
         {
             // This is very hacky need to find better way to check for IPooledObject at runtime
             // also the "obj.tag" will only work for objects where their tag matches the prefab name.
             // Need to find a way to access the prefab name programatically
-            ObjectPooler.Instance.SpawnFromPool(obj.tag, trans.position, trans.rotation);
+            return ObjectPooler.Instance.SpawnFromPool(obj.tag, trans.position, trans.rotation);
         }
         else
         {
-		    Instantiate( obj ).transform.SetParent( trans );
+			GameObject created = Instantiate( obj );
+			created.transform.SetParent( trans );
+		    return created;
         }
 	}
 }
