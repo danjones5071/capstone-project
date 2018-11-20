@@ -34,6 +34,15 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
     }
 
+	public GameObject SpawnFromPool( Vector2 position, Vector2 right )
+	{
+		GameObject objectToSpawn = SpawnFromPool();
+		objectToSpawn.transform.position = position;
+		objectToSpawn.transform.right = right;
+
+		return objectToSpawn;
+	}
+
     public void ReturnToPool( GameObject obj )
     {
         obj.SetActive( false );
@@ -51,5 +60,18 @@ public class ObjectPooler : MonoBehaviour
 			obj.SetActive( false );
 
 		return( obj );
+	}
+
+	public int getQueueCount()
+	{
+		return( poolQueue.Count );
+	}
+
+	public void printQueue()
+	{
+		foreach( GameObject obj in poolQueue )
+		{
+			Debug.Log( obj );
+		}
 	}
 }

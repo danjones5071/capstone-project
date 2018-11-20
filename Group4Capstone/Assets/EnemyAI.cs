@@ -250,7 +250,7 @@ public class EnemyAI : MonoBehaviour
         // If the Enemy collides with a laser...
         if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
         {
-            Destroy(col.gameObject);  // And also destroy the laser blast.
+			col.gameObject.SetActive( false );  // And also destroy the laser blast.
 			OnDestroy();            // Destroy the Enemy.
         }
     }

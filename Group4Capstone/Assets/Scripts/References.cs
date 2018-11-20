@@ -21,7 +21,7 @@ public class References : MonoBehaviour
     public PickupGenerator pickupGenerator;
     public PhaseManger phaseManager;
 	public Leaderboard leaderboard;
-    public ObjectPooler objectPooler;
+	public ProjectilePool projectilePool;
 
 	// No need to show these in the inspector. Can be derived from above.
 	[HideInInspector] public Transform playerTrans;
@@ -49,9 +49,5 @@ public class References : MonoBehaviour
 		playerTrans = player.transform;
 		playerRigid = player.GetComponent<Rigidbody2D>();
 		playerController = player.GetComponent<PlayerController>();
-
-		//phaseManager.setCurrentPhase( 0 );
-		//phaseManager.setPhaseCount( 0 );
-		//Array.Clear( phaseManager.PhaseMultipliers, 0, phaseManager.PhaseMultipliers.Length );
 	}
 }

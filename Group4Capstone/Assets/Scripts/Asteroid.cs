@@ -41,7 +41,7 @@ public class Asteroid : ScrollingObject
         if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
         {
             DestroySelf();            // Destroy the asteroid.
-            Destroy(col.gameObject);  // And also destroy the laser blast.
+			col.gameObject.SetActive( false );  // And also destroy the laser blast.
         }
 
         // If the asteroid collides with an enemy...

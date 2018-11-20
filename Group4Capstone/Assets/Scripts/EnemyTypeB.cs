@@ -27,12 +27,10 @@ public class EnemyTypeB : MonoBehaviour
 
     private Vector3 initialPosition;
 
-	private Transform trans;
     private Rigidbody2D rb;
     
 	void Awake()
 	{
-		trans = transform;
 		rb = GetComponent<Rigidbody2D>();
 	}
 
@@ -116,7 +114,7 @@ public class EnemyTypeB : MonoBehaviour
             // Play the explosion sound effect.
             References.global.soundEffects.PlayExplosionSound();
 
-            Destroy(col.gameObject);  // And also destroy the laser blast.
+			col.gameObject.SetActive( false );  // And also destroy the laser blast.
 
 			OnDestroy();
         }

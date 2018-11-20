@@ -48,9 +48,14 @@ public class PlayerController : MonoBehaviour
 
     public Transform damageSparks;
 
+	private ProjectilePool projPool;
+
     void Awake()
     {
 		weapons = new List<string>(){ References.WNAME_LASER };
+
+
+
         laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
         laserOriginL = transform.Find("LaserOriginL");  // Cache a reference to the transform of the laser's origin point.
         laserOriginR = transform.Find("LaserOriginR");  // Cache a reference to the transform of the laser's origin point.
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
         StartCoroutine(Recharge());
+		projPool = References.global.projectilePool;
     }
 
     // FixedUpdate is called once for every frame that is rendered.
@@ -166,24 +172,17 @@ public class PlayerController : MonoBehaviour
         if (batteryCapacity >= laserEnergyCost)
         {
             // Instantiate a laser blast at the laser origin point on our player.
-
-            GameObject laserRef = Instantiate(laserPrefab, laserOrigin.position, Quaternion.identity);
-
-            //Rotating the laser towards the player 
-            laserRef.transform.up = playerDirection;
-            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
+			GameObject laserRef = projPool.laserPool.SpawnFromPool( laserOrigin.position, laserOrigin.up );
+			laserRef.GetComponent<Rigidbody2D>().velocity = transform.up * 6;
 
 			References.global.soundEffects.PlayLaserSound();
- 
-            batteryCapacity -= laserEnergyCost; //Substracting energy value.
-
-            // Play the laser sound effect.
+            batteryCapacity -= laserEnergyCost;
         }
     }
 
     public void ShootDoubleLaser()
     {
-        if (batteryCapacity >= laserEnergyCost)
+        if (batteryCapacity >= 2*laserEnergyCost)
         {
             // Instantiate a laser blast at the laser origin point on our player.
 
@@ -324,7 +323,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = new Vector3(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y,0);
 
-        transform.up = direction;
+       transform.up = direction;
 
         return direction;
     }
