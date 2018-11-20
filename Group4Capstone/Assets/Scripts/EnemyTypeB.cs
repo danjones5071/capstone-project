@@ -3,147 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyTypeB : MonoBehaviour
+public class EnemyTypeB : Enemy
 {
-    public float speed = 200;
     public float xTolerance = 1F;
-
-    public Transform playerLocation;
-    public GameObject enemyArea;
-
-    public GameObject enemyLaser;
-    private float enemyAllowedShootingDistance = 5F;
-    private bool weaponDisable = false;
-
-    // Private variables to cache necessary components.
-    public GameObject laserOrigin;      // A child of the player game object to specify where the laser should shoot from.
-
-    //Time variables to keep track of shooting cycle
-    private float startTimeShooting;
-    private float secondsElapsedLastShooting;
-
     private Vector3 startingLocation;
     private Vector3 endLocation;
-
-    private Vector3 initialPosition;
-
-    private Rigidbody2D rb;
     
 	void Awake()
 	{
-		rb = GetComponent<Rigidbody2D>();
+		speed = 100;
+		shootingDistance = 5;
+		shootingCooldown = 3;
 	}
 
-    void OnEnable()
+    protected override void OnCollisionEnter2D( Collision2D col )
     {
-        if (playerLocation == null)
-        {
-            GameObject player = GameObject.Find("Player");
-            if (player != null)
-            {
-                playerLocation = GameObject.Find("Player").transform;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        if (enemyArea == null)
-            enemyArea = GameObject.Find("EnemyTypeBareas");
-
-        
-
-		// Randomize physical attributes of our new asteroid.
-		float posY = Random.Range( -4.9f, 4.9f );   // Randomize the vertical position of the object.
-		transform.position = new Vector2( 15, posY );
-
-    	ExecuteBehavior();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //If player is killed and a new instance is made bacause the player had more lifes.
-        if (playerLocation == null)
-        {
-            GameObject player = GameObject.Find("Player");
-            if (player != null)
-            {
-                playerLocation = GameObject.Find("Player").transform;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        //Rotating the enemy towards the player
-        transform.up = playerLocation.position - transform.position;
-
-        secondsElapsedLastShooting = Time.time - startTimeShooting;
-
-        if (secondsElapsedLastShooting > 2f && transform.position.x > -9F)
-        {
-            ShootLaser();
-
-            if (secondsElapsedLastShooting > 2.5f)
-            {
-                startTimeShooting = Time.time;
-                weaponDisable = false;
-            }
-        }
-    }
-
-    void ExecuteBehavior()
-    {
-        endLocation = enemyArea.transform.GetChild(Random.Range(0, 4)).position;
-        startingLocation = new Vector3(14F, endLocation.y); //Spawn outside of camera view 14 units to the right.
-        transform.position = startingLocation;
-
-        Vector3 dir = (endLocation - startingLocation).normalized;
-        dir *= speed;
-        rb.AddForce(dir, ForceMode2D.Force); //Moving the enemy
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        // If the enemy collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser" )
-        {
-            // Play the explosion sound effect.
-            References.global.soundEffects.PlayExplosionSound();
-
-			col.gameObject.SetActive( false );  // And also destroy the laser blast.
-
-			OnDestroy();
-        }
+		// Apply base behavior inherited from Enemy.
+		base.OnCollisionEnter2D( col );
+		
+		// Also allow Type B enemies to collide with each other.
 		if( col.gameObject.tag == "Enemy" )
 		{
+			// Play the explosion sound effect.
 			References.global.soundEffects.PlayExplosionSound();
-			OnDestroy();
+
+			// Deactivate this enemy. No need to worry about the colliding enemy since
+			// they have the same collision behavior.
+			gameObject.SetActive( false );
 		}
-    }
-
-    void ShootLaser()
-    {
-        if (!weaponDisable && (enemyAllowedShootingDistance < Vector3.Distance(playerLocation.position, transform.position)))
-        {
-            GameObject laserRef = Instantiate(enemyLaser, laserOrigin.transform.position, Quaternion.identity);
-
-            //Rotating the laser towards the player           
-            laserRef.transform.up = (playerLocation.position - transform.position);
-            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
-
-			References.global.soundEffects.PlayEnemyLaserSound();
-
-            weaponDisable = true;
-        }
-    }
-
-    private void OnDestroy()
-    {
-		gameObject.SetActive( false );
     }
 
 	void OnDisable()

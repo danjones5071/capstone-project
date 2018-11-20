@@ -294,15 +294,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLaser: {fileID: 1397715384517130, guid: 44953aec1ad364d41b421ac616b1daf2, type: 2}
-  laserOrigin: {fileID: 1284098640070292}
+  laserOrigin: {fileID: 4835147543324796}
+  enemyArea: {fileID: 1522469030103354, guid: 1df24f8b558bfea4fba032d0ec9e4515, type: 2}
   holdingPositionTime: 0.25
-  playerLocation: {fileID: 0}
   updateRate: 8
-  speed: 2000
   fMode: 0
   pathIsEnded: 0
   nextWaypointDistance: 3
-  enemyArea: {fileID: 0}
 --- !u!114 &114831300903542888
 MonoBehaviour:
   m_ObjectHideFlags: 1

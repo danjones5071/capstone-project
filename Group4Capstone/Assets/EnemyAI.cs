@@ -6,24 +6,15 @@ using Pathfinding;
 [RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent(typeof(Seeker))]
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Enemy
 {
-    public GameObject enemyLaser;
-    private float enemyAllowedShootingDistance = 6F;
-    private bool weaponDisable = false;
-
-    // Private variables to cache necessary components.
-    public GameObject laserOrigin;		// A child of the player game object to specify where the laser should shoot from.
-
-
+	public GameObject enemyArea;
     //Time to maintain stay in the waypoint.
     public float holdingPositionTime = 0.5F;
 
-    //From the enemy point of view is the player
-    public Transform playerLocation;
-
     //Location of the next waypoint for the enemy.
     private Transform target;
+
     //Default frequency to update
     public float updateRate = 2f;
 
@@ -35,7 +26,6 @@ public class EnemyAI : MonoBehaviour
     public Path path;
 
     //Speed traversing the path
-    public float speed = 300f;
     public ForceMode2D fMode;
 
     [HideInInspector]
@@ -54,37 +44,21 @@ public class EnemyAI : MonoBehaviour
     private float startTimeEnemyMov;
     private float secondsElapsedEnemyMov;
 
-    //Time variables to keep track of shooting cycle
-    private float startTimeShooting;
-    private float secondsElapsedLastShooting;
-
     private Vector3 initialPosition;
 
-    //Reference game object that contains all the destination for the enemy.
-    public GameObject enemyArea;
+	void Awake()
+	{
+		speed = 2000;
+		shootingDistance = 6;
+		shootingCooldown = 5;
+		seeker = GetComponent<Seeker>();
+		rb = GetComponent<Rigidbody2D>();
+	}
 
     void OnEnable()
     {
-        if (playerLocation == null)
-        {
-            GameObject player = GameObject.Find("Player");
-            if (player != null)
-            {
-                playerLocation = GameObject.Find("Player").transform;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        if (enemyArea == null)
-            enemyArea = GameObject.Find("EnemyTypeBareas");
-
         target = playerLocation;
         target = enemyArea.transform.GetChild(0);
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
 
         if(target == null)
         {
@@ -92,7 +66,7 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        //spawn outside of camera view up side or down side, random.
+        // Spawn outside of camera view up side or down side, random.
         transform.position = ((Random.Range(0, 1) == 1 ? (new Vector3(14F, -7F)) : (new Vector3(14F, 7F))));
 
         seeker.StartPath(transform.position, target.position, OnPathComplete);
@@ -139,56 +113,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //If player is killed and a new instance is made bacause the player had more lifes.
-        if (playerLocation == null)
-        {
-            GameObject player = GameObject.Find("Player");
-            if (player != null)
-            {
-                playerLocation = GameObject.Find("Player").transform;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        //Rotating the enemy towards the player
-        transform.up = playerLocation.position - transform.position;
-
-        secondsElapsedLastShooting = Time.time - startTimeShooting;
-
-        if (secondsElapsedLastShooting > 3f) 
-        {    
-            ShootLaser();
-
-            if(secondsElapsedLastShooting > 4f)
-            {
-                startTimeShooting = Time.time;
-                weaponDisable = false;
-            }
-        }
-
-    }
-
-    void ShootLaser()
-    {
-        if (!weaponDisable && ( enemyAllowedShootingDistance < Vector3.Distance(playerLocation.position, transform.position)))
-        {
-            GameObject laserRef = Instantiate(enemyLaser, laserOrigin.transform.position, Quaternion.identity);
-
-            //Rotating the laser towards the player           
-            laserRef.transform.up = (playerLocation.position - transform.position);
-            laserRef.transform.rotation *= Quaternion.Euler(0, 0, 90);
-            
-			References.global.soundEffects.PlayEnemyLaserSound();
-
-            weaponDisable = true;
-        }
-    }
-    
     /// <summary>
     /// Use for physcis and complex calculations.
     /// </summary>
@@ -238,38 +162,6 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;
             return;
         }     
-    }
-
-    void ExecuteBehavior()
-    {
-        transform.position = initialPosition;
-    }
-
-    void OnCollisionEnter2D( Collision2D col )
-    {
-        // If the Enemy collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
-        {
-			col.gameObject.SetActive( false );  // And also destroy the laser blast.
-			OnDestroy();            // Destroy the Enemy.
-        }
-    }
-
-    private void RespawnSelf()
-    {
-        // Instantiate our explosion particle effects and destroy them after some time.
-        //Destroy(Instantiate(explosion, asteroidTransform.position, Quaternion.identity), 4);
-
-        // Destroy the asteroid.
-        ExecuteBehavior();
-
-        // Play the explosion sound effect.
-        References.global.soundEffects.PlayExplosionSound();
-    }
-
-    private void OnDestroy()
-    {
-		gameObject.SetActive( false );
     }
 
 	void OnDisable()

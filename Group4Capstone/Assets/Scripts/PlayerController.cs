@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour
 			laserRef.GetComponent<Rigidbody2D>().velocity = transform.up * 6;
 
 			References.global.soundEffects.PlayLaserSound();
+
             batteryCapacity -= laserEnergyCost;
         }
     }
