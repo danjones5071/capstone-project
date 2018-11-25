@@ -65,13 +65,6 @@ public class PlayerControllerTest
 	}
 
 	[UnityTest]
-	public IEnumerator PlayerLivesPositive()
-	{
-		Assert.Greater( playerController.lives, 0 );
-		yield return null;
-	}
-
-	[UnityTest]
 	public IEnumerator PlayerHealthPositive()
 	{
 		Assert.Greater( playerController.health, 0 );

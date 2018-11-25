@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
     public float batteryCapacity = 100;
     public int health = 100;			// The current amount of health the player has.
-    public int lives = 3;               // Ammount of lives the player has.
     public float rechargeInterval = 1;
     public float rechargeAmount = 2;
 	public int currentWeapon = 0;
@@ -132,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        ReduceLives(1);
         Instantiate( explosion, transform.position, Quaternion.identity );
         References.global.uiManager.ShowPlayAgainUI();
         References.global.soundEffects.PlayExplosionSound();
@@ -258,6 +258,11 @@ public class PlayerController : MonoBehaviour
         // We don't want the energy to exceed 100.
         // So take the minimum between 100 and the sum of the current energy plus energy being added.
         batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
+    }
+
+    private void ReduceLives( int lifeLost )
+    {
+        References.global.gameMaster.UpdateLivesCount( -lifeLost );
     }
 
     // Controls what happens when an asteroid collides with another object.

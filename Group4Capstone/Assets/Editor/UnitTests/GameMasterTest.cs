@@ -67,4 +67,17 @@ public class GameMasterTest
 		gm.Currency = 22;
 		Assert.AreEqual( gm.Currency, 22 );
 	}
+
+	[Test]
+	public void LivesGetterSetterTest()
+	{
+		GameMaster gm = new GameMaster();
+		gm.Lives = 5;
+		Assert.AreNotEqual( gm.Lives, 0 );
+		Assert.AreEqual( gm.Lives, 5 );
+
+		gm.Lives = 3;
+		Assert.AreEqual( gm.Lives, 3 );
+	}
+
 }

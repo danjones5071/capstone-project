@@ -8,6 +8,7 @@ public class PlayAgain : MonoBehaviour
 {
 	public Image background;
 	public GameObject prompt;
+	public GameObject gameOverText;
 	public GameObject timeSurvived;
 	public GameObject storeButton;
 	public GameObject mainMenuButton;
@@ -19,6 +20,7 @@ public class PlayAgain : MonoBehaviour
 	void OnEnable()
 	{
 		prompt.SetActive( false );
+		gameOverText.SetActive( false );
 		timeSurvived.SetActive( false );
 		storeButton.SetActive( false );
 		mainMenuButton.SetActive( false );
@@ -38,9 +40,8 @@ public class PlayAgain : MonoBehaviour
 	IEnumerator ShowPrompt()
 	{
 		yield return new WaitForSeconds( 1 );
-		prompt.SetActive( true );
+	    DecidePromptOrGameOver();
 		timeSurvived.SetActive( true );
-		storeButton.SetActive( true );
 		mainMenuButton.SetActive( true );
 		leaderboardButton.SetActive( true );
 	}
@@ -53,5 +54,23 @@ public class PlayAgain : MonoBehaviour
 	public void ReturnToMainMenu()
 	{
 		SceneManager.LoadScene( "Home" );
+	}
+
+	private void DecidePromptOrGameOver()
+	{
+	    if(PlayerPrefs.GetInt( "Lives", 0 ) > 0)
+	    {
+	        Debug.Log("Showing prompt and store since player still has lives remaining");
+	        prompt.SetActive( true );
+	        storeButton.SetActive( true );
+            References.global.gameMaster.GameDataResetFlag( false);
+	    }
+	    else
+	    {
+	        Debug.Log("Not showing prompt and store since player still has no lives remaining");
+	        gameOverText.SetActive( true );
+	        storeButton.SetActive( false );
+            References.global.gameMaster.GameDataResetFlag( true);
+	    }
 	}
 }
