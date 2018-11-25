@@ -66,7 +66,7 @@ public class GameMaster : MonoBehaviour
         lives += lifeAmount;
         References.global.uiManager.UpdateLivesCount( lives );
         PlayerPrefs.SetInt( "Lives", lives );
-        Debug.LogError("Number of lives remaining is "+lives);
+        Debug.Log("Number of lives remaining is "+lives);
     }
 
     public void GameDataResetFlag(bool value)

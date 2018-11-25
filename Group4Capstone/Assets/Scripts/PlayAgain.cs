@@ -53,6 +53,8 @@ public class PlayAgain : MonoBehaviour
 
 	public void ReturnToMainMenu()
 	{
+	    //ensure game related values are reset before the player begins a new game
+	    References.global.gameMaster.GameDataResetFlag( true);
 		SceneManager.LoadScene( "Home" );
 	}
 
@@ -67,7 +69,7 @@ public class PlayAgain : MonoBehaviour
 	    }
 	    else
 	    {
-	        Debug.Log("Not showing prompt and store since player still has no lives remaining");
+	        Debug.Log("Not showing prompt and store since player has no lives remaining");
 	        gameOverText.SetActive( true );
 	        storeButton.SetActive( false );
             References.global.gameMaster.GameDataResetFlag( true);
