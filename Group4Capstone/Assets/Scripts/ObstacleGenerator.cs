@@ -73,4 +73,21 @@ public class ObstacleGenerator : Generator
             yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
 		}
 	}
+
+    public void DestroyAllObstacles()
+    {
+        //TODO: rewrite this to be more generic
+
+        // Destroy All Asteroids
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Asteroid"))
+        {
+            obj.SetActive(false);
+        }
+
+        // Destroy All Blackholes
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("BlackHole"))
+        {
+            obj.SetActive(false);
+        }
+    }
 }

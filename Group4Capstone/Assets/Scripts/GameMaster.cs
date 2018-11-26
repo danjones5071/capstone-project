@@ -151,4 +151,12 @@ public class GameMaster : MonoBehaviour
             Debug.Log( "Double Laser Weapon Removed" );
 		}
 	}
+
+    public void ClearGameScreen()
+    {
+        References.global.obstacleGenerator.DestroyAllObstacles();
+        References.global.enemyGenerator.DestroyAllEnemies();
+        References.global.pickupGenerator.DestroyAllPickups();
+        References.global.projectilePool.DestroyAllLasers();
+    }
 }

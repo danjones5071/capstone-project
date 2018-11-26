@@ -25,4 +25,22 @@ public class ProjectilePool : MonoBehaviour
 		laserPool.Initialize( laser, 10, trans );
 		enemyLaserPool.Initialize( enemyLaser, 15, trans );
 	}
+
+    public void DestroyAllLasers()
+    {
+        //TODO: rewrite this to be more generic
+
+        // Destroy All Player Lasers
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Laser"))
+        {
+            obj.SetActive(false);
+        }
+
+        // Destroy All Enemy Lasers
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("EnemyLaser"))
+        {
+            obj.SetActive(false);
+        }
+
+    }
 }

@@ -49,4 +49,27 @@ public class PickupGenerator : Generator
 			StartCoroutine( GenerateObjects(coinPool, coinPickupTimer) );
 		}
     }
+
+    public void DestroyAllPickups()
+    {
+        //TODO: rewrite this to be more generic
+
+        // Destroy All Health Pickups
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("HealthPickup"))
+        {
+            obj.SetActive(false);
+        }
+
+        // Destroy All Energy Pickups
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("EnergyPickup"))
+        {
+            obj.SetActive(false);
+        }
+
+        // Destroy All Coin Pickups
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Currency"))
+        {
+            obj.SetActive(false);
+        }
+    }
 }

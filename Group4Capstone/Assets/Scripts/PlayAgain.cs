@@ -53,6 +53,11 @@ public class PlayAgain : MonoBehaviour
 
     public void ContinueGame()
     {
+        PlayerController pc = References.global.player.GetComponent<PlayerController>();
+        pc.Heal(100);
+        pc.AddEnergy(100);
+
+        References.global.gameMaster.ClearGameScreen();
         References.global.player.transform.position = References.global.playerTrans.position;
         References.global.player.SetActive(true);
         References.global.uiManager.ContinueGame();

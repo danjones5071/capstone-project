@@ -107,4 +107,14 @@ public class EnemyGenerator : Generator
 		if( activeEnemyTypeA > 0 )
         	--activeEnemyTypeA;
     }
+
+    public void DestroyAllEnemies()
+    {
+        //TODO: rewrite this to be more generic
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            obj.SetActive(false);
+        }
+    }
 }
