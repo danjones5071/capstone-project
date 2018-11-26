@@ -681,6 +681,7 @@ MonoBehaviour:
   leaderboardButton: {fileID: 1314446548}
   fadeColor: {r: 0, g: 0, b: 0, a: 0.7058824}
   fadeSpeed: 2
+  player: {fileID: 187574, guid: b8c5aaf154f422349b27e268d3ca34c7, type: 2}
 --- !u!1 &150177483
 GameObject:
   m_ObjectHideFlags: 0
@@ -20836,7 +20837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[PRESS SPACE TO PLAY AGAIN]'
+  m_Text: '[PRESS SPACE TO CONTINUE]'
 --- !u!222 &2048131799
 CanvasRenderer:
   m_ObjectHideFlags: 0

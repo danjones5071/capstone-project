@@ -33,7 +33,7 @@ public class PlayAgain : MonoBehaviour
 
 		if( Input.GetKeyDown( KeyCode.Space ) && prompt.activeInHierarchy )
 		{
-			RestartGame();
+            ContinueGame();
 		}
 	}
 
@@ -50,6 +50,15 @@ public class PlayAgain : MonoBehaviour
 	{
 		SceneManager.LoadScene( "Gameplay" );
 	}
+
+    public void ContinueGame()
+    {
+        References.global.player.transform.position = References.global.playerTrans.position;
+        References.global.player.SetActive(true);
+        References.global.uiManager.ContinueGame();
+        References.global.enemyGenerator.generate = true;
+        References.global.playAgainUI.SetActive(false);
+    }
 
 	public void ReturnToMainMenu()
 	{

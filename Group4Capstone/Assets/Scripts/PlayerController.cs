@@ -136,7 +136,8 @@ public class PlayerController : MonoBehaviour
         References.global.uiManager.ShowPlayAgainUI();
         References.global.soundEffects.PlayExplosionSound();
 		References.global.enemyGenerator.generate = false;
-        Destroy( gameObject );
+        //Destroy( gameObject );
+        gameObject.SetActive(false);
     }
 
     public void CycleWeapon( int i )

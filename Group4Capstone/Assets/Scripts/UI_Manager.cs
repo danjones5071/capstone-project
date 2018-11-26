@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
    
-    private float startTime;
+    private float lastFrameTime;
     private float secondsElapsed;
     private string timeText = string.Empty;
     private bool gameOver = false;
@@ -29,7 +29,7 @@ public class UI_Manager : MonoBehaviour {
     void Start ()
     {  
 		InitializeUIPages();
-        startTime = Time.time;
+        lastFrameTime = Time.time;
     }
 	
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class UI_Manager : MonoBehaviour {
         #region Clock Logic
         if (!gameOver)
         {
-            secondsElapsed = Time.time - startTime;
+            secondsElapsed += Time.time - lastFrameTime;
 
             int minutes = ((int)secondsElapsed / 60);
             int seconds = ((int)(secondsElapsed % 60));
@@ -52,6 +52,8 @@ public class UI_Manager : MonoBehaviour {
             timeText = (minutesString + ":" + secondsString);
 
             gameTimeElapsedRef.text = timeText;
+
+            lastFrameTime = Time.time;
         }
         #endregion
 
@@ -108,4 +110,10 @@ public class UI_Manager : MonoBehaviour {
 	{
 		weaponText.text = text;
 	}
+
+    public void ContinueGame()
+    {
+        lastFrameTime = Time.time;
+        gameOver = false;
+    }
 }

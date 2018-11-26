@@ -20,7 +20,7 @@ public class BlackHole : ScrollingObject
 
     void OnCollisionEnter2D( Collision2D col )
     {
-        if( col.gameObject != null )
+        if( col.gameObject != null && col.gameObject.tag != "Player")
         {
             if (col.gameObject.GetComponents<IPooledObject>().Length > 0)
             {
