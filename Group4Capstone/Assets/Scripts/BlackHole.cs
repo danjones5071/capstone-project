@@ -26,6 +26,7 @@ public class BlackHole : ScrollingObject
             {
                 // Add the Asteroid back tot he Asteroid pool
 				col.gameObject.SetActive( false );
+				References.global.soundEffects.PlayBlackHolePullSound();
             }
             else
             {

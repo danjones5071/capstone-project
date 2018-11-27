@@ -292,6 +292,7 @@ public class PlayerController : MonoBehaviour
         if( col.gameObject.tag == "BlackHole" )
         {
             Die();
+            References.global.soundEffects.PlayBlackHolePullSound();
         }
     }
 
@@ -307,7 +308,7 @@ public class PlayerController : MonoBehaviour
 		{
 			case "Currency":
 				References.global.soundEffects.PlayCurrencyPickUpSound();
-				References.global.gameMaster.AddToCurrency( 1 );
+				References.global.gameMaster.AddToCurrency( 10 );
 				col.gameObject.SetActive( false );
 				break;
 			case "EnergyPickup":

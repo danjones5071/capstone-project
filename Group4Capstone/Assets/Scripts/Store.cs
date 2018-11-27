@@ -15,7 +15,8 @@ public class Store : MonoBehaviour
 		Debug.Log( "Purchasing" + itemName );
 		Item item = weapons.Find( i => i.name == itemName );
 
-		if( !References.global.playerController.weapons.Contains( item.name ) )
+		if( !References.global.playerController.weapons.Contains( item.name )
+		    && item.price < PlayerPrefs.GetInt( "Currency", 0 ))
 		{
 			References.global.playerController.weapons.Add( item.name );
 			References.global.gameMaster.AddToCurrency( -1 * item.price );
@@ -23,7 +24,14 @@ public class Store : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log( "Item Already Purchased!" );
+			if (References.global.playerController.weapons.Contains( item.name ))
+			{
+			    Debug.Log( "Item Already Purchased!" );
+			    }
+            else if (item.price > PlayerPrefs.GetInt( "Currency", 0 ))
+            {
+                Debug.Log( "Insufficient funds" );
+            }
 		}
 	}
 }
