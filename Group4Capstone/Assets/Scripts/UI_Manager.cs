@@ -73,6 +73,7 @@ public class UI_Manager : MonoBehaviour {
 		References.global.storeUI.SetActive( false );
 		References.global.pauseUI.SetActive( false );
 		References.global.playAgainUI.SetActive( false );
+		References.global.leaderboardUI.SetActive( false );
 	}
 
 	public void ShowPlayAgainUI()

@@ -17,6 +17,8 @@ public class Leaderboard : MonoBehaviour
 	public GameObject submitScoreUI;
 	public GameObject topScores;
 	public GameObject scoreTextPrefab;
+	public GameObject closeButton;
+	public GameObject background;
 
 	private Score[] scoresList;
 
@@ -25,11 +27,15 @@ public class Leaderboard : MonoBehaviour
 		if( !submitted )
 		{
 			submitScoreUI.SetActive( true );
+			closeButton.SetActive( false );
 			topScores.SetActive( false );
+			background.SetActive( false );
 		}
 		else
 		{
 			submitScoreUI.SetActive( false );
+			closeButton.SetActive( true );
+			background.SetActive( true );
 			topScores.SetActive( true );
 			FetchScores();
 		}
