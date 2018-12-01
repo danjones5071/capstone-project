@@ -15,10 +15,10 @@ public class Leaderboard : MonoBehaviour
 	public InputField nameField;
 	public Text timeText;
 	public GameObject submitScoreUI;
-	public GameObject topScores;
+	public Transform topScores;
 	public GameObject scoreTextPrefab;
-	public GameObject closeButton;
-	public GameObject background;
+	public GameObject leadersUI;
+	public GameObject loadingIndicator;
 
 	private Score[] scoresList;
 
@@ -27,16 +27,12 @@ public class Leaderboard : MonoBehaviour
 		if( !submitted )
 		{
 			submitScoreUI.SetActive( true );
-			closeButton.SetActive( false );
-			topScores.SetActive( false );
-			background.SetActive( false );
+			leadersUI.SetActive( false );
 		}
 		else
 		{
 			submitScoreUI.SetActive( false );
-			closeButton.SetActive( true );
-			background.SetActive( true );
-			topScores.SetActive( true );
+			leadersUI.SetActive( true );
 			FetchScores();
 		}
 	}
@@ -44,8 +40,7 @@ public class Leaderboard : MonoBehaviour
 	// When the leaderboard UI is disabled, make sure we destroy the current score textboxes for next time.
 	void OnDisable()
 	{
-		Transform trans = topScores.transform;
-		foreach( Transform child in trans )
+		foreach( Transform child in topScores )
 		{
 			if( child.name == "ScoreTextPrefab(Clone)" )
 			{
@@ -70,9 +65,11 @@ public class Leaderboard : MonoBehaviour
 		int xOff = -300;
 		int yOff = yStart;
 
+		loadingIndicator.SetActive( false );
+
 		for( int i = 0; i < 10; i++ )
 		{
-			GameObject newTextObj = Instantiate( scoreTextPrefab, topScores.transform );
+			GameObject newTextObj = Instantiate( scoreTextPrefab, topScores );
 			Text newText = newTextObj.GetComponent<Text>();
 
 			if( i < scoresList.Length )
@@ -102,7 +99,6 @@ public class Leaderboard : MonoBehaviour
 	IEnumerator UploadScore( string name, int score )
 	{
 		WWW src = new WWW( url + privateCode + "/add/" + WWW.EscapeURL( name ) + "/" + score );
-		Debug.Log( "Attempting to submit with url: " + name + " - " + score );
 		yield return src;
 
 		if( string.IsNullOrEmpty( src.error ) )
@@ -120,6 +116,7 @@ public class Leaderboard : MonoBehaviour
 
 	public void FetchScores()
 	{
+		loadingIndicator.SetActive( true );
 		StartCoroutine( DownloadScores() );
 	}
 
@@ -130,12 +127,12 @@ public class Leaderboard : MonoBehaviour
 
 		if( string.IsNullOrEmpty( src.error ) )
 		{
-			Debug.Log( "Scores fetched successfully!" );
 			FormatScores( src.text );
 			DisplayScores();
 		}
 		else
 		{
+			loadingIndicator.GetComponent<Text>().text = "Network Error: Could Not Fetch Scores";
 			Debug.Log( "Error fetching leaderboard scores: " + src.error );
 		}
 	}
