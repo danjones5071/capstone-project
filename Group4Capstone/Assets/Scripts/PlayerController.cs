@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
+		damageSparks.gameObject.SetActive( false );
         StartCoroutine(Recharge());
 		projPool = References.global.projectilePool;
     }
@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour
         References.global.uiManager.ShowPlayAgainUI();
         References.global.soundEffects.PlayExplosionSound();
 		References.global.enemyGenerator.generate = false;
-        //Destroy( gameObject );
         gameObject.SetActive(false);
     }
 
@@ -280,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
 			col.gameObject.SetActive( false ); // Enemy laser needs pooling!!!
 
-            damageSparks.GetComponent<ParticleSystem>().enableEmission = true;
+			damageSparks.gameObject.SetActive( true );
 
             ContactPoint2D contact = col.contacts[0];  
             Vector3 pos = contact.point;
@@ -298,8 +297,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StopDamageSparks()
     {
-        yield return new WaitForSeconds( 0.1f );
-        damageSparks.GetComponent<ParticleSystem>().enableEmission = false;
+        yield return new WaitForSeconds( 0.3f );
+		damageSparks.gameObject.SetActive( false );
     }
 
 	void OnTriggerEnter2D( Collider2D col )

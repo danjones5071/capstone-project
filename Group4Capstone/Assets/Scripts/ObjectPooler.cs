@@ -74,4 +74,15 @@ public class ObjectPooler : MonoBehaviour
 			Debug.Log( obj );
 		}
 	}
+
+	public void DeactivatePooledObjects()
+	{
+		int count = poolQueue.Count;
+
+		for( int i = 0; i < count; i++ )
+		{
+			GameObject obj = poolQueue.Dequeue();
+			obj.SetActive( false );
+		}
+	}
 }

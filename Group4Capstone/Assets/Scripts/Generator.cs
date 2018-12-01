@@ -44,4 +44,12 @@ public class Generator : MonoBehaviour
 	{
 		return pool.SpawnFromPool();
 	}
+
+	public virtual void ClearGeneratedObjects()
+	{
+		foreach( Transform child in trans )
+		{
+			child.gameObject.SetActive( false );
+		}
+	}
 }

@@ -154,9 +154,9 @@ public class GameMaster : MonoBehaviour
 
     public void ClearGameScreen()
     {
-        References.global.obstacleGenerator.DestroyAllObstacles();
-        References.global.enemyGenerator.DestroyAllEnemies();
-        References.global.pickupGenerator.DestroyAllPickups();
-        References.global.projectilePool.DestroyAllLasers();
+		References.global.obstacleGenerator.ClearGeneratedObjects();
+		References.global.enemyGenerator.ClearGeneratedObjects();
+		References.global.pickupGenerator.ClearGeneratedObjects();
+		References.global.projectilePool.DestroyAllLasers();
     }
 }
