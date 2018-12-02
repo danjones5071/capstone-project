@@ -42,6 +42,7 @@ public class PlayAgain : MonoBehaviour
 		yield return new WaitForSeconds( 1 );
 	    DecidePromptOrGameOver();
 		timeSurvived.SetActive( true );
+		storeButton.SetActive( true );
 		mainMenuButton.SetActive( true );
 		leaderboardButton.SetActive( true );
 	}
@@ -54,8 +55,8 @@ public class PlayAgain : MonoBehaviour
     public void ContinueGame()
     {
         PlayerController pc = References.global.player.GetComponent<PlayerController>();
-        pc.Heal(100);
-        pc.AddEnergy(100);
+		pc.Heal( pc.maxHealth );
+		pc.AddEnergy( pc.maxEnergy );
 
         References.global.gameMaster.ClearGameScreen();
         References.global.player.transform.position = References.global.playerTrans.position;
@@ -78,14 +79,13 @@ public class PlayAgain : MonoBehaviour
 	    {
 	        Debug.Log("Showing prompt and store since player still has lives remaining");
 	        prompt.SetActive( true );
-	        storeButton.SetActive( true );
             References.global.gameMaster.GameDataResetFlag( false);
 	    }
 	    else
 	    {
 	        Debug.Log("Not showing prompt and store since player has no lives remaining");
 	        gameOverText.SetActive( true );
-	        storeButton.SetActive( false );
+			storeButton.GetComponent<Button>().interactable = false;
             References.global.gameMaster.GameDataResetFlag( true);
 	    }
 	}

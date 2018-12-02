@@ -31,8 +31,9 @@ public class PlayerController : MonoBehaviour
 
     //public float batteryCapacity = 100;
 	public float energy = 100;
-	public float maxEnergy = 120;
+	public float maxEnergy = 100;
     public int health = 100;			// The current amount of health the player has.
+	public int maxHealth = 100;
     public float rechargeInterval = 1;
     public float rechargeAmount = 2;
 	public int currentWeapon = 0;

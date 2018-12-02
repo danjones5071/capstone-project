@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-public class UI_Manager : MonoBehaviour {
+public class UI_Manager : MonoBehaviour
+{
    
     private float lastFrameTime;
     private float secondsElapsed;
@@ -75,9 +74,6 @@ public class UI_Manager : MonoBehaviour {
 			energyBar.value = energy;
 		else
 			energyBar.value = energy / 2.0f;
-
-		Debug.Log( "Energy: " + playerController.energy );
-		Debug.Log( "Energy Bar: " + energyBar.value );
         #endregion
 
     }
@@ -94,8 +90,12 @@ public class UI_Manager : MonoBehaviour {
 
 	public void ShowEventNotification( string eventText )
 	{
-		eventIndicatorText.text = eventText;
-		StartCoroutine( DisplayEventNotification() );
+		// Only show event notifications if the round isn't over.
+		if( !gameOver )
+		{
+			eventIndicatorText.text = eventText;
+			StartCoroutine( DisplayEventNotification() );
+		}
 	}
 
 	IEnumerator DisplayEventNotification()

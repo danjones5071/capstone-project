@@ -8,13 +8,15 @@ public class PhaseManger : MonoBehaviour
 
     public int[] phaseMultipliers = { 0, 0, 0, 0, 0 };
 
+	public ParticleSystem nebulaParticles;
+
     // Phase tracking variables
     [SerializeField] private int phaseCount;
     [SerializeField] private int currentPhase;
 
 	private bool eventFlag = false;
-	private float eventTimer = 2;
-	private float eventDuration = 40;
+	private float eventTimer = 60;
+	private float eventDuration = 30;
 
     // Use this for initialization
     void Start ()
@@ -73,6 +75,7 @@ public class PhaseManger : MonoBehaviour
 			if( !eventFlag )
 			{
 				rand = Random.Range( 0, 3 );
+				rand = 1;
 				// 0 = Asteroid Belt
 				// 1 = Nebula
 				// 2 = None (33% chance of no event)
@@ -90,16 +93,21 @@ public class PhaseManger : MonoBehaviour
 						eventFlag = false;
 						break;
 					case 1:
+						nebulaParticles.Clear();
+						nebulaParticles.Play();
+						eventFlag = true;
+						uiManager.ShowEventNotification( nebula );
+						yield return new WaitForSeconds( 4 );
 						float origEnergy = playerController.maxEnergy;
 						playerController.maxEnergy = origEnergy / 2.0f;
 						playerController.energy = Mathf.Min( playerController.energy , origEnergy / 2.0f );
 						uiManager.nebula = true;
-						eventFlag = true;
-						uiManager.ShowEventNotification( nebula );
 						yield return new WaitForSeconds( eventDuration );
 						playerController.maxEnergy = origEnergy;
 						uiManager.nebula = false;
 						eventFlag = false;
+						break;
+					default:
 						break;
 				}
 			}
