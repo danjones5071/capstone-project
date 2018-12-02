@@ -61,7 +61,7 @@ public class PlayAgain : MonoBehaviour
         References.global.player.transform.position = References.global.playerTrans.position;
         References.global.player.SetActive(true);
         References.global.uiManager.ContinueGame();
-        References.global.enemyGenerator.generate = true;
+		References.global.enemyGenerator.generate = true;
         References.global.playAgainUI.SetActive(false);
     }
 

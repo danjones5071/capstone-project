@@ -56,19 +56,21 @@ public class EnemyGenerator : Generator
 	{
 		int active = 0;
 
-		while( generate )
+		while( true )
 		{
-			active = getActive();
-
-			// Get the current phase to determine how many enemies should be generated.
-			int max = References.global.phaseManager.phaseMultipliers[phase];
-
-			while( active < max )
+			if( generate )
 			{
-				CreateObject( enemyPool );
-				active = addActive();
-			}
+				active = getActive();
 
+				// Get the current phase to determine how many enemies should be generated.
+				int max = References.global.phaseManager.phaseMultipliers[phase];
+
+				while( active < max )
+				{
+					CreateObject( enemyPool );
+					active = addActive();
+				}
+			}
 			// Wait 1 second before checking if more enemies should be generated.
 			yield return new WaitForSeconds( 1 );
 		}
