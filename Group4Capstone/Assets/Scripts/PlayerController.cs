@@ -29,7 +29,9 @@ public class PlayerController : MonoBehaviour
     private Transform laserOriginL;     // A child of the player game object to specify where the laser should shoot from.
     private Transform laserOriginR;		// A child of the player game object to specify where the laser should shoot from.
 
-    public float batteryCapacity = 100;
+    //public float batteryCapacity = 100;
+	public float energy = 100;
+	public float maxEnergy = 120;
     public int health = 100;			// The current amount of health the player has.
     public float rechargeInterval = 1;
     public float rechargeAmount = 2;
@@ -81,8 +83,6 @@ public class PlayerController : MonoBehaviour
         References.global.playerRigid.position = new Vector2(Mathf.Clamp(References.global.playerRigid.position.x, xMin, xMax), Mathf.Clamp(References.global.playerRigid.position.y, yMin, yMax));
 
         playerDirection = FaceMouse();
-
-
 
         // If there is still some time to cool down after our last laser shot...
         if (laserTimer > 0)
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
     public void ShootLaser()
     {
-        if (batteryCapacity >= laserEnergyCost)
+        if (energy >= laserEnergyCost)
         {
             // Instantiate a laser blast at the laser origin point on our player.
 			GameObject laserRef = projPool.laserPool.SpawnFromPool( laserOrigin.position, laserOrigin.up );
@@ -177,13 +177,13 @@ public class PlayerController : MonoBehaviour
 
 			References.global.soundEffects.PlayLaserSound();
 
-            batteryCapacity -= laserEnergyCost;
+            energy -= laserEnergyCost;
         }
     }
 
     public void ShootDoubleLaser()
     {
-        if (batteryCapacity >= 2*laserEnergyCost)
+        if (energy >= 2*laserEnergyCost)
         {
             // Instantiate a laser blast at the laser origin point on our player.
 
@@ -202,14 +202,14 @@ public class PlayerController : MonoBehaviour
 			References.global.soundEffects.PlayLaserSound();
 
 
-            batteryCapacity -= laserEnergyCost * 2; //Substracting energy value.
+            energy -= laserEnergyCost * 2; //Substracting energy value.
 
         }
     }
 
     public void ShootInferno()
     {
-        if (batteryCapacity >= laserEnergyCost)
+        if (energy >= laserEnergyCost)
         {
             // Instantiate a inferno blast at the laser origin point on our player.
 
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
 			References.global.soundEffects.PlayInfernoSound();
 
-            batteryCapacity -= laserEnergyCost; //Substracting energy value.
+            energy -= laserEnergyCost; //Substracting energy value.
 
         }
     }
@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
     {
         while( true )
         {
-            if( batteryCapacity < 100 )
+			if( energy < maxEnergy )
             {
                 AddEnergy( rechargeAmount );
             }
@@ -253,11 +253,11 @@ public class PlayerController : MonoBehaviour
         health = System.Math.Min( health + healing, 100 );
     }
 
-    public void AddEnergy( float energy )
+    public void AddEnergy( float add )
     {
         // We don't want the energy to exceed 100.
         // So take the minimum between 100 and the sum of the current energy plus energy being added.
-        batteryCapacity = System.Math.Min( batteryCapacity + energy, 100 );
+		energy = System.Math.Min( energy + add, maxEnergy );
     }
 
     private void ReduceLives( int lifeLost )

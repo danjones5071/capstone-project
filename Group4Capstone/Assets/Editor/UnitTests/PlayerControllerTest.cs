@@ -94,18 +94,20 @@ public class PlayerControllerTest
 	[UnityTest]
 	public IEnumerator AddEnergyTest()
 	{
-		Assert.AreEqual( playerController.batteryCapacity, 100 );
+		float maxEnergy = playerController.maxEnergy;
+
+		Assert.AreEqual( playerController.energy, maxEnergy );
 		playerController.AddEnergy( 100 );
 
 		// Should not be able to exceed max energy.
-		Assert.AreEqual( playerController.batteryCapacity, 100 );
+		Assert.AreEqual( playerController.energy, maxEnergy );
 
 		playerController.AddEnergy( -50 );
-		Assert.AreEqual( playerController.batteryCapacity, 50 );
+		Assert.AreEqual( playerController.energy, maxEnergy );
 
 		// Should not be able to exceed max energy.
 		playerController.AddEnergy( 500 );
-		Assert.AreEqual( playerController.batteryCapacity, 100 );
+		Assert.AreEqual( playerController.energy, maxEnergy );
 
 		yield return null;
 	}

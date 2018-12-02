@@ -13,8 +13,8 @@ public class PhaseManger : MonoBehaviour
     [SerializeField] private int currentPhase;
 
 	private bool eventFlag = false;
-	private float eventTimer = 60;
-	private float eventDuration = 30;
+	private float eventTimer = 2;
+	private float eventDuration = 40;
 
     // Use this for initialization
     void Start ()
@@ -46,7 +46,6 @@ public class PhaseManger : MonoBehaviour
      */
     public void NextPhase()
     {
-		Debug.Log( "Entering phase: " + phaseCount );
         // Increment phase count
         phaseCount++;
 
@@ -61,6 +60,7 @@ public class PhaseManger : MonoBehaviour
 		ObstacleGenerator obstacleGenerator = References.global.obstacleGenerator;
 		EnemyGenerator enemyGenerator = References.global.enemyGenerator;
 		UI_Manager uiManager = References.global.uiManager;
+		PlayerController playerController = References.global.playerController;
 
 		string asteroidBelt = "[Approaching Asteroid Belt]";
 		string nebula = "[Approaching Nebula]";
@@ -73,6 +73,9 @@ public class PhaseManger : MonoBehaviour
 			if( !eventFlag )
 			{
 				rand = Random.Range( 0, 3 );
+				// 0 = Asteroid Belt
+				// 1 = Nebula
+				// 2 = None (33% chance of no event)
 
 				switch( rand )
 				{
@@ -84,6 +87,18 @@ public class PhaseManger : MonoBehaviour
 						yield return new WaitForSeconds( eventDuration );
 						obstacleGenerator.asteroidBelt = false;
 						enemyGenerator.generate = true;
+						eventFlag = false;
+						break;
+					case 1:
+						float origEnergy = playerController.maxEnergy;
+						playerController.maxEnergy = origEnergy / 2.0f;
+						playerController.energy = Mathf.Min( playerController.energy , origEnergy / 2.0f );
+						uiManager.nebula = true;
+						eventFlag = true;
+						uiManager.ShowEventNotification( nebula );
+						yield return new WaitForSeconds( eventDuration );
+						playerController.maxEnergy = origEnergy;
+						uiManager.nebula = false;
 						eventFlag = false;
 						break;
 				}

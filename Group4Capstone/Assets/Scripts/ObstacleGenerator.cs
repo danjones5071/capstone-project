@@ -47,7 +47,6 @@ public class ObstacleGenerator : Generator
 	IEnumerator GenerateAsteroids()
 	{
 		float origTimer = asteroidTimer;
-		Debug.Log( "origTimer: " + origTimer );
 		int phaseMult;
 		float newTime;
 

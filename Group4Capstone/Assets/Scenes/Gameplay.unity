@@ -726,7 +726,8 @@ MonoBehaviour:
   infernoPrefab: {fileID: 1972909802645380, guid: d13bbb4c21101d248bd80840f63e5a47,
     type: 2}
   explosion: {fileID: 1554514207725318, guid: 16727275690b6ac44a97a3a0b3477bdf, type: 2}
-  batteryCapacity: 100
+  energy: 100
+  maxEnergy: 100
   health: 100
   rechargeInterval: 1
   rechargeAmount: 2
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   eventIndicator: {fileID: 418181896}
   energyBar: {fileID: 1935166431}
   healthBar: {fileID: 463739416}
+  nebula: 0
 --- !u!1 &259326583
 GameObject:
   m_ObjectHideFlags: 0

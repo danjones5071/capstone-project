@@ -27,12 +27,17 @@ public class UI_Manager : MonoBehaviour {
     public Slider energyBar;
     public Slider healthBar;
 
+	public bool nebula = false;
+
+	private PlayerController playerController;
+
     // Use this for initialization
     void Start ()
     {  
 		InitializeUIPages();
         lastFrameTime = Time.time;
 		eventIndicatorText = eventIndicator.GetComponent<Text>();
+		playerController = References.global.playerController;
     }
 	
 	// Update is called once per frame
@@ -61,11 +66,18 @@ public class UI_Manager : MonoBehaviour {
         #endregion
 
         #region Health Bar Logic
-		healthBar.value = References.global.playerController.health;
+		healthBar.value = playerController.health;
         #endregion
 
         #region Energy Bar Logic
-		energyBar.value = References.global.playerController.batteryCapacity;
+		float energy = (playerController.energy / playerController.maxEnergy) * 100.0f;
+		if( !nebula )
+			energyBar.value = energy;
+		else
+			energyBar.value = energy / 2.0f;
+
+		Debug.Log( "Energy: " + playerController.energy );
+		Debug.Log( "Energy Bar: " + energyBar.value );
         #endregion
 
     }
