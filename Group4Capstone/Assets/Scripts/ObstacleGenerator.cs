@@ -6,7 +6,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using UnityEngine;
+using UnityEngine; 
 using System.Collections;
 
 public class ObstacleGenerator : Generator
@@ -16,10 +16,9 @@ public class ObstacleGenerator : Generator
 	public GameObject blackHole;              // The blackHole prefab.
 	public float asteroidTimer = 3.2f;        // How long we wait before generating another asteroid.
 	public float blackHoleTimer = 8.2f;       // How long we wait before generating another asteroid.
-    public float increseDificultyTimer = 50;
-    public float dificultyMultiplier = 0.3F;
-    private float secondsElapsed;
-    private float startTime;
+	public bool asteroidBelt = false;
+	private float asteroidBeltTimer = 0.6f;
+	private float timeMultiplier = 0.2f;
 
 	private ObjectPooler asteroidPool;
 	private ObjectPooler blackHolePool;
@@ -34,14 +33,12 @@ public class ObstacleGenerator : Generator
 
     void Start()
 	{
-        startTime = Time.time;
-
 		asteroidPool.Initialize( asteroid, 10, trans );
 		blackHolePool.Initialize( blackHole, 5, trans );
 
 		if( generate )
 		{
-			// Start the infinite coroutine to generate asteroids.
+			// Start the infinite coroutines to generate obstacles.
 			StartCoroutine( GenerateAsteroids() );
 			StartCoroutine( GenerateObjects( blackHolePool, blackHoleTimer ) );
 		}
@@ -49,26 +46,24 @@ public class ObstacleGenerator : Generator
 
 	IEnumerator GenerateAsteroids()
 	{
+		float origTimer = asteroidTimer;
+		Debug.Log( "origTimer: " + origTimer );
+		int phaseMult;
+		float newTime;
+
 		// Continue generating infinitely.
 		while( generate )
 		{
+			if( !asteroidBelt )
+			{
+				phaseMult = References.global.phaseManager.phaseMultipliers[(int)References.GamePhases.AsteroidPhase];
+				newTime = origTimer - ( timeMultiplier * phaseMult );
+				asteroidTimer = Mathf.Max( newTime, 1.0f );
+			}
+			else
+				asteroidTimer = asteroidBeltTimer;
+
 			CreateObject( asteroidPool );
-
-            secondsElapsed = Time.time - startTime;
-
-            if( secondsElapsed > increseDificultyTimer )
-            {
-                if( asteroidTimer > dificultyMultiplier )
-                {
-                    asteroidTimer -= dificultyMultiplier;
-                }
-                else
-                {
-                    asteroidTimer = dificultyMultiplier;
-                }
-
-                startTime = Time.time;
-            }
 
             yield return new WaitForSeconds( asteroidTimer );	// Wait a bit to generate another obstacle.
 		}

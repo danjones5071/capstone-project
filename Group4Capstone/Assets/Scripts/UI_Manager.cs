@@ -21,6 +21,8 @@ public class UI_Manager : MonoBehaviour {
 	public Text currencyCount;
 	public Text LivesCount;
 	public Text weaponText;
+	public GameObject eventIndicator;
+	private Text eventIndicatorText;
 
     public Slider energyBar;
     public Slider healthBar;
@@ -30,6 +32,7 @@ public class UI_Manager : MonoBehaviour {
     {  
 		InitializeUIPages();
         lastFrameTime = Time.time;
+		eventIndicatorText = eventIndicator.GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -70,10 +73,24 @@ public class UI_Manager : MonoBehaviour {
 	// Ensure all unnecessary UI pages like pause and store screens are disabled at first.
 	public void InitializeUIPages()
 	{
+		eventIndicator.SetActive( false );
 		References.global.storeUI.SetActive( false );
 		References.global.pauseUI.SetActive( false );
 		References.global.playAgainUI.SetActive( false );
 		References.global.leaderboardUI.SetActive( false );
+	}
+
+	public void ShowEventNotification( string eventText )
+	{
+		eventIndicatorText.text = eventText;
+		StartCoroutine( DisplayEventNotification() );
+	}
+
+	IEnumerator DisplayEventNotification()
+	{
+		eventIndicator.SetActive( true );
+		yield return new WaitForSeconds(4);
+		eventIndicator.SetActive( false );
 	}
 
 	public void ShowPlayAgainUI()

@@ -1051,6 +1051,7 @@ MonoBehaviour:
   currencyCount: {fileID: 569211092}
   LivesCount: {fileID: 1536125990}
   weaponText: {fileID: 707975527}
+  eventIndicator: {fileID: 418181896}
   energyBar: {fileID: 1935166431}
   healthBar: {fileID: 463739416}
 --- !u!1 &259326583
@@ -6200,6 +6201,100 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 406725035}
+  m_CullTransparentMesh: 0
+--- !u!1 &418181896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418181897}
+  - component: {fileID: 418181900}
+  - component: {fileID: 418181899}
+  - component: {fileID: 418181898}
+  m_Layer: 0
+  m_Name: EventIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &418181897
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418181896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1294470510}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.014984, y: 0}
+  m_SizeDelta: {x: 1400, y: 149.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &418181898
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418181896}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8101eb60b3341f445b153f350e17b335, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &418181899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418181896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 691348733a8beb944a88f469bbf75b9f, type: 3}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 90
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '[Event Notification]'
+--- !u!222 &418181900
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418181896}
   m_CullTransparentMesh: 0
 --- !u!1 &457331859
 GameObject:
@@ -17752,6 +17847,7 @@ RectTransform:
   - {fileID: 1618465922}
   - {fileID: 762932511}
   - {fileID: 1373463556}
+  - {fileID: 418181897}
   m_Father: {fileID: 1646876909}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20947,10 +21043,9 @@ MonoBehaviour:
   generate: 1
   asteroid: {fileID: 1573918084475036, guid: 6c315e27102c63146a8a2684b9b7a5b1, type: 2}
   blackHole: {fileID: 1455282034936094, guid: df5be8b83dbfb984db28fa512d01abdc, type: 2}
-  asteroidTimer: 3
+  asteroidTimer: 3.2
   blackHoleTimer: 15
-  increseDificultyTimer: 27
-  dificultyMultiplier: 0.3
+  asteroidBelt: 0
 --- !u!1 &2099778830
 GameObject:
   m_ObjectHideFlags: 0
