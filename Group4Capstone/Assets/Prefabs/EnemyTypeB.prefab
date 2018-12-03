@@ -219,6 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLaser: {fileID: 1397715384517130, guid: 44953aec1ad364d41b421ac616b1daf2, type: 2}
   laserOrigin: {fileID: 4114638597663926}
+  shipExplosion: {fileID: 1897522643317582, guid: b8be200af66b8ef4193b56bdadaab39b,
+    type: 2}
   xTolerance: 1
 --- !u!212 &212613389923170356
 SpriteRenderer:

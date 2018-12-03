@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour
 	public GameObject enemyLaser;
 	public Transform laserOrigin;
 
-	// Protected values assigned in the Awake() method of subclasses.
-	protected float speed;
+    public GameObject shipExplosion;
+
+    // Protected values assigned in the Awake() method of subclasses.
+    protected float speed;
 	protected float shootingDistance;
 
 
@@ -66,7 +68,11 @@ public class Enemy : MonoBehaviour
 			// Play the explosion sound effect.
 			References.global.soundEffects.PlayExplosionSound();
 
-			col.gameObject.SetActive( false );		// Deactivate the weapon.
+            //Effect of explosion
+            // Instantiate our explosion particle effects and destroy them after some time.
+            Destroy(Instantiate(shipExplosion, transform.position, Quaternion.identity), 3.5F);
+
+            col.gameObject.SetActive( false );		// Deactivate the weapon.
 			gameObject.SetActive( false );			// Deactivate this enemy.
 		}
 	}
