@@ -15,8 +15,8 @@ public class PhaseManger : MonoBehaviour
     [SerializeField] private int currentPhase;
 
 	private bool eventFlag = false;
-	private float eventTimer = 60;
-	private float eventDuration = 30;
+	private float eventTimer = 10;
+	private float eventDuration = 10;
 
     // Use this for initialization
     void Start ()
@@ -67,6 +67,9 @@ public class PhaseManger : MonoBehaviour
 		string asteroidBelt = "[Approaching Asteroid Belt]";
 		string nebula = "[Approaching Nebula]";
 
+		// Use a seed for better randomization.
+		Random.InitState( System.Environment.TickCount );
+
 		while( true )
 		{
 			yield return new WaitForSeconds( eventTimer );
@@ -75,7 +78,6 @@ public class PhaseManger : MonoBehaviour
 			if( !eventFlag )
 			{
 				rand = Random.Range( 0, 3 );
-				rand = 1;
 				// 0 = Asteroid Belt
 				// 1 = Nebula
 				// 2 = None (33% chance of no event)
