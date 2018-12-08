@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class BlackHole : ScrollingObject
 {
-	protected override void OnEnable ()
+	protected override void OnEnable()
 	{
 		// Perform the tasks of the Start() method in the base class.
 		base.OnEnable();
@@ -20,20 +20,30 @@ public class BlackHole : ScrollingObject
 
     void OnCollisionEnter2D( Collision2D col )
     {
-        if( col.gameObject != null && col.gameObject.tag != "Player")
+        if( col.gameObject != null )
         {
-            if (col.gameObject.GetComponents<IPooledObject>().Length > 0)
+			GameObject obj = col.gameObject;
+
+			// If the colliding object is the player.
+			if( obj.tag == "Player" )
+			{
+				// Call the die method.
+				References.global.playerController.Die();
+				References.global.soundEffects.PlayBlackHolePullSound();
+			}
+			// If the colliding object is part of an object pool.
+            else if( obj.GetComponents<IPooledObject>().Length > 0 )
             {
-                // Add the Asteroid back tot he Asteroid pool
-				col.gameObject.SetActive( false );
+                // Add the object back to the pool.
+				obj.SetActive( false );
 				References.global.soundEffects.PlayBlackHolePullSound();
             }
             else
             {
-                Destroy( col.gameObject );
+				// Simply destroy the object.
+                Destroy( obj );
                 References.global.soundEffects.PlayBlackHolePullSound();
             }
         }
     }
-
 }

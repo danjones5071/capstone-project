@@ -1,16 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	EnemyTypeB.cs
+//
+//	Defines the base behavior for Type B enemies which are capable of aiming and firing at the player,
+//  but are unable to move toward the player, drifting straight across the screen instead.
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyTypeB : Enemy
 {
-    public float xTolerance = 1F;
-    private Vector3 startingLocation;
-    private Vector3 endLocation;
     
 	void Awake()
 	{
+		// Set Type B-specific attributes.
 		speed = 100;
 		shootingDistance = 5;
 		shootingCooldown = 3;
@@ -35,6 +39,7 @@ public class EnemyTypeB : Enemy
 
 	void OnDisable()
 	{
+		// Indicate that this enemy has been destroyed.
 		References.global.enemyGenerator.EnemyTypeBDestroyed();
 	}
 }

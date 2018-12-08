@@ -44,8 +44,6 @@ public class EnemyAI : Enemy
     private float startTimeEnemyMov;
     private float secondsElapsedEnemyMov;
 
-    private Vector3 initialPosition;
-
 	void Awake()
 	{
 		speed = 2000;
@@ -57,12 +55,11 @@ public class EnemyAI : Enemy
 
     void OnEnable()
     {
-        target = playerLocation;
+        target = playerTrans;
         target = enemyArea.transform.GetChild(0);
 
         if(target == null)
         {
-           // Debug.LogError("No Player Found?");
             return;
         }
 
@@ -70,18 +67,13 @@ public class EnemyAI : Enemy
         transform.position = ((Random.Range(0, 1) == 1 ? (new Vector3(14F, -7F)) : (new Vector3(14F, 7F))));
 
         seeker.StartPath(transform.position, target.position, OnPathComplete);
-
-        initialPosition = transform.position;
         
         startTimeShooting = Time.time;
 
         StartCoroutine(UpdatePath());
     }
-	
-    /// <summary>
-    /// Co-routine to perform the path finding functionality of A*.
-    /// </summary>
-    /// <returns></returns>
+
+    // Co-routine to perform the path finding functionality of A*.
     IEnumerator UpdatePath()
     {
         if(target == null)
@@ -97,11 +89,8 @@ public class EnemyAI : Enemy
 
         StartCoroutine(UpdatePath()); //Calling itself for the next run.
     }
-
-    /// <summary>
+		
     /// In case we need to perform an action after a path is found. Maybe not? our environment is dynamic.
-    /// </summary>
-    /// <param name="p"></param>
     public void OnPathComplete(Path p)
     {
        // Debug.Log("We got a path!. Did it have an error? " + p.error);
@@ -113,9 +102,6 @@ public class EnemyAI : Enemy
         }
     }
 
-    /// <summary>
-    /// Use for physcis and complex calculations.
-    /// </summary>
     void FixedUpdate()
     {
         if (target == null)

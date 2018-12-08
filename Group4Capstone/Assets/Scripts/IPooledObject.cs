@@ -1,4 +1,10 @@
-﻿//using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	Asteroid.cs
+//
+//	Defines the common behavior shared by any pooled object.
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +28,7 @@ public class IPooledObject : MonoBehaviour
 
 	void OnDisable()
 	{
+		// When the game object is disabled, add it back to the approriate object pool queue.
 		if( initialized )
 			poolQueue.Enqueue( gameObject );
 	}

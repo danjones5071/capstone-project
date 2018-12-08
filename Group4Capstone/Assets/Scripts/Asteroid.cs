@@ -11,7 +11,7 @@ public class Asteroid : ScrollingObject
 {
 	public GameObject explosion;
 
-	// Declare variables to store asteroid-specific physics and position related values.
+	// Private variables to store asteroid-specific physics and position related values.
     private float speedY;  // Speed at which the object moves vertically.
     private float spin;    // Angular velocity of the object.
 
@@ -30,38 +30,35 @@ public class Asteroid : ScrollingObject
         spin = Random.Range( -50.0f, 50.0f );
 
         // Apply physical values to the asteroid's rigidbody.
-		rigid.velocity = (Vector2.left * speedX) + (Vector2.up * speedY); // Multiply the left vector by our speed to obtain velocity.
-        rigid.angularVelocity = spin; // Apply angular velocity to create a spin.
+
+		// Obtain our velocity from the randomly generated speeds.
+		rigid.velocity = ( Vector2.left * speedX ) + ( Vector2.up * speedY );
+
+		// Apply angular velocity to create a spin.
+        rigid.angularVelocity = spin;
 	}
 
     // Controls what happens when an asteroid collides with another object.
     void OnCollisionEnter2D( Collision2D col )
     {
-        // If the asteroid collides with a laser...
-        if (col.gameObject.tag == "Laser" || col.gameObject.tag == "Inferno" || col.gameObject.tag == "EnemyLaser")
-        {
-            DestroySelf();            // Destroy the asteroid.
-			col.gameObject.SetActive( false );  // And also destroy the laser blast.
-        }
+		GameObject obj = col.gameObject;
+		string tag = obj.tag;
 
-        // If the asteroid collides with an enemy...
-        if (col.gameObject.tag == "Enemy")
+        // If the asteroid collides with a weapon or enemy...
+		if( tag == "Laser" || tag == "Inferno" || tag == "EnemyLaser" || tag == "Enemy" )
         {
-            DestroySelf();            // Destroy the asteroid.
-			col.gameObject.SetActive( false );  // And also destroy the enemy.
+			// Destroy the asteroid and colliding object.
+            DestroySelf();
+			obj.SetActive( false );
         }
-
         // If the asteroid collides with a player...
-        if (col.gameObject.tag == "Player")
+        else if( tag == "Player" )
         {
-            // Cache player controller component.
-            PlayerController pc = col.gameObject.GetComponent<PlayerController>();
-
             // Play the crash sound effect.
 			References.global.soundEffects.PlayCrashSound();
 
             // Player takes damage from impact.
-            pc.TakeDamage(15);
+			References.global.playerController.TakeDamage( 15 );
 
             // Destroy asteroid on impact with player ship.
             DestroySelf();

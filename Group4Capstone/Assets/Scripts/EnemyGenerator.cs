@@ -7,17 +7,19 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
-using System;
 using System.Collections;
 
 public class EnemyGenerator : Generator
 {
+	// Enemy prefabs.
     public GameObject enemyA;
-    public GameObject enemyB;
+	public GameObject enemyB;
 
-    public int activeEnemyTypeB = 0;
-    public int activeEnemyTypeA = 0;
+	// Number of active enemies in each category.
+    private int activeEnemyTypeB = 0;
+	private int activeEnemyTypeA = 0;
 
+	// Enemy object pools.
 	private ObjectPooler enemyPoolA;
 	private ObjectPooler enemyPoolB;
 
@@ -29,6 +31,7 @@ public class EnemyGenerator : Generator
 	{
 		base.Awake();
 
+		// Cache references to enemy object pools.
 		enemyPoolA = gameObject.AddComponent<ObjectPooler>();
 		enemyPoolB = gameObject.AddComponent<ObjectPooler>();
 	}
@@ -47,6 +50,7 @@ public class EnemyGenerator : Generator
 			enemyPoolA.Initialize( enemyA, 5, trans );
 			enemyPoolB.Initialize( enemyB, 5, trans );
 
+			// Start generation coroutines.
 			StartCoroutine( GenerateEnemy( enemyPoolA, addA, getA, (int) References.GamePhases.TypeAEnemyPhase ) );
 			StartCoroutine( GenerateEnemy( enemyPoolB, addB, getB, (int) References.GamePhases.TypeBEnemyPhase ) );
 		}
@@ -60,15 +64,20 @@ public class EnemyGenerator : Generator
 		{
 			if( generate )
 			{
+				// Determine how many enemies are currently active.
 				active = getActive();
 
 				// Get the current phase to determine how many enemies should be generated.
 				int max = References.global.phaseManager.phaseMultipliers[phase];
 
+				// Generate the appropriate number of enemies.
 				while( active < max )
 				{
 					CreateObject( enemyPool );
 					active = addActive();
+
+					// Wait a short time between each generated enemy.
+					yield return new WaitForSeconds( 0.25f );
 				}
 			}
 			// Wait 1 second before checking if more enemies should be generated.

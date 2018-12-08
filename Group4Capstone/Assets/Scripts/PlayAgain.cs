@@ -10,6 +10,8 @@ public class PlayAgain : MonoBehaviour
 	public GameObject prompt;
 	public GameObject gameOverText;
 	public GameObject timeSurvived;
+	public GameObject store;
+	public GameObject leaderboard;
 	public GameObject storeButton;
 	public GameObject mainMenuButton;
 	public GameObject leaderboardButton;
@@ -28,12 +30,14 @@ public class PlayAgain : MonoBehaviour
 		StartCoroutine( ShowPrompt() );
 	}
 
-	void Update () {
+	void Update ()
+	{
 		background.color = Color.Lerp( background.color, fadeColor, fadeSpeed * Time.deltaTime );
 
-		if( Input.GetKeyDown( KeyCode.Space ) && prompt.activeInHierarchy )
+		if(  prompt.activeInHierarchy && Input.GetKeyDown( KeyCode.Space ) )
 		{
-            RestartGame();
+			if( !store.activeInHierarchy && !leaderboard.activeInHierarchy)
+            	RestartGame();
 		}
 	}
 

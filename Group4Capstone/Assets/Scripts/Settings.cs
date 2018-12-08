@@ -9,21 +9,18 @@ public class Settings : MonoBehaviour
 	public Slider sfxSlider;
 	public AudioSource music;
 
-	private const string MUSIC_KEY = "MusicVolume";
-	private const string SFX_KEY = "SFXVolume";
-
 	public void InitVolume()
 	{
-		if( PlayerPrefs.HasKey(MUSIC_KEY) )
+		if( PlayerPrefs.HasKey(References.KEY_MUSIC) )
 		{
-			float musicVol = PlayerPrefs.GetFloat( MUSIC_KEY );
+			float musicVol = PlayerPrefs.GetFloat( References.KEY_MUSIC );
 			musicSlider.value = musicVol;
 			music.volume = musicVol;
 		}
 
-		if( PlayerPrefs.HasKey(SFX_KEY) )
+		if( PlayerPrefs.HasKey(References.KEY_SFX) )
 		{
-			float sfxVol = PlayerPrefs.GetFloat( SFX_KEY );
+			float sfxVol = PlayerPrefs.GetFloat( References.KEY_SFX );
 			sfxSlider.value = sfxVol;
 		}
 	}
@@ -32,13 +29,13 @@ public class Settings : MonoBehaviour
 	{
 		float value = musicSlider.value;
 		music.volume = value;
-		PlayerPrefs.SetFloat( MUSIC_KEY, value );
+		PlayerPrefs.SetFloat( References.KEY_MUSIC, value );
 	}
 
 	public void SetSFXVolume()
 	{
 		float value = sfxSlider.value;
-		PlayerPrefs.SetFloat( SFX_KEY, value );
+		PlayerPrefs.SetFloat( References.KEY_SFX, value );
 	}
 
 	public void DeleteSavedData()

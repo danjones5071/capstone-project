@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float laserCooldown = 0.5f;  // How long the user must wait between laser bursts.
     public GameObject laserPrefab;      // The prefab used for a basic laser attack.
     public GameObject infernoPrefab;    // The prefab used for a basic inferno attack.
-    public GameObject explosion;
+    public GameObject explosion;        // The prefab used for an explosion effect upon death.
 
     // Private variables to cache necessary components.
 	private Transform playerTrans;
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 		References.global.soundEffects.PlayExplosionSound();
 		References.global.enemyGenerator.generate = false;
 
-		if( References.global.gameMaster.lives > 0 )
+		if( References.global.gameMaster.Lives > 0 )
 		{
 			References.global.gameMaster.RespawnPlayer();
 		}
@@ -305,12 +305,6 @@ public class PlayerController : MonoBehaviour
             damageSparks.position = pos;
 
             StartCoroutine( StopDamageSparks() );
-        }
-
-        if( col.gameObject.tag == "BlackHole" )
-        {
-            Die();
-            References.global.soundEffects.PlayBlackHolePullSound();
         }
     }
 

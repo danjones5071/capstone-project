@@ -8,7 +8,7 @@ public class References : MonoBehaviour
 {
 	public static References global { get; private set; }
 
-	// Assets that can be modified in the inspector.
+	// Accessible assets that can be modified in the inspector.
 	public GameMaster gameMaster;
 	public GameObject player;
 	public ObstacleGenerator obstacleGenerator;
@@ -43,10 +43,11 @@ public class References : MonoBehaviour
 	// PlayerPrefs key constants for persistent data.
 	public const string KEY_MUSIC = "MusicVolume";
 	public const string KEY_SFX = "SFXVolume";
+	public const string KEY_CURRENCY = "Currency";
 
     public enum GamePhases
     {
-        AsteroidPhase, // Might need to start enumeration at 1
+        AsteroidPhase,
         TypeBEnemyPhase,
         TypeAEnemyPhase,
         BlackholePhase,

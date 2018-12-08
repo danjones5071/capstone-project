@@ -607,6 +607,8 @@ MonoBehaviour:
   prompt: {fileID: 2048131796}
   gameOverText: {fileID: 751272089}
   timeSurvived: {fileID: 771034034}
+  store: {fileID: 55851254}
+  leaderboard: {fileID: 1373463555}
   storeButton: {fileID: 466860124}
   mainMenuButton: {fileID: 1965304933}
   leaderboardButton: {fileID: 1314446548}

@@ -1,13 +1,25 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	Generator.cs
+//
+//	Defines the base behavior for any generator subclass designed to continuously spawn game objects at runtime.
+//  These generators include:
+//  - Enemy Generator
+//  - Obstacle Generator
+//  - Pickup Generator.
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-	public bool generate = true;
-	protected Transform trans;
+	public bool generate = true;  // Should the generator be spawning objects?
+	protected Transform trans;    // Reference to the generator's tranform.
 
 	protected virtual void Awake()
 	{
+		// Cache the generator's transoform component.
 		trans = transform;
 	}
 
@@ -45,6 +57,7 @@ public class Generator : MonoBehaviour
 		return pool.SpawnFromPool();
 	}
 
+	// Disable all objects active in the pool.
 	public virtual void ClearGeneratedObjects()
 	{
 		foreach( Transform child in trans )
