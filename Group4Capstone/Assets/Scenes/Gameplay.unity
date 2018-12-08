@@ -734,6 +734,7 @@ MonoBehaviour:
   rechargeInterval: 1
   rechargeAmount: 2
   currentWeapon: 0
+  startPos: {x: -8, y: -0}
   weapons:
   - Laser
   damageSparks: {fileID: 1226491699}
@@ -985,7 +986,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 162462228}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: -0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 693078371}

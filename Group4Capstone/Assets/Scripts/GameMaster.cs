@@ -15,31 +15,23 @@ public class GameMaster : MonoBehaviour
 	private int score = 0;				// Player's current score for this round.
 	private int scoreInterval = 1;		// How many seconds we should wait to add to the score.
 	private int scorePerInterval = 5;	// How much is added to the score each interval.
-	private bool resetFlag = false;
 	private const int LIVES = 3;
     private const int CURRENCY = 0;
+	private PolygonCollider2D playerCollider;
 
 	public int currency = GameMaster.CURRENCY;
 	public int lives = GameMaster.LIVES;
 
 	void Start ()
 	{
+		playerCollider = References.global.player.GetComponent<PolygonCollider2D>();
+
 		// Start the infinite coroutine to add to our score for surviving a certain number of seconds.
 		StartCoroutine( TimedScoreIncrease() );
 
 		// Load player preference data related to music/sfx volume.
 		LoadPreferences();
-
-		if(PlayerPrefs.GetInt("ResetFlag")==1)
-		{
-		    Debug.Log("Data is reset");
-            ResetData();
-		}
-		else
-		{
-		    Debug.Log("Data is not reset");
-            LoadSavedData();
-		}
+        LoadSavedData();
 	}
 
 	IEnumerator TimedScoreIncrease()
@@ -69,13 +61,6 @@ public class GameMaster : MonoBehaviour
         lives += lifeAmount;
         References.global.uiManager.UpdateLivesCount( lives );
         PlayerPrefs.SetInt( "Lives", lives );
-        Debug.Log("Number of lives remaining is "+lives);
-    }
-
-    public void GameDataResetFlag(bool value)
-    {
-        resetFlag = value;
-        PlayerPrefs.SetInt("ResetFlag", resetFlag?1:0);
     }
 
 	// Getter & setter methods for the score variable.
@@ -111,10 +96,6 @@ public class GameMaster : MonoBehaviour
 		currency = PlayerPrefs.GetInt( "Currency", 0 );
 		References.global.uiManager.UpdateCurrencyCount( currency );
 
-		// Load Lives.
-		lives = PlayerPrefs.GetInt( "Lives", 0 );
-		References.global.uiManager.UpdateLivesCount( lives );
-
 		// Load Weapon Purchases.
 		if( PlayerPrefs.GetInt( References.WNAME_INFERNO, 0 ) != 0 )
 		{
@@ -128,7 +109,7 @@ public class GameMaster : MonoBehaviour
 		}
 	}
 
-	public void ResetData()
+/*	public void ResetData()
 	{
 		// Reset Currency.
 		References.global.uiManager.UpdateCurrencyCount( GameMaster.CURRENCY );
@@ -153,7 +134,7 @@ public class GameMaster : MonoBehaviour
 			PlayerPrefs.SetInt( References.WNAME_2LASER, 0 );
             Debug.Log( "Double Laser Weapon Removed" );
 		}
-	}
+	}*/
 
 	public void LoadPreferences()
 	{
@@ -167,6 +148,27 @@ public class GameMaster : MonoBehaviour
 			float vol = PlayerPrefs.GetFloat( References.KEY_SFX );
 			References.global.soundEffectsSource.volume = vol;
 		}
+	}
+
+	public void RespawnPlayer()
+	{
+		StartCoroutine( RespawnAfterTime() );
+	}
+
+	IEnumerator RespawnAfterTime()
+	{
+		// Wait a few seconds before respawning player
+		yield return new WaitForSeconds( 3 );
+		References.global.player.SetActive( true );
+		References.global.enemyGenerator.generate = true;
+
+		// While player collider is a trigger, they are immune to damage but can still pickup items.
+		playerCollider.isTrigger = true;
+
+		// Wait a few seconds before making player vulnerable again.
+		yield return new WaitForSeconds( 3 );
+
+		playerCollider.isTrigger = false;
 	}
 
     public void ClearGameScreen()

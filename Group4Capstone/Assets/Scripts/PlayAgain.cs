@@ -33,14 +33,14 @@ public class PlayAgain : MonoBehaviour
 
 		if( Input.GetKeyDown( KeyCode.Space ) && prompt.activeInHierarchy )
 		{
-            ContinueGame();
+            RestartGame();
 		}
 	}
 
 	IEnumerator ShowPrompt()
 	{
 		yield return new WaitForSeconds( 1 );
-	    DecidePromptOrGameOver();
+		prompt.SetActive( true );
 		timeSurvived.SetActive( true );
 		storeButton.SetActive( true );
 		mainMenuButton.SetActive( true );
@@ -52,28 +52,23 @@ public class PlayAgain : MonoBehaviour
 		SceneManager.LoadScene( "Gameplay" );
 	}
 
-    public void ContinueGame()
+   /* public void ContinueGame()
     {
-        PlayerController pc = References.global.player.GetComponent<PlayerController>();
-		pc.Heal( pc.maxHealth );
-		pc.AddEnergy( pc.maxEnergy );
-
         References.global.gameMaster.ClearGameScreen();
         References.global.player.transform.position = References.global.playerTrans.position;
         References.global.player.SetActive(true);
         References.global.uiManager.ContinueGame();
 		References.global.enemyGenerator.generate = true;
         References.global.playAgainUI.SetActive(false);
-    }
+    }*/
 
 	public void ReturnToMainMenu()
 	{
 	    //ensure game related values are reset before the player begins a new game
-	    References.global.gameMaster.GameDataResetFlag( true);
 		SceneManager.LoadScene( "Home" );
 	}
 
-	private void DecidePromptOrGameOver()
+/*	private void DecidePromptOrGameOver()
 	{
 	    if(PlayerPrefs.GetInt( "Lives", 0 ) > 0)
 	    {
@@ -88,5 +83,5 @@ public class PlayAgain : MonoBehaviour
 			storeButton.GetComponent<Button>().interactable = false;
             References.global.gameMaster.GameDataResetFlag( true);
 	    }
-	}
+	}*/
 }

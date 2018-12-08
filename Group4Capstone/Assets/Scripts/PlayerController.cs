@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
 
     // Private variables to cache necessary components.
+	private Transform playerTrans;
     private Transform laserOrigin;      // A child of the player game object to specify where the laser should shoot from.
     private Transform laserOriginL;     // A child of the player game object to specify where the laser should shoot from.
     private Transform laserOriginR;		// A child of the player game object to specify where the laser should shoot from.
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     //Player Directions towards the mouse.
     private Vector3 playerDirection;
+	public Vector2 startPos;
 
 	// List of all weapons currently possessed by the player.
 	public List<string> weapons;
@@ -56,26 +58,33 @@ public class PlayerController : MonoBehaviour
     {
 		weapons = new List<string>(){ References.WNAME_LASER };
 
-
-
-        laserOrigin = transform.Find("LaserOrigin");    // Cache a reference to the transform of the laser's origin point.
-        laserOriginL = transform.Find("LaserOriginL");  // Cache a reference to the transform of the laser's origin point.
-        laserOriginR = transform.Find("LaserOriginR");  // Cache a reference to the transform of the laser's origin point.
+		playerTrans = transform;
+		startPos = playerTrans.position;
+		laserOrigin = playerTrans.Find( "LaserOrigin" );    // Cache a reference to the transform of the laser's origin point.
+		laserOriginL = playerTrans.Find( "LaserOriginL" );  // Cache a reference to the transform of the laser's origin point.
+		laserOriginR = playerTrans.Find( "LaserOriginR" );  // Cache a reference to the transform of the laser's origin point.
     }
 
     void Start()
     {
 		damageSparks.gameObject.SetActive( false );
-        StartCoroutine(Recharge());
 		projPool = References.global.projectilePool;
     }
+
+	void OnEnable()
+	{
+		transform.position = startPos;
+		health = maxHealth;
+		energy = maxEnergy;
+		StartCoroutine( Recharge() );
+	}
 
     // FixedUpdate is called once for every frame that is rendered.
     void FixedUpdate()
     {
         // The vertical and horizontal input axises handle inputs from the up/down/left/right arrow keys, 'W'/'S'/'A'/'D' keys, or joystick.
-        float directionY = Input.GetAxis("Vertical");
-        float directionX = Input.GetAxis("Horizontal");
+        float directionY = Input.GetAxis( "Vertical" );
+        float directionX = Input.GetAxis( "Horizontal" );
 
         // Move the player based on the user's input to the vertical/horizontal axis and defined movement speed.
         References.global.playerRigid.velocity = Vector2.up * speed * directionY + Vector2.right * speed * directionX;
@@ -132,12 +141,21 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        ReduceLives(1);
+        ReduceLives( 1 );
         Instantiate( explosion, transform.position, Quaternion.identity );
-        References.global.uiManager.ShowPlayAgainUI();
-        References.global.soundEffects.PlayExplosionSound();
+		References.global.soundEffects.PlayExplosionSound();
 		References.global.enemyGenerator.generate = false;
-        gameObject.SetActive(false);
+
+		if( References.global.gameMaster.lives > 0 )
+		{
+			References.global.gameMaster.RespawnPlayer();
+		}
+		else
+		{
+			References.global.uiManager.ShowPlayAgainUI();
+		}
+
+        gameObject.SetActive( false );
     }
 
     public void CycleWeapon( int i )
