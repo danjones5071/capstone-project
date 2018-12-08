@@ -62,6 +62,7 @@ public class Store : MonoBehaviour
 		else if( item.price > gameMaster.Currency )
 		{
 			priceText.text = "Insufficient!";
+			References.global.soundEffects.PlayFailureSound();
 		}
 	}
 

@@ -94,6 +94,7 @@ public class UI_Manager : MonoBehaviour
 		if( !gameOver )
 		{
 			eventIndicatorText.text = eventText;
+			References.global.soundEffects.PlayEventNotification();
 			StartCoroutine( DisplayEventNotification() );
 		}
 	}

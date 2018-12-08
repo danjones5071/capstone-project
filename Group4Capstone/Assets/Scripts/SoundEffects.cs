@@ -20,6 +20,8 @@ public class SoundEffects : MonoBehaviour
     public AudioClip energyPickup;
     public AudioClip healthPickup;
 	public AudioClip currencyPickup;
+	public AudioClip failure;
+	public AudioClip eventNotification;
 
     // Private variables to cache necessary components.
     private AudioSource audioSource;
@@ -37,6 +39,13 @@ public class SoundEffects : MonoBehaviour
 		infernoBlast.LoadAudioData();
 		explosion.LoadAudioData();
 		crash.LoadAudioData();
+		cybergun.LoadAudioData();
+		blackHolePull.LoadAudioData();
+		energyPickup.LoadAudioData();
+		healthPickup.LoadAudioData();
+		currencyPickup.LoadAudioData();
+		failure.LoadAudioData();
+		eventNotification.LoadAudioData();
 	}
 
     public void PlayEnergyPickUpSound()
@@ -66,7 +75,7 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayInfernoSound()
     {
-    		audioSource.PlayOneShot( infernoBlast );
+    	audioSource.PlayOneShot( infernoBlast );
     }
 
 	public void PlayExplosionSound()
@@ -82,7 +91,16 @@ public class SoundEffects : MonoBehaviour
 
 	public void PlayBlackHolePullSound()
     {
-    		audioSource.PlayOneShot( blackHolePull );
+    	audioSource.PlayOneShot( blackHolePull );
     }
 
+	public void PlayFailureSound()
+	{
+		audioSource.PlayOneShot( failure );
+	}
+
+	public void PlayEventNotification()
+	{
+		audioSource.PlayOneShot( eventNotification );
+	}
 }

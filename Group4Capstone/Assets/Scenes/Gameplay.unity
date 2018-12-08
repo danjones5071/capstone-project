@@ -18830,6 +18830,8 @@ MonoBehaviour:
   energyPickup: {fileID: 8300000, guid: 7ae6e08f8fef63b4688a1ef1e36e6ff7, type: 3}
   healthPickup: {fileID: 8300000, guid: efc121d21aa35bb4c90266fe3868df4c, type: 3}
   currencyPickup: {fileID: 8300000, guid: 2ea673026c6eec14086770f9d7494c8f, type: 3}
+  failure: {fileID: 8300000, guid: a436c0d3fa3ffcc438a3e3b9552b4563, type: 3}
+  eventNotification: {fileID: 8300000, guid: 40b5280cb2a49d04fb072b12e0841886, type: 3}
 --- !u!4 &1491784008
 Transform:
   m_ObjectHideFlags: 0
