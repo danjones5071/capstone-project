@@ -13,6 +13,8 @@ public class References : MonoBehaviour
 	public GameObject player;
 	public ObstacleGenerator obstacleGenerator;
 	public SoundEffects soundEffects;
+	public AudioSource soundEffectsSource;
+	public AudioSource musicSource;
 	public UI_Manager uiManager;
 	public GameObject playAgainUI;
 	public GameObject storeUI;
@@ -33,6 +35,10 @@ public class References : MonoBehaviour
 	public const string WNAME_LASER = "Laser";
 	public const string WNAME_INFERNO = "Inferno";
 	public const string WNAME_2LASER = "Double Laser";
+
+	// PlayerPrefs key persistent data constants.
+	public const string KEY_MUSIC = "MusicVolume";
+	public const string KEY_SFX = "SFXVolume";
 
     public enum GamePhases
     {

@@ -2,7 +2,7 @@
 //	GameMaster.cs
 //
 //	A singleton-like class responsible for tracking game-state information such as the player's score, in-game
-//  currency, status effects, etc.
+//  currency, etc.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,6 +26,9 @@ public class GameMaster : MonoBehaviour
 	{
 		// Start the infinite coroutine to add to our score for surviving a certain number of seconds.
 		StartCoroutine( TimedScoreIncrease() );
+
+		// Load player preference data related to music/sfx volume.
+		LoadPreferences();
 
 		if(PlayerPrefs.GetInt("ResetFlag")==1)
 		{
@@ -149,6 +152,20 @@ public class GameMaster : MonoBehaviour
 			References.global.playerController.weapons.Remove( References.WNAME_2LASER );
 			PlayerPrefs.SetInt( References.WNAME_2LASER, 0 );
             Debug.Log( "Double Laser Weapon Removed" );
+		}
+	}
+
+	public void LoadPreferences()
+	{
+		if( PlayerPrefs.HasKey(References.KEY_MUSIC) )
+		{
+			float vol = PlayerPrefs.GetFloat( References.KEY_MUSIC );
+			References.global.musicSource.volume = vol;
+		}
+		if( PlayerPrefs.HasKey(References.KEY_SFX) )
+		{
+			float vol = PlayerPrefs.GetFloat( References.KEY_SFX );
+			References.global.soundEffectsSource.volume = vol;
 		}
 	}
 

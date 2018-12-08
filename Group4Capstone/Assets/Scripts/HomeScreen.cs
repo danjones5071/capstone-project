@@ -10,9 +10,6 @@ public class HomeScreen : MonoBehaviour
 	public GameObject settingsPage;
 	public Settings settings;
 
-	private const string MUSIC_KEY = "MusicVolume";
-	private const string SFX_KEY = "SFXVolume";
-
 	void Start()
 	{
 		settings.InitVolume();

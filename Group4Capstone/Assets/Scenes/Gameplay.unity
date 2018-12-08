@@ -12962,7 +12962,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 14
+  m_CharacterLimit: 9
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -25802,6 +25802,8 @@ MonoBehaviour:
   player: {fileID: 162462228}
   obstacleGenerator: {fileID: 2058457132}
   soundEffects: {fileID: 1491784007}
+  soundEffectsSource: {fileID: 1491784006}
+  musicSource: {fileID: 1424802381}
   uiManager: {fileID: 236586183}
   playAgainUI: {fileID: 138442390}
   storeUI: {fileID: 55851254}
