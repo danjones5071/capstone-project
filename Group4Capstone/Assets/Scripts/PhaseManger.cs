@@ -15,8 +15,8 @@ public class PhaseManger : MonoBehaviour
     [SerializeField] private int currentPhase;
 
 	private bool eventFlag = false;
-	private float eventTimer = 10;
-	private float eventDuration = 10;
+	private float eventTimer = 60;
+	private float eventDuration = 30;
 
     // Use this for initialization
     void Start ()
