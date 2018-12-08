@@ -31,12 +31,16 @@ public class References : MonoBehaviour
 	[HideInInspector] public Rigidbody2D playerRigid;
 	[HideInInspector] public PlayerController playerController;
 
-	// Weapon Name Constants.
+	// Weapon name constants.
 	public const string WNAME_LASER = "Laser";
 	public const string WNAME_INFERNO = "Inferno";
 	public const string WNAME_2LASER = "Double Laser";
 
-	// PlayerPrefs key persistent data constants.
+	// Scene name constants.
+	public const string SCENE_GAMEPLAY = "Gameplay";
+	public const string SCENE_HOME = "Home";
+
+	// PlayerPrefs key constants for persistent data.
 	public const string KEY_MUSIC = "MusicVolume";
 	public const string KEY_SFX = "SFXVolume";
 

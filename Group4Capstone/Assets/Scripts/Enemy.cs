@@ -30,11 +30,6 @@ public class Enemy : MonoBehaviour
 		playerLocation = References.global.playerTrans;
 	}
 
-	protected virtual void OnEnable()
-	{
-
-	}
-
 	protected void Update()
     {
         //If player is killed and a new instance is made bacause the player had more lifes.
@@ -44,7 +39,6 @@ public class Enemy : MonoBehaviour
 
 			//Rotating the enemy towards the player
 			transform.up = playerLocation.position - transform.position;
-		
 
 			secondsElapsedLastShooting = Time.time - startTimeShooting;
 

@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         // Deal damage to self for testing purposes.
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(50);
+			TakeDamage( maxHealth - 1 );
         }
 
         if (health <= 0)
@@ -269,14 +269,14 @@ public class PlayerController : MonoBehaviour
 
     public void Heal( int healing )
     {
-        health = System.Math.Min( health + healing, 100 );
+		health = Mathf.Min( health + healing, 100 );
     }
 
     public void AddEnergy( float add )
     {
         // We don't want the energy to exceed 100.
         // So take the minimum between 100 and the sum of the current energy plus energy being added.
-		energy = System.Math.Min( energy + add, maxEnergy );
+		energy = Mathf.Min( energy + add, maxEnergy );
     }
 
     private void ReduceLives( int lifeLost )

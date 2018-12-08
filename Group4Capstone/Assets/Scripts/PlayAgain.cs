@@ -49,39 +49,12 @@ public class PlayAgain : MonoBehaviour
 
 	public void RestartGame()
 	{
-		SceneManager.LoadScene( "Gameplay" );
+		SceneManager.LoadScene( References.SCENE_GAMEPLAY );
 	}
-
-   /* public void ContinueGame()
-    {
-        References.global.gameMaster.ClearGameScreen();
-        References.global.player.transform.position = References.global.playerTrans.position;
-        References.global.player.SetActive(true);
-        References.global.uiManager.ContinueGame();
-		References.global.enemyGenerator.generate = true;
-        References.global.playAgainUI.SetActive(false);
-    }*/
 
 	public void ReturnToMainMenu()
 	{
 	    //ensure game related values are reset before the player begins a new game
-		SceneManager.LoadScene( "Home" );
+		SceneManager.LoadScene( References.SCENE_HOME );
 	}
-
-/*	private void DecidePromptOrGameOver()
-	{
-	    if(PlayerPrefs.GetInt( "Lives", 0 ) > 0)
-	    {
-	        Debug.Log("Showing prompt and store since player still has lives remaining");
-	        prompt.SetActive( true );
-            References.global.gameMaster.GameDataResetFlag( false);
-	    }
-	    else
-	    {
-	        Debug.Log("Not showing prompt and store since player has no lives remaining");
-	        gameOverText.SetActive( true );
-			storeButton.GetComponent<Button>().interactable = false;
-            References.global.gameMaster.GameDataResetFlag( true);
-	    }
-	}*/
 }

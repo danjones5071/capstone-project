@@ -15,12 +15,11 @@ public class GameMaster : MonoBehaviour
 	private int score = 0;				// Player's current score for this round.
 	private int scoreInterval = 1;		// How many seconds we should wait to add to the score.
 	private int scorePerInterval = 5;	// How much is added to the score each interval.
-	private const int LIVES = 3;
-    private const int CURRENCY = 0;
+	private const int START_LIVES = 3;
 	private PolygonCollider2D playerCollider;
 
-	public int currency = GameMaster.CURRENCY;
-	public int lives = GameMaster.LIVES;
+	public int currency;
+	public int lives = START_LIVES;
 
 	void Start ()
 	{
@@ -60,7 +59,6 @@ public class GameMaster : MonoBehaviour
     {
         lives += lifeAmount;
         References.global.uiManager.UpdateLivesCount( lives );
-        PlayerPrefs.SetInt( "Lives", lives );
     }
 
 	// Getter & setter methods for the score variable.
@@ -100,41 +98,12 @@ public class GameMaster : MonoBehaviour
 		if( PlayerPrefs.GetInt( References.WNAME_INFERNO, 0 ) != 0 )
 		{
 			References.global.playerController.weapons.Add( References.WNAME_INFERNO );
-			Debug.Log( "Inferno Weapon Loaded" );
 		}
 		if( PlayerPrefs.GetInt( References.WNAME_2LASER, 0 ) != 0 )
 		{
 			References.global.playerController.weapons.Add( References.WNAME_2LASER );
-			Debug.Log( "Double Laser Weapon Loaded" );
 		}
 	}
-
-/*	public void ResetData()
-	{
-		// Reset Currency.
-		References.global.uiManager.UpdateCurrencyCount( GameMaster.CURRENCY );
-        PlayerPrefs.SetInt( "Currency", GameMaster.CURRENCY );
-
-
-		// Reset Lives.
-		References.global.uiManager.UpdateLivesCount( GameMaster.LIVES );
-		PlayerPrefs.SetInt( "Lives", GameMaster.LIVES );
-
-
-		// Reset Weapon Purchases.
-		if( PlayerPrefs.GetInt( References.WNAME_INFERNO, 0 ) != 0 )
-		{
-			References.global.playerController.weapons.Remove( References.WNAME_INFERNO );
-			PlayerPrefs.SetInt( References.WNAME_INFERNO, 0 );
-			Debug.Log( "Inferno Weapon Removed" );
-		}
-		if( PlayerPrefs.GetInt( References.WNAME_2LASER, 0 ) != 0 )
-		{
-			References.global.playerController.weapons.Remove( References.WNAME_2LASER );
-			PlayerPrefs.SetInt( References.WNAME_2LASER, 0 );
-            Debug.Log( "Double Laser Weapon Removed" );
-		}
-	}*/
 
 	public void LoadPreferences()
 	{
@@ -157,9 +126,12 @@ public class GameMaster : MonoBehaviour
 
 	IEnumerator RespawnAfterTime()
 	{
+		Animator playerAnim = References.global.player.GetComponent<Animator>();
+
 		// Wait a few seconds before respawning player
 		yield return new WaitForSeconds( 3 );
 		References.global.player.SetActive( true );
+		playerAnim.enabled = true;
 		References.global.enemyGenerator.generate = true;
 
 		// While player collider is a trigger, they are immune to damage but can still pickup items.
