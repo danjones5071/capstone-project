@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         // Deal damage to self for testing purposes.
         if (Input.GetKeyDown(KeyCode.K))
         {
+			ReduceLives( 2 );
 			TakeDamage( maxHealth - 1 );
         }
 

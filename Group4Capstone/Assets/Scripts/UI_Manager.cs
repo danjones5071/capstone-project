@@ -117,7 +117,7 @@ public class UI_Manager : MonoBehaviour
 	public void ToggleStoreUI()
 	{
 		GameObject storeUI = References.global.storeUI;
-		storeUI.SetActive( !storeUI.activeSelf );
+		storeUI.SetActive( !storeUI.activeInHierarchy );
 	}
 
 	public void TogglePauseUI()
