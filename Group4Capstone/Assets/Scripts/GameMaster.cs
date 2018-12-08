@@ -16,11 +16,13 @@ public class GameMaster : MonoBehaviour
 	private PolygonCollider2D playerCollider;  // A reference to the player's collider component.
 	public int currency;                       // How much currency the player has earned.
 	private int lives = START_LIVES;           // how many lives the player currently has.
+	private Store store;                       // Reference to the store script.
 
 	void Start ()
 	{
-		// Cache the player's collider.
+		// Cache the necessary components.
 		playerCollider = References.global.player.GetComponent<PolygonCollider2D>();
+		store = References.global.storeScript;
 
 		// Load player preference data related to music/sfx volume.
 		LoadPreferences();
@@ -55,13 +57,20 @@ public class GameMaster : MonoBehaviour
 		References.global.uiManager.UpdateCurrencyCount( currency );
 
 		// Load Weapon Purchases.
-		if( PlayerPrefs.GetInt( References.WNAME_INFERNO, 0 ) != 0 )
+		if( PlayerPrefs.HasKey(References.WNAME_INFERNO) )
 		{
 			References.global.playerController.weapons.Add( References.WNAME_INFERNO );
+			store.AddToPurchasedList( References.WNAME_INFERNO );
 		}
-		if( PlayerPrefs.GetInt( References.WNAME_2LASER, 0 ) != 0 )
+		if( PlayerPrefs.HasKey(References.WNAME_2LASER) )
 		{
 			References.global.playerController.weapons.Add( References.WNAME_2LASER );
+			store.AddToPurchasedList( References.WNAME_2LASER );
+		}
+		if( PlayerPrefs.HasKey(References.UNAME_ARMOR) )
+		{
+			References.global.playerController.maxHealth = 150;
+			store.AddToPurchasedList( References.UNAME_ARMOR );
 		}
 	}
 

@@ -18,6 +18,7 @@ public class References : MonoBehaviour
 	public UI_Manager uiManager;
 	public GameObject playAgainUI;
 	public GameObject storeUI;
+	public Store storeScript;
 	public GameObject pauseUI;
 	public EnemyGenerator enemyGenerator;
     public PickupGenerator pickupGenerator;
@@ -35,6 +36,9 @@ public class References : MonoBehaviour
 	public const string WNAME_LASER = "Laser";
 	public const string WNAME_INFERNO = "Inferno";
 	public const string WNAME_2LASER = "Double Laser";
+
+	// Upgrade name constants.
+	public const string UNAME_ARMOR = "Armor";
 
 	// Scene name constants.
 	public const string SCENE_GAMEPLAY = "Gameplay";

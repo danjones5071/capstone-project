@@ -31,7 +31,7 @@ public class StoreTest
 			storeScript.Purchase( References.WNAME_INFERNO );
 
 			int endCoins = References.global.gameMaster.currency;
-			Item item = storeScript.weapons.Find( i => i.name == References.WNAME_INFERNO );
+			Item item = storeScript.GetItemsList().Find( i => i.name == References.WNAME_INFERNO );
 			Assert.AreEqual( startCoins - item.price, endCoins );
 		}
 		yield return null;
@@ -47,7 +47,7 @@ public class StoreTest
 			storeScript.Purchase( References.WNAME_2LASER );
 
 			int endCoins = References.global.gameMaster.currency;
-			Item item = storeScript.weapons.Find( i => i.name == References.WNAME_2LASER );
+			Item item = storeScript.GetItemsList().Find( i => i.name == References.WNAME_2LASER );
 			Assert.AreEqual( startCoins - item.price, endCoins );
 		}
 		yield return null;
