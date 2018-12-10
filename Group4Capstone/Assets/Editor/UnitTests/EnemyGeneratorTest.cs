@@ -5,7 +5,7 @@ using System.Collections;
 
 public class EnemyGeneratorTest
 {
-	GameObject enemyGenerator = GameObject.Find( "EnemyGenerator" );
+	GameObject enemyGenerator = GameObject.Find( "Enemy Generator" );
 	EnemyGenerator eg;
 
 	[OneTimeSetUp]

@@ -55,7 +55,6 @@ public class References : MonoBehaviour
         TypeBEnemyPhase,
         TypeAEnemyPhase,
         BlackholePhase,
-        EventPhase
     }
 
 	void Awake()

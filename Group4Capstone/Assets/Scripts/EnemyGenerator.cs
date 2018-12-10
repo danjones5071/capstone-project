@@ -70,6 +70,9 @@ public class EnemyGenerator : Generator
 				// Get the current phase to determine how many enemies should be generated.
 				int max = References.global.phaseManager.phaseMultipliers[phase];
 
+				//if( max >= 3 )
+				//	max = 3;
+
 				// Generate the appropriate number of enemies.
 				while( active < max )
 				{

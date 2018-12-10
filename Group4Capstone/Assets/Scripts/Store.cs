@@ -43,7 +43,7 @@ public class Store : MonoBehaviour
 		Item item = items.Find( i => i.name == itemName );
 
 		// If the player has enough money and hasn't bought the item already.
-		if( !purchased.Contains( item.name ) && item.price < gameMaster.Currency )
+		if( !purchased.Contains( item.name ) && item.price <= gameMaster.Currency )
 		{
 			// Take currency from player.
 			References.global.gameMaster.AddToCurrency( -1 * item.price );

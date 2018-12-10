@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
 	private int lives = START_LIVES;           // how many lives the player currently has.
 	private Store store;                       // Reference to the store script.
 
-	void Start ()
+	void Start()
 	{
 		// Cache the necessary components.
 		playerCollider = References.global.player.GetComponent<PolygonCollider2D>();

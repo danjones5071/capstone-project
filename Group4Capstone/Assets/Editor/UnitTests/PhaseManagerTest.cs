@@ -5,7 +5,7 @@ using System.Collections;
 
 public class PhaseManagerTest {
 
-    GameObject phaseManager = GameObject.Find("EnemyGenerator");
+    GameObject phaseManager = GameObject.Find("Enemy Generator");
     PhaseManger pm;
 
     [OneTimeSetUp]

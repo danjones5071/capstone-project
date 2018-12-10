@@ -44,7 +44,6 @@ public class PhaseManger : MonoBehaviour
      * Phase 1: Type B Enemies
      * Phase 2: Type A Enemies
      * Phase 3: Blackholes
-     * Phase 4: Event
      */
     public void NextPhase()
     {
@@ -53,7 +52,28 @@ public class PhaseManger : MonoBehaviour
 
         // Increase appropriate Phase Multiplier
         currentPhase = phaseCount % 5;
-        phaseMultipliers[currentPhase]++;
+
+		// Don't exceed 3 instances of Enemy Type A.
+		// Don't exceed 4 instances of Enemy Type B.
+		switch( currentPhase )
+		{
+			case 0:
+				phaseMultipliers[currentPhase]++;
+				break;
+			case 1:
+				if( phaseMultipliers[currentPhase] < 4 )
+					phaseMultipliers[currentPhase]++;
+				break;
+			case 2:
+				if( phaseMultipliers[currentPhase] < 3 )
+					phaseMultipliers[currentPhase]++;
+				break;
+			case 3:
+				break;
+			default:
+				phaseMultipliers[currentPhase]++;
+				break;
+		}
     }
 
 	IEnumerator WaitForEvent()
@@ -91,7 +111,8 @@ public class PhaseManger : MonoBehaviour
 						uiManager.ShowEventNotification( asteroidBelt );
 						yield return new WaitForSeconds( eventDuration );
 						obstacleGenerator.asteroidBelt = false;
-						enemyGenerator.generate = true;
+						if( References.global.player.activeInHierarchy )
+							enemyGenerator.generate = true;
 						eventFlag = false;
 						break;
 					case 1:

@@ -5,7 +5,13 @@ using System.Collections;
 
 public class GameMasterTest
 {
-	GameObject gameMaster = GameObject.Find( "GameMaster" );
+	GameObject gameMaster;
+
+	[OneTimeSetUp]
+	public void TestSetup()
+	{
+		gameMaster = GameObject.Find( "Game Master" );
+	}
 
 	[Test]
 	public void GameMasterExists()
@@ -35,11 +41,19 @@ public class GameMasterTest
 	public void LivesGetterSetterTest()
 	{
 		GameMaster gm = new GameMaster();
+
+		// Should begin with 3 lives.
+		Assert.AreEqual( gm.Lives, 3 );
+
 		gm.Lives = 5;
 		Assert.AreNotEqual( gm.Lives, 0 );
-		Assert.AreEqual( gm.Lives, 5 );
+		Assert.AreEqual( gm.Lives, 8 );
 
-		gm.Lives = 3;
-		Assert.AreEqual( gm.Lives, 3 );
+		// The setter actually adds to the lives.
+		gm.Lives = 2;
+		Assert.AreEqual( gm.Lives, 10 );
+
+		gm.Lives = -1;
+		Assert.AreEqual( gm.Lives, 9 );
 	}
 }
