@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private int laserEnergyCost = 5;    // Ammount of energy to be deducted out of the batteries per laser shot.
 
     //Player Directions towards the mouse.
-    private Vector3 playerDirection;
+    private Vector2 playerDirection;
 	public Vector2 startPos;
 
 	// List of all weapons currently possessed by the player.
@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    public void ShootLaser()
+	public void ShootLaser()
     {
         if (energy >= laserEnergyCost)
         {
@@ -339,13 +339,18 @@ public class PlayerController : MonoBehaviour
 
     Vector3 FaceMouse()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint( mousePosition );
 
-        Vector3 direction = new Vector3(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y,0);
+		Vector2 direction = new Vector2( mousePosition.x - playerTrans.position.x, mousePosition.y - playerTrans.position.y );
 
-       transform.up = direction;
+		playerTrans.up = direction;
 
         return direction;
     }
+
+	public void SetProjectilePool( ProjectilePool projPool )
+	{
+		this.projPool = projPool;
+	}
 }

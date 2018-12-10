@@ -116,7 +116,7 @@ public class PlayerControllerTest
 		yield return null;
 	}
 
-	/*[UnityTest]
+	[UnityTest]
 	public IEnumerator ShootLaserTest()
 	{
 		playerController.ShootLaser();
@@ -125,7 +125,7 @@ public class PlayerControllerTest
 		Assert.NotNull( laser );
 
 		yield return null;
-	}*/
+	}
 
 	[UnityTest]
     public IEnumerator ShootInfernoTest()

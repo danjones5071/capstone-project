@@ -15,9 +15,19 @@ namespace UnityStandardAssets.Effects
             var systems = GetComponentsInChildren<ParticleSystem>();
             foreach (ParticleSystem system in systems)
             {
-                system.startSize *= multiplier;
-                system.startSpeed *= multiplier;
-                system.startLifetime *= Mathf.Lerp(multiplier, 1, 0.5f);
+				ParticleSystem.MainModule main = system.main;
+				ParticleSystem.MinMaxCurve minMax1 = main.startSize;
+				ParticleSystem.MinMaxCurve minMax2 = main.startSpeed;
+				ParticleSystem.MinMaxCurve minMax3 = main.startLifetime;
+
+				minMax1.constant *= multiplier;
+                minMax2.constant *= multiplier;
+				minMax3.constant *= Mathf.Lerp(multiplier, 1, 0.5f);
+
+				main.startSize = minMax1;
+				main.startSpeed = minMax2;
+				main.startLifetime = minMax3;
+
                 system.Clear();
                 system.Play();
             }

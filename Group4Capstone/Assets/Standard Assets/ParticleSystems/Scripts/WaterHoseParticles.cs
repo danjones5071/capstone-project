@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Effects
         public float force = 1;
 
 
-        private ParticleCollisionEvent[] m_CollisionEvents;
+        private List<ParticleCollisionEvent> m_CollisionEvents;
         private ParticleSystem m_ParticleSystem;
 
 
@@ -22,7 +22,7 @@ namespace UnityStandardAssets.Effects
 
         private void OnParticleCollision(GameObject other)
         {
-            m_CollisionEvents = new ParticleCollisionEvent[m_ParticleSystem.GetSafeCollisionEventSize()];
+			m_CollisionEvents = new List<ParticleCollisionEvent>();
             int numCollisionEvents = m_ParticleSystem.GetCollisionEvents(other, m_CollisionEvents);
             int i = 0;
 
